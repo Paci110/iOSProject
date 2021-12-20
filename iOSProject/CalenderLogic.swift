@@ -6,18 +6,20 @@
 //
 
 import Foundation
+//import CoreLocation
 
 ///Struct that is used to safe the information of a date event from a calender
 struct DateEvent {
-    let titel: String
+    let title: String
     let fullDayEvent: Bool
     var start: Date
     var end: Date //The format of start and end should depend if it is a full day event
+//    var place: CLLocation
     
     //TODO place, map, reminder
     
-    init(Titel titel: String, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date) {
-        self.titel = titel
+    init(Title title: String, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date) {
+        self.title = title
         self.fullDayEvent = fullDayEvent
         self.start = start
         if start > end {
@@ -39,6 +41,7 @@ struct DateEvent {
     }
 }
 
+///String has to be of format "yyyy/MM/dd HH:mm"
 func getDate(fromString: String) -> Date {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy/MM/dd HH:mm"
