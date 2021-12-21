@@ -39,6 +39,18 @@ struct DateEvent {
             self.end = getDate(fromString: endDateString)
         }
     }
+    
+    func getData() -> [String] {
+        var data: [String] = []
+        data.append(title)
+        let format = "yyyy/MM/dd HH:mm"
+        data.append(getDate(FromDate: start, Format: format))
+        data.append(getDate(FromDate: end, Format: format))
+        if fullDayEvent {
+            data.append("Full day event")
+        }
+        return data
+    }
 }
 
 ///String has to be of format "yyyy/MM/dd HH:mm"
@@ -49,4 +61,10 @@ func getDate(fromString: String) -> Date {
         return date
     }
     return Date()
+}
+
+func getDate(FromDate fromDate: Date, Format format: String) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = format
+    return formatter.string(from: fromDate)
 }
