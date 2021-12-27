@@ -63,15 +63,20 @@ struct DateEvent {
         }
     }
     
-    func getData() -> [String] {
-        var data: [String] = []
+    func getData() -> [Any] {
+        var data: [Any] = []
         data.append(title)
+        data.append(("Full day event", fullDayEvent))
         let format = "yyyy/MM/dd HH:mm"
-        data.append(getDate(FromDate: start, Format: format))
-        data.append(getDate(FromDate: end, Format: format))
-        if fullDayEvent {
-            data.append("Full day event")
+        data.append(("Begin", getDate(FromDate: start, Format: format)))
+        data.append(("End", getDate(FromDate: end, Format: format)))
+        if let description = description {
+            data.append(description)
         }
+        if let url = self.url {
+            data.append(url)
+        }
+        
         return data
     }
 }
