@@ -16,7 +16,7 @@ struct DateEvent {
     let fullDayEvent: Bool
     var start: Date
     var end: Date //The format of start and end should depend if it is a full day event
-//    var location: Any? //What Type should be used here?
+    var location: Any? //What Type should be used here?
     var shouldRemind: Bool
     var url: URL?
     var calendar: Calendar?
@@ -35,7 +35,7 @@ struct DateEvent {
         self.calendar = nil
     }
     
-    init(Titel titel: String, Description description: String?, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date, ShouldRemind remind: Bool, URL url: URL?, Calendar calendar: Calendar?) {
+    init(Titel titel: String, Description description: String?, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date, ShouldRemind remind: Bool, URL url: URL?, Calendar calendar: Calendar?, Location location: Any?) {
         self.titel = titel
         self.description = description
         self.shouldRemind = remind
