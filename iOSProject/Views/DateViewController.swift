@@ -32,7 +32,7 @@ class DateViewController: UIViewController {
         let start: Date = getDate(fromString: "2021/12/19 10:00")
         let end: Date = getDate(fromString: "2021/12/19 17:00")
         //        let place: CLLocation = CLLocation(latitude: 29, longitude: 10)
-        let dateEvent = DateEvent(Title: "TestDate", FullDayEvent: true, Start: start, End: end)
+        let dateEvent = DateEvent(Title: "TestDate", Description: nil, FullDayEvent: true, Start: start, End: end, ShouldRemind: false, URL: nil, Calendar: nil, Location: nil)
         testDate = dateEvent
         
         //Show sample Data

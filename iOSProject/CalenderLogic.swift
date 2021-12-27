@@ -12,7 +12,7 @@ import UIKit
 //MARK: Events
 ///Struct that is used to safe the information of a date event from a calender
 struct DateEvent {
-    let titel: String
+    let title: String
     var description: String?
     let fullDayEvent: Bool
     var start: Date
@@ -22,9 +22,9 @@ struct DateEvent {
     var url: URL?
     var calendar: Calendar?
     
-    init(Titel titel: String, Description description: String?, Start start: Date, End end: Date, ShouldRemind remind: Bool)
+    init(Title title: String, Description description: String?, Start start: Date, End end: Date, ShouldRemind remind: Bool)
     {
-        self.titel = titel
+        self.title = title
         self.description = description
         assert(start < end, "End date was beforee start date")
         self.start = start
@@ -36,8 +36,8 @@ struct DateEvent {
         self.calendar = nil
     }
     
-    init(Titel titel: String, Description description: String?, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date, ShouldRemind remind: Bool, URL url: URL?, Calendar calendar: Calendar?, Location location: Any?) {
-        self.titel = titel
+    init(Title title: String, Description description: String?, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date, ShouldRemind remind: Bool, URL url: URL?, Calendar calendar: Calendar?, Location location: Any?) {
+        self.title = title
         self.description = description
         self.shouldRemind = remind
         self.url = url
