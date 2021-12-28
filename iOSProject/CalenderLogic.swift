@@ -18,7 +18,7 @@ struct DateEvent {
     var start: Date
     var end: Date //The format of start and end should depend if it is a full day event
     var location: Any? //What Type should be used here?
-    var shouldRemind: Bool
+    var shouldRemind: Bool //Reminder time has to be saved
     var url: URL?
     var calendar: Calendar?
     
@@ -36,7 +36,9 @@ struct DateEvent {
         self.calendar = nil
     }
     
-    init(Title title: String, Description description: String?, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date, ShouldRemind remind: Bool, URL url: URL?, Calendar calendar: Calendar?, Location location: Any?) {
+    ///Creates a new dateEvent with the given arguements. Optional arguements that are not specified are set to nil.
+    ///Checks if beginning and ending date are set correctly.
+    init(Title title: String, Description description: String? = nil, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date, ShouldRemind remind: Bool, URL url: URL? = nil, Calendar calendar: Calendar? = nil, Location location: Any? = nil) {
         self.title = title
         self.description = description
         self.shouldRemind = remind
@@ -53,6 +55,7 @@ struct DateEvent {
             self.end = end
         }
         
+        //If the date is an full day event the date is edited to start at 0:00 and end at 23:59 of the start, end date
         if fullDayEvent {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy/MM/dd"
@@ -63,6 +66,7 @@ struct DateEvent {
         }
     }
     
+    ///Returns array of all used arguements with some additional display informations
     func getData() -> [Any] {
         var data: [Any] = []
         data.append(title)
@@ -73,8 +77,14 @@ struct DateEvent {
         if let description = description {
             data.append(description)
         }
+        if let calendar = calendar {
+            data.append(calendar)
+        }
         if let url = self.url {
             data.append(url)
+        }
+        if let location = location {
+            data.append(location)
         }
         
         return data
