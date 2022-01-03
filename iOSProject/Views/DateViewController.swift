@@ -145,11 +145,13 @@ extension UIViewController: UITableViewDataSource {
             return cell
         }
         else if let data = dateText as? CLLocation {
+            //FIXME: Memory leak
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell", for: indexPath) as! MapCell
             let region = MKCoordinateRegion.init(center: data.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
             cell.mapView.setRegion(region, animated: false)
             cell.mapView.mapType = .standard
             
+            //TODO: just for test uses, remove later
             let marker = MKPointAnnotation()
             marker.title = "Super C"
             marker.coordinate = CLLocationCoordinate2D(latitude: data.coordinate.latitude, longitude: data.coordinate.longitude)
