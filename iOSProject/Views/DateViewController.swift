@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 var testDate: DateEvent?
 
@@ -35,6 +36,8 @@ class DateViewController: UIViewController {
         let url = URL(string: "www.rwth-aachen.de")
         var address: CLLocation? = nil
         let geocoder = CLGeocoder()
+        
+        
         geocoder.geocodeAddressString("Templergraben 57, 52062 Aachen, Germany") { (placemarks, error) in
             if let error = error {
                 print(error)
@@ -50,10 +53,13 @@ class DateViewController: UIViewController {
             print(tempAdress)
             address = tempAdress
         }
-        let dateEvent = DateEvent(Title: "Test Date", Description: note, FullDayEvent: true, Start: start, End: end, ShouldRemind: false, URL: url, Location: address)
+        print("test")
+        let dateEvent = DateEvent(Title: "Test Date", Description: note, FullDayEvent: true, Start: start, End: end, ShouldRemind: false, URL: url, Location: CLLocation(latitude: 0, longitude: 0))
         testDate = dateEvent
         
         labelDateTitle.text = testDate?.title
+        
+        
     }
 }
 
@@ -109,8 +115,19 @@ extension UIViewController: UITableViewDataSource {
             cell.textLabel?.isUserInteractionEnabled = true
             return cell
         }
+        else if let data = dateText as? CLLocation {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell", for: indexPath) as! MapCell
+            let region = MKCoordinateRegion.init(center: data.coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
+            cell.mapView.setRegion(region, animated: false)
+            cell.mapView.mapType = MKMapType.satellite
+//            cell.textLabel?.text = data.description
+            cell.contentView.sizeToFit()
+            cell.sizeToFit()
+            return cell
+        }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) //Add any cell?
+            cell.textLabel?.text = "Location"
             return cell
         }
     }

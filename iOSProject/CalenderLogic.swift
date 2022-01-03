@@ -18,33 +18,20 @@ struct DateEvent {
     let fullDayEvent: Bool
     var start: Date
     var end: Date //The format of start and end should depend if it is a full day event
-    var location: Any? //What Type should be used here?
+    var location: CLLocation? //What Type should be used here?
     var shouldRemind: Bool //Reminder time has to be saved
     var url: URL?
     var calendar: Calendar?
     
-    init(Title title: String, Description description: String?, Start start: Date, End end: Date, ShouldRemind remind: Bool)
-    {
-        self.title = title
-        self.description = description
-        assert(start < end, "End date was beforee start date")
-        self.start = start
-        self.end = end
-        self.shouldRemind = remind
-        
-        self.fullDayEvent = false
-        self.url = nil
-        self.calendar = nil
-    }
-    
     ///Creates a new dateEvent with the given arguements. Optional arguements that are not specified are set to nil.
     ///Checks if beginning and ending date are set correctly.
-    init(Title title: String, Description description: String? = nil, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date, ShouldRemind remind: Bool, URL url: URL? = nil, Calendar calendar: Calendar? = nil, Location location: Any? = nil) {
+    init(Title title: String, Description description: String? = nil, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date, ShouldRemind remind: Bool, URL url: URL? = nil, Calendar calendar: Calendar? = nil, Location location: CLLocation? = nil) {
         self.title = title
         self.description = description
         self.shouldRemind = remind
         self.url = url
         self.calendar = calendar
+        self.location = location
       
         self.fullDayEvent = fullDayEvent
         self.start = start
