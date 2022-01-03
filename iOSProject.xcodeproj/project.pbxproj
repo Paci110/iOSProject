@@ -16,6 +16,7 @@
 		7990F5D1276F70130066EDC6 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D0276F70130066EDC6 /* DayViewController.swift */; };
 		7990F5D3276F91BD0066EDC6 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D2276F91BD0066EDC6 /* DateViewController.swift */; };
 		7990F5D5276F9F060066EDC6 /* CalenderLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D4276F9F060066EDC6 /* CalenderLogic.swift */; };
+		79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C2BFCF2779EFFC009A104A /* ViewClasses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7990F5D0276F70130066EDC6 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		7990F5D2276F91BD0066EDC6 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		7990F5D4276F9F060066EDC6 /* CalenderLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderLogic.swift; sourceTree = "<group>"; };
+		79C2BFCF2779EFFC009A104A /* ViewClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClasses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		7983AEF2276B7E0C00FC4301 /* iOSProject */ = {
 			isa = PBXGroup;
 			children = (
+				79C2BFCE2779EF93009A104A /* Utils */,
 				7990F5D4276F9F060066EDC6 /* CalenderLogic.swift */,
 				7983AEF3276B7E0C00FC4301 /* AppDelegate.swift */,
 				7983AEF5276B7E0C00FC4301 /* SceneDelegate.swift */,
@@ -82,6 +85,14 @@
 				7990F5D2276F91BD0066EDC6 /* DateViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		79C2BFCE2779EF93009A104A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				79C2BFCF2779EFFC009A104A /* ViewClasses.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +172,7 @@
 				7983AEF6276B7E0C00FC4301 /* SceneDelegate.swift in Sources */,
 				7990F5D5276F9F060066EDC6 /* CalenderLogic.swift in Sources */,
 				7990F5D1276F70130066EDC6 /* DayViewController.swift in Sources */,
+				79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
