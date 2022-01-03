@@ -149,6 +149,12 @@ extension UIViewController: UITableViewDataSource {
             let region = MKCoordinateRegion.init(center: data.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
             cell.mapView.setRegion(region, animated: false)
             cell.mapView.mapType = .standard
+            
+            let marker = MKPointAnnotation()
+            marker.title = "Super C"
+            marker.coordinate = CLLocationCoordinate2D(latitude: data.coordinate.latitude, longitude: data.coordinate.longitude)
+            cell.mapView.addAnnotation(marker)
+            
             return cell
         }
         else {
