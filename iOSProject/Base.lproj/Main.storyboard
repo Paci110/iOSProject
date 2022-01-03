@@ -157,15 +157,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="334" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="08x-VL-Fj1">
-                                                    <rect key="frame" x="20" y="11" width="294" height="278"/>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="08x-VL-Fj1">
+                                                    <rect key="frame" x="5" y="5" width="334" height="300"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </mapView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="08x-VL-Fj1" secondAttribute="trailing" id="D8d-xj-GPo"/>
-                                                <constraint firstItem="08x-VL-Fj1" firstAttribute="top" secondItem="Wif-xe-Rm1" secondAttribute="topMargin" id="U5V-Kx-l7n"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="08x-VL-Fj1" secondAttribute="bottom" id="doa-VR-dme"/>
-                                                <constraint firstItem="08x-VL-Fj1" firstAttribute="leading" secondItem="Wif-xe-Rm1" secondAttribute="leadingMargin" id="uZZ-GM-pSa"/>
+                                                <constraint firstItem="08x-VL-Fj1" firstAttribute="top" secondItem="Wif-xe-Rm1" secondAttribute="topMargin" id="8aa-q2-SnK"/>
+                                                <constraint firstItem="08x-VL-Fj1" firstAttribute="bottom" secondItem="Wif-xe-Rm1" secondAttribute="bottomMargin" id="FkG-oO-2RU"/>
+                                                <constraint firstItem="08x-VL-Fj1" firstAttribute="trailing" secondItem="Wif-xe-Rm1" secondAttribute="trailingMargin" id="YAR-gY-tkX"/>
+                                                <constraint firstItem="08x-VL-Fj1" firstAttribute="leading" secondItem="Wif-xe-Rm1" secondAttribute="leadingMargin" id="bLs-xw-XS5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

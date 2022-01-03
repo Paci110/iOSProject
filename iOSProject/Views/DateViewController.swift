@@ -50,11 +50,11 @@ class DateViewController: UIViewController {
                 print("No location with given adress string found")
                 return
             }
-            print(tempAdress)
+            //print(tempAdress)
             address = tempAdress
         }
-        print("test")
-        let dateEvent = DateEvent(Title: "Test Date", Description: note, FullDayEvent: true, Start: start, End: end, ShouldRemind: false, URL: url, Location: CLLocation(latitude: 0, longitude: 0))
+        //print("test")
+        let dateEvent = DateEvent(Title: "Test Date", Description: note, FullDayEvent: true, Start: start, End: end, ShouldRemind: false, URL: url, Location: CLLocation(latitude: 50.77828170, longitude: 6.07847850))
         testDate = dateEvent
         
         labelDateTitle.text = testDate?.title
@@ -75,6 +75,35 @@ extension UIViewController: UITableViewDataSource {
         sections -= 2 //Group first 3 date segments in on section
         return sections
     }
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if(section == 0)
+        {
+            return "Time"
+        }
+        let data = testDate?.getData()[section+3] //
+        
+        if (data as? (String)) != nil
+        {
+            return "Notes"
+        }
+        else if (data as? (URL)) != nil
+        {
+            return "URL"
+        }
+        else if (data as? (CLLocation)) != nil
+        {
+            return "Map"
+        }
+        return ""
+    }
+    
+    public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+    }
+    
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
@@ -117,17 +146,14 @@ extension UIViewController: UITableViewDataSource {
         }
         else if let data = dateText as? CLLocation {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell", for: indexPath) as! MapCell
-            let region = MKCoordinateRegion.init(center: data.coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
+            let region = MKCoordinateRegion.init(center: data.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
             cell.mapView.setRegion(region, animated: false)
-            cell.mapView.mapType = MKMapType.satellite
-//            cell.textLabel?.text = data.description
-            cell.contentView.sizeToFit()
-            cell.sizeToFit()
+            cell.mapView.mapType = .standard
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) //Add any cell?
-            cell.textLabel?.text = "Location"
+            cell.textLabel?.text = "Sample Text"
             return cell
         }
     }
