@@ -32,7 +32,25 @@ class DateViewController: UIViewController {
         let end: Date = getDate(fromString: "2021/12/19 17:00")
         //let place: CLLocation = CLLocation(latitude: 29, longitude: 10)
         let note = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        let dateEvent = DateEvent(Title: "Test Date", Description: note, FullDayEvent: true, Start: start, End: end, ShouldRemind: false)
+        let url = URL(string: "www.rwth-aachen.de")
+        var address: CLLocation? = nil
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString("Templergraben 57, 52062 Aachen, Germany") { (placemarks, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            guard
+                let placemarks = placemarks,
+                let tempAdress = placemarks.first?.location
+            else {
+                print("No location with given adress string found")
+                return
+            }
+            print(tempAdress)
+            address = tempAdress
+        }
+        let dateEvent = DateEvent(Title: "Test Date", Description: note, FullDayEvent: true, Start: start, End: end, ShouldRemind: false, URL: url, Location: address)
         testDate = dateEvent
         
         labelDateTitle.text = testDate?.title
@@ -84,8 +102,15 @@ extension UIViewController: UITableViewDataSource {
             cell.switchObject.setOn(state, animated: true)
             return cell
         }
+        else if let data = dateText as? URL {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
+            let linkString = NSAttributedString(string: data.absoluteString, attributes: [NSAttributedString.Key.link: data])
+            cell.textLabel?.attributedText = linkString
+            cell.textLabel?.isUserInteractionEnabled = true
+            return cell
+        }
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Any", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) //Add any cell?
             return cell
         }
     }
