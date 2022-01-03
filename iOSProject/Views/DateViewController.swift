@@ -28,7 +28,7 @@ class DateViewController: UIViewController {
         
         //Just for test purposes
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        formatter.dateFormat = dateFormat
         let start: Date = getDate(fromString: "2021/12/19 10:00")
         let end: Date = getDate(fromString: "2021/12/19 17:00")
         //let place: CLLocation = CLLocation(latitude: 29, longitude: 10)

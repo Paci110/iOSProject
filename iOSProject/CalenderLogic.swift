@@ -46,7 +46,7 @@ struct DateEvent {
         //If the date is an full day event the date is edited to start at 0:00 and end at 23:59 of the start, end date
         if fullDayEvent {
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd"
+            formatter.dateFormat = dateFormat
             let startDateString = formatter.string(from: start) + " 0:00"
             self.start = getDate(fromString: startDateString)
             let endDateString = formatter.string(from: end) + " 23:59"
@@ -59,7 +59,7 @@ struct DateEvent {
         var data: [Any] = []
         data.append(title)
         data.append(("Full day event", fullDayEvent))
-        let format = "yyyy/MM/dd HH:mm"
+        let format = dateFormat
         data.append(("Begin", getDate(FromDate: start, Format: format)))
         data.append(("End", getDate(FromDate: end, Format: format)))
         if let description = description {
@@ -82,7 +82,7 @@ struct DateEvent {
 ///String has to be of format "yyyy/MM/dd HH:mm"
 func getDate(fromString: String) -> Date {
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy/MM/dd HH:mm"
+    formatter.dateFormat = dateFormat
     if let date = formatter.date(from: fromString) {
         return date
     }
