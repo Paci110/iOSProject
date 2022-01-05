@@ -16,6 +16,8 @@
 		7990F5D1276F70130066EDC6 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D0276F70130066EDC6 /* DayViewController.swift */; };
 		7990F5D3276F91BD0066EDC6 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D2276F91BD0066EDC6 /* DateViewController.swift */; };
 		7990F5D5276F9F060066EDC6 /* CalenderLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D4276F9F060066EDC6 /* CalenderLogic.swift */; };
+		799C1D4627831B0600AC954F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C1D4527831B0600AC954F /* Utils.swift */; };
+		79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C2BFCF2779EFFC009A104A /* ViewClasses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		7990F5D0276F70130066EDC6 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		7990F5D2276F91BD0066EDC6 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		7990F5D4276F9F060066EDC6 /* CalenderLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderLogic.swift; sourceTree = "<group>"; };
+		799C1D4527831B0600AC954F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		79C2BFCF2779EFFC009A104A /* ViewClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClasses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		7983AEF2276B7E0C00FC4301 /* iOSProject */ = {
 			isa = PBXGroup;
 			children = (
+				79C2BFCE2779EF93009A104A /* Utils */,
 				7990F5D4276F9F060066EDC6 /* CalenderLogic.swift */,
 				7983AEF3276B7E0C00FC4301 /* AppDelegate.swift */,
 				7983AEF5276B7E0C00FC4301 /* SceneDelegate.swift */,
@@ -84,6 +89,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		79C2BFCE2779EF93009A104A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				79C2BFCF2779EFFC009A104A /* ViewClasses.swift */,
+				799C1D4527831B0600AC954F /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -91,6 +105,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7983AF04276B7E2700FC4301 /* Build configuration list for PBXNativeTarget "iOSProject" */;
 			buildPhases = (
+				79109C7D27839FA700E45DC9 /* ShellScript */,
 				7983AEEC276B7E0C00FC4301 /* Sources */,
 				7983AEED276B7E0C00FC4301 /* Frameworks */,
 				7983AEEE276B7E0C00FC4301 /* Resources */,
@@ -150,6 +165,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		79109C7D27839FA700E45DC9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO: |FIXME: \"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 \\\n    | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" \\\n    | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7983AEEC276B7E0C00FC4301 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -161,6 +196,8 @@
 				7983AEF6276B7E0C00FC4301 /* SceneDelegate.swift in Sources */,
 				7990F5D5276F9F060066EDC6 /* CalenderLogic.swift in Sources */,
 				7990F5D1276F70130066EDC6 /* DayViewController.swift in Sources */,
+				79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */,
+				799C1D4627831B0600AC954F /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +359,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ThisIsATestDomain.iOSProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ThisIsATestDomain2.iOSProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -350,7 +387,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ThisIsATestDomain.iOSProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ThisIsATestDomain2.iOSProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
