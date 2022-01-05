@@ -77,6 +77,7 @@ extension UIViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        //TODO: first header is not displayed correctly
         if(section == 0)
         {
             return "Time"
@@ -138,6 +139,7 @@ extension UIViewController: UITableViewDataSource {
             return cell
         }
         else if let data = dateText as? URL {
+            //TODO: clickable link
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
             let linkString = NSAttributedString(string: data.absoluteString, attributes: [NSAttributedString.Key.link: data])
             cell.textLabel?.attributedText = linkString
@@ -145,7 +147,7 @@ extension UIViewController: UITableViewDataSource {
             return cell
         }
         else if let data = dateText as? CLLocation {
-            //FIXME: Memory leak
+            //FIXME: memory leak?
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell", for: indexPath) as! MapCell
             let region = MKCoordinateRegion.init(center: data.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
             cell.mapView.setRegion(region, animated: false)
