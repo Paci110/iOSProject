@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AgL-Tg-dFM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -21,8 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sample DateView"/>
                                 <connections>
-                                    <action selector="showDateView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="20D-JA-OMk"/>
-                                    <segue destination="AgL-Tg-dFM" kind="showDetail" identifier="dateView" id="3CE-Up-dZ7"/>
+                                    <segue destination="AgL-Tg-dFM" kind="show" identifier="dateView" id="ifS-e1-GEB"/>
                                 </connections>
                             </button>
                         </subviews>
