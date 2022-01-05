@@ -16,6 +16,7 @@
 		7990F5D1276F70130066EDC6 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D0276F70130066EDC6 /* DayViewController.swift */; };
 		7990F5D3276F91BD0066EDC6 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D2276F91BD0066EDC6 /* DateViewController.swift */; };
 		7990F5D5276F9F060066EDC6 /* CalenderLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D4276F9F060066EDC6 /* CalenderLogic.swift */; };
+		799C1D4627831B0600AC954F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C1D4527831B0600AC954F /* Utils.swift */; };
 		79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C2BFCF2779EFFC009A104A /* ViewClasses.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		7990F5D0276F70130066EDC6 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		7990F5D2276F91BD0066EDC6 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		7990F5D4276F9F060066EDC6 /* CalenderLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderLogic.swift; sourceTree = "<group>"; };
+		799C1D4527831B0600AC954F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		79C2BFCF2779EFFC009A104A /* ViewClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClasses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				79C2BFCF2779EFFC009A104A /* ViewClasses.swift */,
+				799C1D4527831B0600AC954F /* Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				7990F5D5276F9F060066EDC6 /* CalenderLogic.swift in Sources */,
 				7990F5D1276F70130066EDC6 /* DayViewController.swift in Sources */,
 				79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */,
+				799C1D4627831B0600AC954F /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
