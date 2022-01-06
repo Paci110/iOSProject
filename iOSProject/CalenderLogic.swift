@@ -8,17 +8,18 @@
 import Foundation
 import UIKit
 import CoreLocation
+import CoreData
 //import CoreLocation
 
 //MARK: Events
 ///Struct that is used to safe the information of a date event from a calender
-struct DateEvent {
+class DateEvent {
     let title: String
     var description: String?
     let fullDayEvent: Bool
     var start: Date
     var end: Date //The format of start and end should depend if it is a full day event
-    var location: CLLocation? //What Type should be used here?
+    var location: CLLocation? //What Type s hould be used here?
     var shouldRemind: Bool //Reminder time has to be saved
     var url: URL?
     var calendar: Calendar?
@@ -97,7 +98,7 @@ func getDate(FromDate fromDate: Date, Format format: String) -> String {
 
 //MARK: Calendar
 ///Struct that is used to store and manage several Events
-struct Calendar {
+/*struct Calendar {
     var events: [DateEvent]
     let color: UIColor
     
@@ -115,3 +116,4 @@ struct Calendar {
         self.events = events
     }
 }
+ */

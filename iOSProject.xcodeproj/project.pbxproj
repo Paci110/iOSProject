@@ -13,9 +13,14 @@
 		7983AEFB276B7E0D00FC4301 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7983AEF9276B7E0D00FC4301 /* Main.storyboard */; };
 		7983AEFD276B7E2700FC4301 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7983AEFC276B7E2700FC4301 /* Assets.xcassets */; };
 		7983AF00276B7E2700FC4301 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7983AEFE276B7E2700FC4301 /* LaunchScreen.storyboard */; };
+		79842AAC2786563400391AC7 /* CoreDataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79842AAA2786563400391AC7 /* CoreDataModels.xcdatamodeld */; };
 		7990F5D1276F70130066EDC6 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D0276F70130066EDC6 /* DayViewController.swift */; };
 		7990F5D3276F91BD0066EDC6 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D2276F91BD0066EDC6 /* DateViewController.swift */; };
 		7990F5D5276F9F060066EDC6 /* CalenderLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990F5D4276F9F060066EDC6 /* CalenderLogic.swift */; };
+		799B02C12787215D00A1FC12 /* Calendar+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B02BD2787215D00A1FC12 /* Calendar+CoreDataClass.swift */; };
+		799B02C22787215D00A1FC12 /* Calendar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B02BE2787215D00A1FC12 /* Calendar+CoreDataProperties.swift */; };
+		799B02C32787215D00A1FC12 /* DateEventCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B02BF2787215D00A1FC12 /* DateEventCoreData+CoreDataClass.swift */; };
+		799B02C42787215D00A1FC12 /* DateEventCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B02C02787215D00A1FC12 /* DateEventCoreData+CoreDataProperties.swift */; };
 		799C1D4627831B0600AC954F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C1D4527831B0600AC954F /* Utils.swift */; };
 		79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C2BFCF2779EFFC009A104A /* ViewClasses.swift */; };
 /* End PBXBuildFile section */
@@ -29,9 +34,14 @@
 		7983AEFC276B7E2700FC4301 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7983AEFF276B7E2700FC4301 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7983AF01276B7E2700FC4301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79842AAB2786563400391AC7 /* CoreDataModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModels.xcdatamodel; sourceTree = "<group>"; };
 		7990F5D0276F70130066EDC6 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		7990F5D2276F91BD0066EDC6 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		7990F5D4276F9F060066EDC6 /* CalenderLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderLogic.swift; sourceTree = "<group>"; };
+		799B02BD2787215D00A1FC12 /* Calendar+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		799B02BE2787215D00A1FC12 /* Calendar+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		799B02BF2787215D00A1FC12 /* DateEventCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateEventCoreData+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		799B02C02787215D00A1FC12 /* DateEventCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateEventCoreData+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		799C1D4527831B0600AC954F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		79C2BFCF2779EFFC009A104A /* ViewClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClasses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,8 +86,21 @@
 				7983AEFE276B7E2700FC4301 /* LaunchScreen.storyboard */,
 				7983AF01276B7E2700FC4301 /* Info.plist */,
 				7990F5CF276F6FD60066EDC6 /* Views */,
+				79842AA92786560E00391AC7 /* Models */,
 			);
 			path = iOSProject;
+			sourceTree = "<group>";
+		};
+		79842AA92786560E00391AC7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				799B02BD2787215D00A1FC12 /* Calendar+CoreDataClass.swift */,
+				799B02BE2787215D00A1FC12 /* Calendar+CoreDataProperties.swift */,
+				799B02BF2787215D00A1FC12 /* DateEventCoreData+CoreDataClass.swift */,
+				799B02C02787215D00A1FC12 /* DateEventCoreData+CoreDataProperties.swift */,
+				79842AAA2786563400391AC7 /* CoreDataModels.xcdatamodeld */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7990F5CF276F6FD60066EDC6 /* Views */ = {
@@ -192,12 +215,17 @@
 			files = (
 				7990F5D3276F91BD0066EDC6 /* DateViewController.swift in Sources */,
 				7983AEF8276B7E0C00FC4301 /* ViewController.swift in Sources */,
+				799B02C42787215D00A1FC12 /* DateEventCoreData+CoreDataProperties.swift in Sources */,
 				7983AEF4276B7E0C00FC4301 /* AppDelegate.swift in Sources */,
+				799B02C32787215D00A1FC12 /* DateEventCoreData+CoreDataClass.swift in Sources */,
 				7983AEF6276B7E0C00FC4301 /* SceneDelegate.swift in Sources */,
+				79842AAC2786563400391AC7 /* CoreDataModels.xcdatamodeld in Sources */,
 				7990F5D5276F9F060066EDC6 /* CalenderLogic.swift in Sources */,
+				799B02C22787215D00A1FC12 /* Calendar+CoreDataProperties.swift in Sources */,
 				7990F5D1276F70130066EDC6 /* DayViewController.swift in Sources */,
 				79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */,
 				799C1D4627831B0600AC954F /* Utils.swift in Sources */,
+				799B02C12787215D00A1FC12 /* Calendar+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +445,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		79842AAA2786563400391AC7 /* CoreDataModels.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				79842AAB2786563400391AC7 /* CoreDataModels.xcdatamodel */,
+			);
+			currentVersion = 79842AAB2786563400391AC7 /* CoreDataModels.xcdatamodel */;
+			path = CoreDataModels.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7983AEE8276B7E0C00FC4301 /* Project object */;
 }
