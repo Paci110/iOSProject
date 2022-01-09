@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AgL-Tg-dFM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -21,8 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sample DateView"/>
                                 <connections>
-                                    <action selector="showDateView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="20D-JA-OMk"/>
-                                    <segue destination="AgL-Tg-dFM" kind="showDetail" identifier="dateView" id="3CE-Up-dZ7"/>
+                                    <segue destination="AgL-Tg-dFM" kind="show" identifier="dateView" id="ifS-e1-GEB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -150,24 +149,31 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MapCell" rowHeight="300" id="RdY-gN-HDK">
-                                        <rect key="frame" x="20" y="199.5" width="334" height="300"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MapCell" id="RdY-gN-HDK" customClass="MapCell" customModule="iOSProject" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="199.5" width="334" height="300.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RdY-gN-HDK" id="Wif-xe-Rm1">
-                                            <rect key="frame" x="0.0" y="0.0" width="334" height="300"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RdY-gN-HDK" id="Wif-xe-Rm1">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="300.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="08x-VL-Fj1">
-                                                    <rect key="frame" x="20" y="11" width="294" height="278"/>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="08x-VL-Fj1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="300.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="999" constant="300" id="UjV-TU-8Jh"/>
+                                                        <constraint firstAttribute="width" priority="999" constant="334" id="h2r-xb-AC5"/>
+                                                    </constraints>
                                                 </mapView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="08x-VL-Fj1" secondAttribute="trailing" id="D8d-xj-GPo"/>
-                                                <constraint firstItem="08x-VL-Fj1" firstAttribute="top" secondItem="Wif-xe-Rm1" secondAttribute="topMargin" id="U5V-Kx-l7n"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="08x-VL-Fj1" secondAttribute="bottom" id="doa-VR-dme"/>
-                                                <constraint firstItem="08x-VL-Fj1" firstAttribute="leading" secondItem="Wif-xe-Rm1" secondAttribute="leadingMargin" id="uZZ-GM-pSa"/>
+                                                <constraint firstItem="08x-VL-Fj1" firstAttribute="top" secondItem="Wif-xe-Rm1" secondAttribute="top" identifier="wanted" id="Bmu-fi-TJj"/>
+                                                <constraint firstAttribute="bottom" secondItem="08x-VL-Fj1" secondAttribute="bottom" identifier="wanted" id="Lca-A0-sgF"/>
+                                                <constraint firstAttribute="trailing" secondItem="08x-VL-Fj1" secondAttribute="trailing" identifier="wanted" id="k0i-z8-0xw"/>
+                                                <constraint firstItem="08x-VL-Fj1" firstAttribute="leading" secondItem="Wif-xe-Rm1" secondAttribute="leading" identifier="wanted" id="k1r-CD-mkf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mapView" destination="08x-VL-Fj1" id="3cn-Np-Njk"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

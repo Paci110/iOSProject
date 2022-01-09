@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 var testDate: DateEvent?
 
@@ -27,7 +28,7 @@ class DateViewController: UIViewController {
         
         //Just for test purposes
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        formatter.dateFormat = dateFormat
         let start: Date = getDate(fromString: "2021/12/19 10:00")
         let end: Date = getDate(fromString: "2021/12/19 17:00")
         //let place: CLLocation = CLLocation(latitude: 29, longitude: 10)
@@ -35,6 +36,8 @@ class DateViewController: UIViewController {
         let url = URL(string: "www.rwth-aachen.de")
         var address: CLLocation? = nil
         let geocoder = CLGeocoder()
+        
+        
         geocoder.geocodeAddressString("Templergraben 57, 52062 Aachen, Germany") { (placemarks, error) in
             if let error = error {
                 print(error)
@@ -47,13 +50,16 @@ class DateViewController: UIViewController {
                 print("No location with given adress string found")
                 return
             }
-            print(tempAdress)
+            //print(tempAdress)
             address = tempAdress
         }
-        let dateEvent = DateEvent(Title: "Test Date", Description: note, FullDayEvent: true, Start: start, End: end, ShouldRemind: false, URL: url, Location: address)
+        //print("test")
+        let dateEvent = DateEvent(Title: "Test Date", Description: note, FullDayEvent: true, Start: start, End: end, ShouldRemind: false, URL: url, Location: CLLocation(latitude: 50.77828170, longitude: 6.07847850))
         testDate = dateEvent
         
         labelDateTitle.text = testDate?.title
+        
+        
     }
 }
 
@@ -69,6 +75,36 @@ extension UIViewController: UITableViewDataSource {
         sections -= 2 //Group first 3 date segments in on section
         return sections
     }
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        //TODO: first header is not displayed correctly
+        if(section == 0)
+        {
+            return "Time"
+        }
+        let data = testDate?.getData()[section+3] //
+        
+        if (data as? (String)) != nil
+        {
+            return "Notes"
+        }
+        else if (data as? (URL)) != nil
+        {
+            return "URL"
+        }
+        else if (data as? (CLLocation)) != nil
+        {
+            return "Map"
+        }
+        return ""
+    }
+    
+    public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+    }
+    
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
@@ -103,14 +139,31 @@ extension UIViewController: UITableViewDataSource {
             return cell
         }
         else if let data = dateText as? URL {
+            //TODO: clickable link
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
             let linkString = NSAttributedString(string: data.absoluteString, attributes: [NSAttributedString.Key.link: data])
             cell.textLabel?.attributedText = linkString
             cell.textLabel?.isUserInteractionEnabled = true
             return cell
         }
+        else if let data = dateText as? CLLocation {
+            //FIXME: memory leak?
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell", for: indexPath) as! MapCell
+            let region = MKCoordinateRegion.init(center: data.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
+            cell.mapView.setRegion(region, animated: false)
+            cell.mapView.mapType = .standard
+            
+            //TODO: just for test uses, remove later
+            let marker = MKPointAnnotation()
+            marker.title = "Super C"
+            marker.coordinate = CLLocationCoordinate2D(latitude: data.coordinate.latitude, longitude: data.coordinate.longitude)
+            cell.mapView.addAnnotation(marker)
+            
+            return cell
+        }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) //Add any cell?
+            cell.textLabel?.text = "Sample Text"
             return cell
         }
     }

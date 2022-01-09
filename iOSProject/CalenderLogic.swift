@@ -8,43 +8,31 @@
 import Foundation
 import UIKit
 import CoreLocation
+import CoreData
 //import CoreLocation
 
 //MARK: Events
 ///Struct that is used to safe the information of a date event from a calender
-struct DateEvent {
+class DateEvent {
     let title: String
     var description: String?
     let fullDayEvent: Bool
     var start: Date
     var end: Date //The format of start and end should depend if it is a full day event
-    var location: Any? //What Type should be used here?
+    var location: CLLocation? //What Type s hould be used here?
     var shouldRemind: Bool //Reminder time has to be saved
     var url: URL?
     var calendar: Calendar?
     
-    init(Title title: String, Description description: String?, Start start: Date, End end: Date, ShouldRemind remind: Bool)
-    {
-        self.title = title
-        self.description = description
-        assert(start < end, "End date was beforee start date")
-        self.start = start
-        self.end = end
-        self.shouldRemind = remind
-        
-        self.fullDayEvent = false
-        self.url = nil
-        self.calendar = nil
-    }
-    
     ///Creates a new dateEvent with the given arguements. Optional arguements that are not specified are set to nil.
     ///Checks if beginning and ending date are set correctly.
-    init(Title title: String, Description description: String? = nil, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date, ShouldRemind remind: Bool, URL url: URL? = nil, Calendar calendar: Calendar? = nil, Location location: Any? = nil) {
+    init(Title title: String, Description description: String? = nil, FullDayEvent fullDayEvent: Bool, Start start: Date, End end: Date, ShouldRemind remind: Bool, URL url: URL? = nil, Calendar calendar: Calendar? = nil, Location location: CLLocation? = nil) {
         self.title = title
         self.description = description
         self.shouldRemind = remind
         self.url = url
         self.calendar = calendar
+        self.location = location
       
         self.fullDayEvent = fullDayEvent
         self.start = start
@@ -59,7 +47,7 @@ struct DateEvent {
         //If the date is an full day event the date is edited to start at 0:00 and end at 23:59 of the start, end date
         if fullDayEvent {
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd"
+            formatter.dateFormat = dateFormat
             let startDateString = formatter.string(from: start) + " 0:00"
             self.start = getDate(fromString: startDateString)
             let endDateString = formatter.string(from: end) + " 23:59"
@@ -72,7 +60,7 @@ struct DateEvent {
         var data: [Any] = []
         data.append(title)
         data.append(("Full day event", fullDayEvent))
-        let format = "yyyy/MM/dd HH:mm"
+        let format = dateFormat
         data.append(("Begin", getDate(FromDate: start, Format: format)))
         data.append(("End", getDate(FromDate: end, Format: format)))
         if let description = description {
@@ -95,7 +83,7 @@ struct DateEvent {
 ///String has to be of format "yyyy/MM/dd HH:mm"
 func getDate(fromString: String) -> Date {
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy/MM/dd HH:mm"
+    formatter.dateFormat = dateFormat
     if let date = formatter.date(from: fromString) {
         return date
     }
@@ -110,7 +98,7 @@ func getDate(FromDate fromDate: Date, Format format: String) -> String {
 
 //MARK: Calendar
 ///Struct that is used to store and manage several Events
-struct Calendar {
+/*struct Calendar {
     var events: [DateEvent]
     let color: UIColor
     
@@ -128,3 +116,4 @@ struct Calendar {
         self.events = events
     }
 }
+ */
