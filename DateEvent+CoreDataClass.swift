@@ -1,8 +1,8 @@
 //
-//  DateEventCoreData+CoreDataClass.swift
+//  DateEvent+CoreDataClass.swift
 //  iOSProject
 //
-//  Created by Pascal Köhler on 06.01.22.
+//  Created by Pascal Köhler on 14.01.22.
 //
 //
 
@@ -11,10 +11,12 @@ import CoreData
 import MapKit
 
 
-public class DateEventCoreData: NSManagedObject {
-
-    //TODO: should calender be optional or not?
+public class DateEvent: NSManagedObject {
+    
+    ///Creates a new dateEvent with the given arguements. Optional arguements that are not specified are set to nil.
+    ///Checks if beginning and ending date are set correctly.
     convenience init(title: String, fullDayEvent: Bool, start: Date, end: Date, shouldRemind remind: Bool, calendar: Calendar, notes: String? = nil, url: URL? = nil, location: CLLocation? = nil) {
+        
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.init(context: context)
         
@@ -24,7 +26,7 @@ public class DateEventCoreData: NSManagedObject {
         self.url = url
         self.calendar = calendar
         self.location = location
-      
+        
         self.fullDayEvent = fullDayEvent
         self.start = start
         if start > end {
@@ -46,4 +48,25 @@ public class DateEventCoreData: NSManagedObject {
         }
     }
     
+    ///Returns array of all used arguements with some additional display informations
+    func getData() -> [Any] {
+        var data: [Any] = []
+        data.append(title)
+        data.append(("Full day event", fullDayEvent))
+        let format = dateFormat
+        data.append(("Begin", getDate(FromDate: start, Format: format)))
+        data.append(("End", getDate(FromDate: end, Format: format)))
+        data.append(calendar)
+        if let notes = notes {
+            data.append(notes)
+        }
+        if let url = self.url {
+            data.append(url)
+        }
+        if let location = location {
+            data.append(location)
+        }
+        
+        return data
+    }
 }
