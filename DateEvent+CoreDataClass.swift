@@ -20,6 +20,8 @@ public class DateEvent: NSManagedObject {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.init(context: context)
         
+        //TOOD: reminder and repeater
+        
         self.title = title
         self.notes = notes
         self.shouldRemind = remind
@@ -48,13 +50,37 @@ public class DateEvent: NSManagedObject {
         }
     }
     
+    ///Initialzator if user uses address for location
+    /*
+    convenience init(title: String, fullDayEvent: Bool, start: Date, end: Date, shouldRemind remind: Bool, calendar: Calendar, notes: String? = nil, url: URL? = nil, address: String) {
+        //TODO: convert address to CLLocation and save it
+        self.init(title: title, fullDayEvent: fullDayEvent, start: start, end: end, shouldRemind: shouldRemind, calendar: calendar, notes: notes, url: url)
+        let geoCoder = CLGeocoder()
+        var foundLocation: CLLocation? = nil
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+            else {
+                print("No such address found")
+                return
+            }
+            foundLocation = location
+        }
+    }
+     */
+    
     ///Returns array of all used arguements with some additional display informations
     func getData() -> [Any] {
         var data: [Any] = []
         data.append(title)
         data.append(("Full day event", fullDayEvent))
         let format = dateFormat
-        data.append(("Begin", getDate(FromDate: start, Format: format)))
+        data.append(("Start", getDate(FromDate: start, Format: format)))
         data.append(("End", getDate(FromDate: end, Format: format)))
         data.append(calendar)
         if let notes = notes {

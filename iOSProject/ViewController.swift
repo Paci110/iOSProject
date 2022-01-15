@@ -57,6 +57,9 @@ class ViewController: UIViewController {
                 print("Fetch went wrong")
             }
         }
+        if let dest = (segue.destination) as? DayViewController {
+            dest.dateTitle = "Sa, 15.01.2022"
+        }
     }
 
 }
