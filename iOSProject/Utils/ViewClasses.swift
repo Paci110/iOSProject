@@ -18,18 +18,14 @@ class DateEventCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var contentStackView: UIStackView!
     
+    var dateEvent: DateEvent!
+    
     //TODO: support events that are longer than a day and display dates in the view
     
     func addInfo(dateEvent: DateEvent) {
-        /*
-        for subview in self.contentStackView.arrangedSubviews {
-            if subview == self.title {
-                continue
-            }
-            self.contentStackView.removeArrangedSubview(subview)
-        }
-         */
+        //FIXME: should update cell if place is set in DateEvent
         guard contentStackView.subviews.count == 1 else {return}
+        self.dateEvent = dateEvent
         let startString = getDate(FromDate: dateEvent.start, Format: "HH:mm")
         self.start.text = startString
         let endString = getDate(FromDate: dateEvent.end, Format: "HH:mm")
@@ -46,6 +42,9 @@ class DateEventCell: UITableViewCell {
             }
             else if let info = info as? URL {
                 self.contentStackView.addArrangedSubview(self.createLabel(text: info.absoluteString))
+            }
+            else if let info = info as? CLPlacemark {
+                self.contentStackView.addArrangedSubview(self.createLabel(text: "\(info.name ?? "Address"), \(info.locality ?? "City"), \(info.country ?? "Country")" ))
             }
         }
     }

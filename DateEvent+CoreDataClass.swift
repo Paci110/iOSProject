@@ -21,13 +21,29 @@ public class DateEvent: NSManagedObject {
         self.init(context: context)
         
         //TOOD: reminder and repeater
+        if let location = location {
+            CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                guard
+                    let placemarks = placemarks,
+                    let first = placemarks.first
+                else {
+                    print("No such address found")
+                    return
+                }
+                self.place = first
+                saveData()
+            }
+        }
         
         self.title = title
         self.notes = notes
         self.shouldRemind = remind
         self.url = url
         self.calendar = calendar
-        self.location = location
         
         self.fullDayEvent = fullDayEvent
         self.start = start
@@ -51,28 +67,25 @@ public class DateEvent: NSManagedObject {
     }
     
     ///Initialzator if user uses address for location
-    /*
-    convenience init(title: String, fullDayEvent: Bool, start: Date, end: Date, shouldRemind remind: Bool, calendar: Calendar, notes: String? = nil, url: URL? = nil, address: String) {
+    convenience init(title: String, fullDayEvent: Bool, start: Date, end: Date, shouldRemind: Bool, calendar: Calendar, notes: String? = nil, url: URL? = nil, address: String) {
         //TODO: convert address to CLLocation and save it
         self.init(title: title, fullDayEvent: fullDayEvent, start: start, end: end, shouldRemind: shouldRemind, calendar: calendar, notes: notes, url: url)
-        let geoCoder = CLGeocoder()
-        var foundLocation: CLLocation? = nil
-        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+        CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
             if let error = error {
                 print(error)
                 return
             }
             guard
                 let placemarks = placemarks,
-                let location = placemarks.first?.location
+                let first = placemarks.first
             else {
                 print("No such address found")
                 return
             }
-            foundLocation = location
+            self.place = first
+            saveData()
         }
     }
-     */
     
     ///Returns array of all used arguements with some additional display informations
     func getData() -> [Any] {
@@ -89,8 +102,8 @@ public class DateEvent: NSManagedObject {
         if let url = self.url {
             data.append(url)
         }
-        if let location = location {
-            data.append(location)
+        if let place = place {
+            data.append(place)
         }
         
         return data

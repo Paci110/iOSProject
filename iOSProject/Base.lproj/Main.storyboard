@@ -155,7 +155,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="t2h-Z7-7Go">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="T6G-Ru-D9C"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="T6G-Ru-D9C">
+                            <connections>
+                                <action selector="itemButtonClicked:" destination="Z2h-EA-0RW" id="PzH-0r-RP3"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="a70-Sq-8Nr">
                             <connections>
                                 <action selector="addButtonClicked:" destination="Z2h-EA-0RW" id="W7O-3E-XR6"/>
@@ -167,6 +171,9 @@
                     <connections>
                         <outlet property="navigationItems" destination="t2h-Z7-7Go" id="Jq9-16-nQM"/>
                         <outlet property="tableView" destination="hXO-U9-HLB" id="wT0-WA-neR"/>
+                        <segue destination="AgL-Tg-dFM" kind="popoverPresentation" identifier="dateView" popoverAnchorView="hXO-U9-HLB" id="Cg9-ip-0Pg">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trl-TB-htD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -312,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xTn-Gx-4oE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="500" y="827"/>
+            <point key="canvasLocation" x="1013" y="833"/>
         </scene>
         <!--Item-->
         <scene sceneID="Qlu-0h-BWR">
@@ -334,6 +341,9 @@
             <point key="canvasLocation" x="-545" y="106"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Cg9-ip-0Pg"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

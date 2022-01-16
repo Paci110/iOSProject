@@ -19,8 +19,7 @@ extension DateEvent {
     //TODO: why default initialization uses optionals
     @NSManaged public var end: Date
     @NSManaged public var fullDayEvent: Bool
-    @NSManaged public var location: CLLocation?
-    @NSManaged public var address: String?
+    @NSManaged public var place: CLPlacemark?
     @NSManaged public var notes: String?
     @NSManaged public var shouldRemind: Bool
     @NSManaged public var start: Date

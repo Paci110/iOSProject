@@ -15,6 +15,10 @@ class DayViewController: UITableViewController {
     var dateEvents: [DateEvent]?
     var dateTitle: String?
     
+    @IBAction func itemButtonClicked(_ sender: Any) {
+        reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItems.title = dateTitle
@@ -41,7 +45,8 @@ class DayViewController: UITableViewController {
             }
             let note = "This is a test note. This should be longer than a lable can hold."
             let url = URL(string: "www.rwth-aachen.de")
-            let date = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: true, start: start, end: end, shouldRemind: false, calendar: calendar, notes: note, url: url)
+            let address = "Templergraben 57, 52062 Aachen"
+            let date = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: true, start: start, end: end, shouldRemind: false, calendar: calendar, notes: note, url: url, address: address)
             print("Title: \(date.title)")
             print("Save data")
             saveData()
@@ -54,6 +59,10 @@ class DayViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //TODO: implement
+        if let cell = sender as? DateEventCell,
+           let dest = segue.destination as? DateViewController {
+            dest.testDate = cell.dateEvent
+        }
     }
     
     public override func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,5 +81,21 @@ class DayViewController: UITableViewController {
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Tapped row \(indexPath.row), column \(indexPath.section)")
+        let cell = self.tableView.cellForRow(at: indexPath)
+        performSegue(withIdentifier: "dateView", sender: cell)
+    }
+    
+    //TODO: change?
+    public override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") {
+            [unowned self] action, view, completionHandler in
+            let event: DateEvent = (tableView.cellForRow(at: indexPath) as! DateEventCell).dateEvent
+            //self.tableView.deleteSections([indexPath.section], with: .left)
+            //self.tableView.deleteRows(at: [indexPath], with: .fade)
+            //TODO: implement undo with popup
+            deleteData(dataToDelete: event)
+            reloadData()
+        }
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }

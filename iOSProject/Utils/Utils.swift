@@ -45,13 +45,23 @@ func saveData() {
 }
  */
 
+private func getContext() -> NSManagedObjectContext {
+    return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+}
+
 func saveData() {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let context = getContext()
     do {
         try context.save()
     } catch {
         print("Error in save data \(error)")
     }
+}
+
+func deleteData(dataToDelete: NSManagedObject) {
+    let context = getContext()
+    context.delete(dataToDelete)
+    saveData()
 }
 
 func getData(entityName: String) -> [Any]? {

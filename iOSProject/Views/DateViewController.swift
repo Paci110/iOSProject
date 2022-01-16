@@ -111,16 +111,16 @@ extension DateViewController: UITableViewDataSource {
             cell.textLabel?.isUserInteractionEnabled = true
             return cell
         }
-        else if let data = dateText as? CLLocation {
+        else if let data = dateText as? CLPlacemark {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell", for: indexPath) as! MapCell
-            let region = MKCoordinateRegion.init(center: data.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
+            let region = MKCoordinateRegion.init(center: data.location!.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
             cell.mapView.setRegion(region, animated: false)
             cell.mapView.mapType = .standard
             
             //TODO: just for test uses, remove later
             let marker = MKPointAnnotation()
             marker.title = "Super C"
-            marker.coordinate = CLLocationCoordinate2D(latitude: data.coordinate.latitude, longitude: data.coordinate.longitude)
+            marker.coordinate = data.location!.coordinate
             cell.mapView.addAnnotation(marker)
             
             return cell
