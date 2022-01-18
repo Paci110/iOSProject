@@ -2,13 +2,14 @@
 //  Calendar+CoreDataProperties.swift
 //  iOSProject
 //
-//  Created by Pascal Köhler on 06.01.22.
+//  Created by Pascal Köhler on 14.01.22.
 //
 //
 
 import Foundation
 import CoreData
 import UIKit
+
 
 extension Calendar {
 
@@ -25,10 +26,10 @@ extension Calendar {
 extension Calendar {
 
     @objc(addDateEventsObject:)
-    @NSManaged public func addToDateEvents(_ value: DateEventCoreData)
+    @NSManaged public func addToDateEvents(_ value: DateEvent)
 
     @objc(removeDateEventsObject:)
-    @NSManaged public func removeFromDateEvents(_ value: DateEventCoreData)
+    @NSManaged public func removeFromDateEvents(_ value: DateEvent)
 
     @objc(addDateEvents:)
     @NSManaged public func addToDateEvents(_ values: NSSet)

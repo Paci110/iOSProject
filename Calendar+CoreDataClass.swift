@@ -2,13 +2,14 @@
 //  Calendar+CoreDataClass.swift
 //  iOSProject
 //
-//  Created by Pascal Köhler on 06.01.22.
+//  Created by Pascal Köhler on 14.01.22.
 //
 //
 
 import Foundation
 import CoreData
 import UIKit
+
 
 public class Calendar: NSManagedObject {
     
@@ -18,11 +19,10 @@ public class Calendar: NSManagedObject {
         self.color = color
     }
     
-    convenience init(color: UIColor, dateEvents: [DateEventCoreData]) {
+    convenience init(color: UIColor, dateEvents: [DateEvent]) {
         self.init(color: color)
         for dateEvent in dateEvents {
             self.addToDateEvents(dateEvent)
         }
     }
-
 }
