@@ -75,7 +75,7 @@ func getData(entityName: String) -> [Any]? {
     return a;
 }
 
-
+/*
 public func getWeekDay(date: Date) -> Int {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "EEEE"
@@ -97,6 +97,36 @@ public func getWeekDay(date: Date) -> Int {
         return 6
     default:
         return -1
+    }
+}
+*/
+
+
+public enum WeekDay:Int {
+    case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Undefined = -1
+}
+
+public func getWeekDay(date: Date) -> WeekDay{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE"
+    
+    switch(dateFormatter.string(from: date)) {
+    case "Monday":
+        return .Monday
+    case "Tuesday":
+        return .Tuesday
+    case "Wednesday":
+        return .Wednesday
+    case "Thursday":
+        return .Thursday
+    case "Friday":
+        return .Friday
+    case "Saturday":
+        return .Saturday
+    case "Sunday":
+        return .Sunday
+    default:
+        return .Undefined
     }
 }
 

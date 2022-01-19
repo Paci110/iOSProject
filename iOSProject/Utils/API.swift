@@ -56,7 +56,7 @@ public func getDay(day: Int, month: Int, year: Int, filterFor: [String]? = nil) 
 
 public func getWeek(cw: Int, year: Int, filterFor: [String]? = nil) -> [[DateEvent]] { //TODO: needs value checking
     let firstDay = getDate(fromString: "1/1/\(year) 01:00")//FIXME: 00:00 returns 31st december 23:00 in locale 0000 :/
-    let offset: Int = 7 - getWeekDay(date: firstDay)
+    let offset: Int = 7 - getWeekDay(date: firstDay).rawValue
     
     var start: Date
     if(cw == 1){
