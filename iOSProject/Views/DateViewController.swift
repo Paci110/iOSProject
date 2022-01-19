@@ -117,9 +117,8 @@ extension DateViewController: UITableViewDataSource {
             cell.mapView.setRegion(region, animated: false)
             cell.mapView.mapType = .standard
             
-            //TODO: just for test uses, remove later
             let marker = MKPointAnnotation()
-            marker.title = "Super C"
+            marker.title = data.name
             marker.coordinate = data.location!.coordinate
             cell.mapView.addAnnotation(marker)
             

@@ -70,7 +70,7 @@ public class DateEvent: NSManagedObject {
     
     ///Initialzator if user uses address for location
     convenience init(title: String, fullDayEvent: Bool, start: Date, end: Date, shouldRemind: Bool, calendar: Calendar, notes: String? = nil, series: EventSeries? = nil, reminder: Date? = nil, url: URL? = nil, address: String) {
-        //TODO: convert address to CLLocation and save it
+        //TODO: update current view after lcoation is fetshed?
         self.init(title: title, fullDayEvent: fullDayEvent, start: start, end: end, shouldRemind: shouldRemind, calendar: calendar, notes: notes, series: series, reminder: reminder, url: url)
         CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
             if let error = error {

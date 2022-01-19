@@ -28,22 +28,9 @@ func getDate(fromString: String) -> Date {
 func getDate(FromDate fromDate: Date, Format format: String) -> String {
     let formatter = DateFormatter()
     formatter.dateFormat = format
+    formatter.locale = Locale(identifier: "en")
     return formatter.string(from: fromDate)
 }
-
-/*
-func saveData() {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    if context.hasChanges {
-        do {
-            try context.save()
-        } catch {
-            //TODO: show message box with error
-            print("Error in save data \(error)")
-        }
-    }
-}
- */
 
 func getContext() -> NSManagedObjectContext {
     return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -53,6 +40,7 @@ func saveData() {
     do {
         try context.save()
     } catch {
+        //TODO: show message box with error
         print("Error in save data \(error)")
     }
 }

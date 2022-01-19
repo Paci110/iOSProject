@@ -25,7 +25,6 @@ class DateEventCell: UITableViewCell {
     
     func addInfo(dateEvent: DateEvent) {
         //FIXME: should update cell if place is set in DateEvent
-        guard contentStackView.subviews.count == 1 else {return}
         self.dateEvent = dateEvent
         let startString = getDate(FromDate: dateEvent.start, Format: "HH:mm")
         self.start.text = startString
@@ -56,7 +55,7 @@ class DateEventCell: UITableViewCell {
                 }
                 var str = formatter.string(from: dateBetween)
                 if str == nil {
-                    str = "0:00"
+                    str = "0min"
                 }
                 self.contentStackView.addArrangedSubview(self.createLabel(text: "Reminder: \(str!) \(additionStr)"))
             case let info as URL:
@@ -85,5 +84,13 @@ class DateEventCell: UITableViewCell {
         label.numberOfLines = 1
         label.text = text
         return label
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        for (index, subview) in contentStackView.arrangedSubviews.enumerated() {
+            guard index != 0 else {continue}
+            subview.removeFromSuperview()
+        }
     }
 }

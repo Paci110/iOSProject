@@ -53,6 +53,11 @@ public func getDay(day: Int, month: Int, year: Int, filterFor: [String]? = nil) 
     return getEvents(start:start, end:end, filterFor: filterFor)
 }
 
+public func getDay(from date: Date, filterFor: [String]? = nil) -> [DateEvent] {
+    let dateString = getDate(FromDate: date, Format: "DD.MM.YYYY").split(separator: ".")
+    return getDay(day: Int(dateString[0])!, month: Int(dateString[1])!, year: Int(dateString[2])!)
+}
+
 
 public func getWeek(cw: Int, year: Int, filterFor: [String]? = nil) -> [[DateEvent]] { //TODO: needs value checking
     let firstDay = getDate(fromString: "1/1/\(year) 01:00")//FIXME: 00:00 returns 31st december 23:00 in locale 0000 :/

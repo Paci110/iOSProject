@@ -28,7 +28,8 @@ class ViewController: UIViewController {
             }
         }
         if let dest = (segue.destination) as? DayViewController {
-            dest.dateTitle = "Sa, 15.01.2022"
+            //TODO: hand over the correct date to display
+            dest.date = Date()
         }
     }
 

@@ -13,7 +13,7 @@ class DayViewController: UITableViewController {
     @IBOutlet weak var navigationItems: UINavigationItem!
     
     var dateEvents: [DateEvent]?
-    var dateTitle: String?
+    var date: Date?
     
     @IBAction func itemButtonClicked(_ sender: Any) {
         reloadData()
@@ -21,12 +21,18 @@ class DayViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItems.title = dateTitle
+        if date == nil {
+            print("No date provided. Using current date")
+            date = Date()
+        }
+
+        navigationItems.title = getDate(FromDate: date!, Format: "EE, DD.MM.YYYY")
         reloadData()
     }
     
     func reloadData() {
-        dateEvents = getData(entityName: "DateEvent") as? [DateEvent]
+        //dateEvents = getDay(day: 19, month: 1, year: 2022)
+        dateEvents = getDay(from: date!)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -48,8 +54,7 @@ class DayViewController: UITableViewController {
             let address = "Templergraben 57, 52062 Aachen"
             let eventSeries = EventSeries(value: 10, timeInterval: TimeInterval.Day)
             let reminder = Date(timeIntervalSinceNow: -300000)
-            let date = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: true, start: start, end: end, shouldRemind: false, calendar: calendar, notes: note, series: eventSeries, reminder: reminder, url: url, address: address)
-            print("Title: \(date.title)")
+            _ = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: true, start: start, end: end, shouldRemind: false, calendar: calendar, notes: note, series: eventSeries, reminder: reminder, url: url, address: address)
             print("Save data")
             saveData()
             let dat = getData(entityName: "DateEvent")
