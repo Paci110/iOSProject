@@ -42,10 +42,10 @@ extension DateViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //TODO: first header is not displayed correctly
         if(section == 0)
         {
-            return "Time"
+            //TODO: first header is not displayed correctly
+            //return "Time"
         }
         let data = testDate?.getData()[section+3]
         
@@ -122,6 +122,31 @@ extension DateViewController: UITableViewDataSource {
             marker.coordinate = data.location!.coordinate
             cell.mapView.addAnnotation(marker)
             
+            return cell
+        }
+        else if let data = dateText as? EventSeries {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
+            cell.textLabel?.text = "Repeating every \(data.value) \(data.timeInterval)"
+            return cell
+        }
+        else if let data = dateText as? Date {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
+            var dateBetween = testDate!.start.distance(to: data)
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.day, .hour, .minute]
+            formatter.unitsStyle = .abbreviated
+            let additionStr = dateBetween < 0 ? "before" : "after"
+            if dateBetween < 0 {
+                dateBetween.negate()
+            }
+            let str = "Reminder: \(formatter.string(from: dateBetween)!)"
+            cell.textLabel?.text = "\(str) \(additionStr)"
+            return cell
+        }
+        else if let data = dateText as? Calendar {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
+            cell.backgroundColor = data.color
+            cell.textLabel?.text = data.title
             return cell
         }
         else {
