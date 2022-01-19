@@ -45,10 +45,9 @@ func saveData() {
 }
  */
 
-private func getContext() -> NSManagedObjectContext {
+func getContext() -> NSManagedObjectContext {
     return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 }
-
 func saveData() {
     let context = getContext()
     do {
@@ -65,7 +64,7 @@ func deleteData(dataToDelete: NSManagedObject) {
 }
 
 func getData(entityName: String) -> [Any]? {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let context = getContext()
     var a: [Any]?
     do {
         //NSFetchRequest(entityName: entityName).predicate = NSPredicate(format: <#T##String#>, <#T##args: CVarArg...##CVarArg#>)

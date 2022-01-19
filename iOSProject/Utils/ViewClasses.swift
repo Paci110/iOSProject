@@ -17,6 +17,7 @@ class DateEventCell: UITableViewCell {
     @IBOutlet weak var end: UILabel!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var contentStackView: UIStackView!
+    @IBOutlet weak var calendarColorView: UIView!
     
     var dateEvent: DateEvent!
     
@@ -31,21 +32,51 @@ class DateEventCell: UITableViewCell {
         let endString = getDate(FromDate: dateEvent.end, Format: "HH:mm")
         self.end.text = endString
         
+        calendarColorView.backgroundColor = dateEvent.calendar.color
+        
         let data = dateEvent.getData()
         for (index, info) in data.enumerated() {
             if index == 0 {
                 self.title.text = (info as! String)
                 continue
             }
-            if let info = info as? String {
+            
+            switch info {
+                case let info as String:
                 self.contentStackView.addArrangedSubview(self.createLabel(text: info))
-            }
-            else if let info = info as? URL {
+            case let info as EventSeries:                self.contentStackView.addArrangedSubview(self.createLabel(text: "Repeating every \(info.value) \(info.timeInterval)"))
+            case let info as Date:
+                var dateBetween = dateEvent.start.distance(to: info)
+                let formatter = DateComponentsFormatter()
+                formatter.allowedUnits = [.day, .hour, .minute]
+                formatter.unitsStyle = .abbreviated
+                let additionStr = dateBetween < 0 ? "before" : "after"
+                if dateBetween < 0 {
+                    dateBetween.negate()
+                }
+                var str = formatter.string(from: dateBetween)
+                if str == nil {
+                    str = "0:00"
+                }
+                self.contentStackView.addArrangedSubview(self.createLabel(text: "Reminder: \(str!) \(additionStr)"))
+            case let info as URL:
                 self.contentStackView.addArrangedSubview(self.createLabel(text: info.absoluteString))
-            }
-            else if let info = info as? CLPlacemark {
+            case let info as CLPlacemark:
                 self.contentStackView.addArrangedSubview(self.createLabel(text: "\(info.name ?? "Address"), \(info.locality ?? "City"), \(info.country ?? "Country")" ))
+            default:
+                continue
             }
+            //TODO: use line seperators?
+            /*
+            if index != data.count {
+                let view = UIView()
+                view.backgroundColor = .systemGray4
+                let constr = NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 1)
+                constr.priority = UILayoutPriority(999)
+                view.addConstraint(constr)
+                self.contentStackView.addArrangedSubview(view)
+            }
+             */
         }
     }
     

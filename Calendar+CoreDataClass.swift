@@ -13,14 +13,15 @@ import UIKit
 
 public class Calendar: NSManagedObject {
     
-    convenience init(color: UIColor) {
+    convenience init(title: String, color: UIColor) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.init(context: context)
+        self.title = title
         self.color = color
     }
     
-    convenience init(color: UIColor, dateEvents: [DateEvent]) {
-        self.init(color: color)
+    convenience init(title: String, color: UIColor, dateEvents: [DateEvent]) {
+        self.init(title: title, color: color)
         for dateEvent in dateEvents {
             self.addToDateEvents(dateEvent)
         }
