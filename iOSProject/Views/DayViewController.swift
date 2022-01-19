@@ -13,16 +13,26 @@ class DayViewController: UITableViewController {
     @IBOutlet weak var navigationItems: UINavigationItem!
     
     var dateEvents: [DateEvent]?
-    var dateTitle: String?
+    var date: Date?
+    
+    @IBAction func itemButtonClicked(_ sender: Any) {
+        reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItems.title = dateTitle
+        if date == nil {
+            print("No date provided. Using current date")
+            date = Date()
+        }
+
+        navigationItems.title = getDate(FromDate: date!, Format: "EE, DD.MM.YYYY")
         reloadData()
     }
     
     func reloadData() {
-        dateEvents = getData(entityName: "DateEvent") as? [DateEvent]
+        //dateEvents = getDay(day: 19, month: 1, year: 2022)
+        dateEvents = getDay(from: date!)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -35,14 +45,16 @@ class DayViewController: UITableViewController {
             let textfield = alert.textFields![0]
             let start = Date()
             let end = Date()
-            let calendar = Calendar(color: UIColor(red: 1, green: 0, blue: 0, alpha: 1))
+            let calendar = Calendar(title: "TestCalendar", color: UIColor(red: 1, green: 0, blue: 0, alpha: 1))
             if textfield.text == "" {
                 textfield.text = "New DateEvent (title to short)"
             }
             let note = "This is a test note. This should be longer than a lable can hold."
             let url = URL(string: "www.rwth-aachen.de")
-            let date = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: true, start: start, end: end, shouldRemind: false, calendar: calendar, notes: note, url: url)
-            print("Title: \(date.title)")
+            let address = "Templergraben 57, 52062 Aachen"
+            let eventSeries = EventSeries(value: 10, timeInterval: TimeInterval.Day)
+            let reminder = Date(timeIntervalSinceNow: -300000)
+            _ = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: true, start: start, end: end, shouldRemind: false, calendar: calendar, notes: note, series: eventSeries, reminder: reminder, url: url, address: address)
             print("Save data")
             saveData()
             let dat = getData(entityName: "DateEvent")
@@ -54,6 +66,10 @@ class DayViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //TODO: implement
+        if let cell = sender as? DateEventCell,
+           let dest = segue.destination as? DateViewController {
+            dest.testDate = cell.dateEvent
+        }
     }
     
     public override func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,5 +88,21 @@ class DayViewController: UITableViewController {
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Tapped row \(indexPath.row), column \(indexPath.section)")
+        let cell = self.tableView.cellForRow(at: indexPath)
+        performSegue(withIdentifier: "dateView", sender: cell)
+    }
+    
+    //TODO: change?
+    public override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") {
+            [unowned self] action, view, completionHandler in
+            let event: DateEvent = (tableView.cellForRow(at: indexPath) as! DateEventCell).dateEvent
+            //self.tableView.deleteSections([indexPath.section], with: .left)
+            //self.tableView.deleteRows(at: [indexPath], with: .fade)
+            //TODO: implement undo with popup
+            deleteData(dataToDelete: event)
+            reloadData()
+        }
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }
