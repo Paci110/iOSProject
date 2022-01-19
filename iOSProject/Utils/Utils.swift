@@ -45,7 +45,7 @@ func saveData() {
 }
  */
 
-private func getContext() -> NSManagedObjectContext {
+func getContext() -> NSManagedObjectContext {
     return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 }
 
@@ -76,6 +76,40 @@ func getData(entityName: String) -> [Any]? {
     return a;
 }
 
-//MARK: Start of API
+
+public func getWeekDay(date: Date) -> Int {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE"
+    
+    switch(dateFormatter.string(from: date)) {
+    case "Monday":
+        return 0
+    case "Tuesday":
+        return 1
+    case "Wednesday":
+        return 2
+    case "Thursday":
+        return 3
+    case "Friday":
+        return 4
+    case "Saturday":
+        return 5
+    case "Sunday":
+        return 6
+    default:
+        return -1
+    }
+}
 
 
+public func dateToDMY (date: Date) -> [Int] {
+    let dateString = getDate(FromDate: date, Format: "dd/MM/yyyy")
+    let DMY = dateString.split(separator: "/")
+    
+    var IntDMY: [Int] = []
+    for i in DMY{
+        IntDMY.append(Int(i)!)
+    }
+    
+    return IntDMY
+}
