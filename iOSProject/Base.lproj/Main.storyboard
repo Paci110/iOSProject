@@ -166,9 +166,9 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="t2h-Z7-7Go">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="T6G-Ru-D9C">
+                        <barButtonItem key="leftBarButtonItem" title="Today" id="T6G-Ru-D9C">
                             <connections>
-                                <action selector="itemButtonClicked:" destination="Z2h-EA-0RW" id="PzH-0r-RP3"/>
+                                <action selector="todayButtonClicked:" destination="Z2h-EA-0RW" id="9V3-a8-D9b"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="a70-Sq-8Nr">
@@ -353,7 +353,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ifS-e1-GEB"/>
+        <segue reference="Cg9-ip-0Pg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
