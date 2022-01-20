@@ -15,10 +15,15 @@ class DayViewController: UITableViewController {
     var dateEvents: [DateEvent]?
     var date: Date?
     
+    /*
+    //Priorises this view as responder
+    override canBecomeFirstResponder {
+        get {return true}
+    }
+    */
     
     @IBAction func todayButtonClicked(_ sender: UIBarButtonItem) {
-        self.date = Date()
-        reloadData()
+        jumpToToday()
     }
     
     override func viewDidLoad() {
@@ -119,6 +124,13 @@ class DayViewController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [delete])
     }
     
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if(motion == .motionShake)
+        {
+            jumpToToday()
+        }
+    }
+    
     @objc func respondToSwipe(gesture: UIGestureRecognizer)
     {
         guard let swipeGesture = gesture as? UISwipeGestureRecognizer else {return}
@@ -135,5 +147,11 @@ class DayViewController: UITableViewController {
         default:
             break
         }
+    }
+    
+    private func jumpToToday()
+    {
+        self.date = Date()
+        reloadData()
     }
 }
