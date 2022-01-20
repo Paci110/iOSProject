@@ -15,7 +15,9 @@ class DayViewController: UITableViewController {
     var dateEvents: [DateEvent]?
     var date: Date?
     
-    @IBAction func itemButtonClicked(_ sender: Any) {
+    
+    @IBAction func todayButtonClicked(_ sender: UIBarButtonItem) {
+        self.date = Date()
         reloadData()
     }
     
@@ -25,14 +27,25 @@ class DayViewController: UITableViewController {
             print("No date provided. Using current date")
             date = Date()
         }
+        
+        //Add the left and right swipe recognizer
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipe))
+        swipeRight.direction = .right
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipe))
+        swipeLeft.direction = .left
 
-        navigationItems.title = getDate(FromDate: date!, Format: "EE, DD.MM.YYYY")
+        self.view.addGestureRecognizer(swipeRight)
+        self.view.addGestureRecognizer(swipeLeft)
+        
         reloadData()
     }
     
     func reloadData() {
         //dateEvents = getDay(day: 19, month: 1, year: 2022)
-        dateEvents = getDay(from: date!)
+        let dmy = dateToDMY(date: date!)
+        dateEvents = getDay(day: dmy[0], month: dmy[1], year: dmy[2])
+        
+        navigationItems.title = getDate(FromDate: date!, Format: "EE, DD.MM.YYYY")
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -43,8 +56,8 @@ class DayViewController: UITableViewController {
         alert.addTextField()
         alert.addAction(UIAlertAction(title: "OK", style: .default) {_ in
             let textfield = alert.textFields![0]
-            let start = Date()
-            let end = Date()
+            let start = self.date!
+            let end = self.date!
             let calendar = Calendar(title: "TestCalendar", color: UIColor(red: 1, green: 0, blue: 0, alpha: 1))
             if textfield.text == "" {
                 textfield.text = "New DateEvent (title to short)"
@@ -54,7 +67,7 @@ class DayViewController: UITableViewController {
             let address = "Templergraben 57, 52062 Aachen"
             let eventSeries = EventSeries(value: 10, timeInterval: TimeInterval.Day)
             let reminder = Date(timeIntervalSinceNow: -300000)
-            _ = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: true, start: start, end: end, shouldRemind: false, calendar: calendar, notes: note, series: eventSeries, reminder: reminder, url: url, address: address)
+            _ = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: false, start: start, end: end, shouldRemind: false, calendar: calendar, notes: note, series: eventSeries, reminder: reminder, url: url, address: address)
             print("Save data")
             saveData()
             let dat = getData(entityName: "DateEvent")
@@ -104,5 +117,23 @@ class DayViewController: UITableViewController {
             reloadData()
         }
         return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    @objc func respondToSwipe(gesture: UIGestureRecognizer)
+    {
+        guard let swipeGesture = gesture as? UISwipeGestureRecognizer else {return}
+
+        switch swipeGesture.direction {
+        case .right:
+            //Jump to the previous day
+            self.date = Foundation.Calendar.current.date(byAdding: .day, value: -1, to: self.date!)
+            reloadData()
+        case .left:
+            //Jump to the next day
+            self.date = Foundation.Calendar.current.date(byAdding: .day, value: 1, to: self.date!)
+            reloadData()
+        default:
+            break
+        }
     }
 }

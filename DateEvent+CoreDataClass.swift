@@ -58,6 +58,7 @@ public class DateEvent: NSManagedObject {
         }
         
         //If the date is an full day event the date is edited to start at 0:00 and end at 23:59 of the start, end date
+        //FIXME: Start and End are not set to what is expected (00:00 and 23:59). Instead,it is the start and end given in the parameters, but 1 hour early. 
         if fullDayEvent {
             let formatter = DateFormatter()
             formatter.dateFormat = dateFormat
@@ -65,6 +66,11 @@ public class DateEvent: NSManagedObject {
             self.start = getDate(fromString: startDateString)
             let endDateString = formatter.string(from: end) + " 23:59"
             self.end = getDate(fromString: endDateString)
+            
+            print(startDateString)
+            print(endDateString)
+            print(start)
+            print(end)
         }
     }
     
