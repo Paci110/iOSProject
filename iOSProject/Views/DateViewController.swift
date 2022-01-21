@@ -9,16 +9,12 @@ import UIKit
 import CoreLocation
 import MapKit
 
-var testDate: DateEvent?
-
 class DateViewController: UIViewController {
     
     @IBOutlet weak var labelDateTitle: UILabel!
     @IBOutlet weak var tableViewDates: UITableView!
     
-    public func getTestDate() -> DateEvent? {
-        return testDate
-    }
+    var testDate: DateEvent?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,44 +22,13 @@ class DateViewController: UIViewController {
         tableViewDates.delegate = self
         tableViewDates.dataSource = self
         
-        //Just for test purposes
-        let formatter = DateFormatter()
-        formatter.dateFormat = dateFormat
-        let start: Date = getDate(fromString: "2021/12/19 10:00")
-        let end: Date = getDate(fromString: "2021/12/19 17:00")
-        //let place: CLLocation = CLLocation(latitude: 29, longitude: 10)
-        let note = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        let url = URL(string: "www.rwth-aachen.de")
-        var address: CLLocation? = nil
-        let geocoder = CLGeocoder()
-        
-        
-        geocoder.geocodeAddressString("Templergraben 57, 52062 Aachen, Germany") { (placemarks, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            guard
-                let placemarks = placemarks,
-                let tempAdress = placemarks.first?.location
-            else {
-                print("No location with given adress string found")
-                return
-            }
-            //print(tempAdress)
-            address = tempAdress
-        }
-        //print("test")
-        let dateEvent = DateEvent(Title: "Test Date", Description: note, FullDayEvent: true, Start: start, End: end, ShouldRemind: false, URL: url, Location: CLLocation(latitude: 50.77828170, longitude: 6.07847850))
-        testDate = dateEvent
-        
         labelDateTitle.text = testDate?.title
-        
-        
     }
+    
+    
 }
 
-extension UIViewController: UITableViewDataSource {
+extension DateViewController: UITableViewDataSource {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
         guard let testDate = testDate else {
@@ -77,12 +42,12 @@ extension UIViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //TODO: first header is not displayed correctly
         if(section == 0)
         {
-            return "Time"
+            //TODO: first header is not displayed correctly
+            //return "Time"
         }
-        let data = testDate?.getData()[section+3] //
+        let data = testDate?.getData()[section+3]
         
         if (data as? (String)) != nil
         {
@@ -146,19 +111,42 @@ extension UIViewController: UITableViewDataSource {
             cell.textLabel?.isUserInteractionEnabled = true
             return cell
         }
-        else if let data = dateText as? CLLocation {
-            //FIXME: memory leak?
+        else if let data = dateText as? CLPlacemark {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell", for: indexPath) as! MapCell
-            let region = MKCoordinateRegion.init(center: data.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
+            let region = MKCoordinateRegion.init(center: data.location!.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
             cell.mapView.setRegion(region, animated: false)
             cell.mapView.mapType = .standard
             
-            //TODO: just for test uses, remove later
             let marker = MKPointAnnotation()
-            marker.title = "Super C"
-            marker.coordinate = CLLocationCoordinate2D(latitude: data.coordinate.latitude, longitude: data.coordinate.longitude)
+            marker.title = data.name
+            marker.coordinate = data.location!.coordinate
             cell.mapView.addAnnotation(marker)
             
+            return cell
+        }
+        else if let data = dateText as? EventSeries {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
+            cell.textLabel?.text = "Repeating every \(data.value) \(data.timeInterval)"
+            return cell
+        }
+        else if let data = dateText as? Date {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
+            var dateBetween = testDate!.start.distance(to: data)
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.day, .hour, .minute]
+            formatter.unitsStyle = .abbreviated
+            let additionStr = dateBetween < 0 ? "before" : "after"
+            if dateBetween < 0 {
+                dateBetween.negate()
+            }
+            let str = "Reminder: \(formatter.string(from: dateBetween)!)"
+            cell.textLabel?.text = "\(str) \(additionStr)"
+            return cell
+        }
+        else if let data = dateText as? Calendar {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
+            cell.backgroundColor = data.color
+            cell.textLabel?.text = data.title
             return cell
         }
         else {
@@ -169,7 +157,7 @@ extension UIViewController: UITableViewDataSource {
     }
 }
 
-extension UIViewController: UITableViewDelegate {
+extension DateViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Tapped row \(indexPath.row), column \(indexPath.section)")
     }
