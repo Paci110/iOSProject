@@ -38,9 +38,29 @@ class DayViewController: UITableViewController {
         swipeRight.direction = .right
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipe))
         swipeLeft.direction = .left
+        
+        
+        
+        
+        
+        
+        
+        
+        // add Pinch
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
+        self.view.addGestureRecognizer(pinchGesture)
+        
+        
+        
+        
+        
+        
+        
 
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeLeft)
+        
+        
         
         reloadData()
     }
@@ -149,9 +169,53 @@ class DayViewController: UITableViewController {
         }
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @objc func respondToPinch(gesture: UIGestureRecognizer){
+        guard let pinchGesture = gesture as? UIPinchGestureRecognizer else {return}
+        //view.backgroundColor = .green
+        //scale can be changed here
+        if (pinchGesture.scale >= CGFloat(2)) {
+            //view.backgroundColor = .black
+            
+            //get controller from StoryBoard
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let AnotherController = storyBoard.instantiateViewController(withIdentifier: "monthViewController") as! MonthViewController
+            self.navigationController?.pushViewController(AnotherController, animated: false)
+            return
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private func jumpToToday()
     {
         self.date = Date()
         reloadData()
     }
+    
+    
+
+    
+    
+    
+    
 }
