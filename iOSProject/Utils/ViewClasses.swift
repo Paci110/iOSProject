@@ -94,3 +94,15 @@ class DateEventCell: UITableViewCell {
         }
     }
 }
+
+class HeaderWeekCell: UICollectionViewCell {
+    @IBOutlet weak var title: UILabel!
+}
+
+class EventWeekCell: UICollectionViewCell {
+    @IBOutlet weak var title: UILabel!
+}
+
+class WeekCollectionLayout: UICollectionViewLayout {
+    
+}

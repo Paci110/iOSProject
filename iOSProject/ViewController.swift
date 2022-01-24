@@ -31,6 +31,10 @@ class ViewController: UIViewController {
             //TODO: hand over the correct date to display
             dest.date = Date()
         }
+        
+        if let dest = (segue.destination) as? WeekViewController {
+            dest.date = Date()
+        }
     }
 
 }

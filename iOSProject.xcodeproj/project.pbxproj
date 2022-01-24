@@ -22,6 +22,8 @@
 		79AD23EF2791CD2F00DC21F5 /* Calendar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD23EB2791CD2F00DC21F5 /* Calendar+CoreDataProperties.swift */; };
 		79AD23F02791CD2F00DC21F5 /* DateEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD23EC2791CD2F00DC21F5 /* DateEvent+CoreDataClass.swift */; };
 		79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C2BFCF2779EFFC009A104A /* ViewClasses.swift */; };
+		79E83784279AD17400258682 /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E83783279AD17400258682 /* WeekViewController.swift */; };
+		79E83786279D73DA00258682 /* WeekViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E83785279D73DA00258682 /* WeekViewController2.swift */; };
 		79FDEE9E2795A7F0005A25F9 /* DateEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEE9D2795A7F0005A25F9 /* DateEvent+CoreDataProperties.swift */; };
 		79FDEEA12795ACB3005A25F9 /* EventSeries+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEE9F2795ACB3005A25F9 /* EventSeries+CoreDataClass.swift */; };
 		79FDEEA22795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEEA02795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift */; };
@@ -45,6 +47,8 @@
 		79AD23EB2791CD2F00DC21F5 /* Calendar+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		79AD23EC2791CD2F00DC21F5 /* DateEvent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateEvent+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		79C2BFCF2779EFFC009A104A /* ViewClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClasses.swift; sourceTree = "<group>"; };
+		79E83783279AD17400258682 /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
+		79E83785279D73DA00258682 /* WeekViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController2.swift; sourceTree = SOURCE_ROOT; };
 		79FDEE9D2795A7F0005A25F9 /* DateEvent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateEvent+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		79FDEE9F2795ACB3005A25F9 /* EventSeries+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventSeries+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		79FDEEA02795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventSeries+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -87,8 +91,8 @@
 				7983AEF9276B7E0D00FC4301 /* Main.storyboard */,
 				7983AEFC276B7E2700FC4301 /* Assets.xcassets */,
 				7983AEFE276B7E2700FC4301 /* LaunchScreen.storyboard */,
-				7983AF01276B7E2700FC4301 /* Info.plist */,
 				7990F5CF276F6FD60066EDC6 /* Views */,
+				7983AF01276B7E2700FC4301 /* Info.plist */,
 				79842AA92786560E00391AC7 /* Models */,
 			);
 			path = iOSProject;
@@ -111,8 +115,10 @@
 		7990F5CF276F6FD60066EDC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				79E83785279D73DA00258682 /* WeekViewController2.swift */,
 				7990F5D0276F70130066EDC6 /* DayViewController.swift */,
 				7990F5D2276F91BD0066EDC6 /* DateViewController.swift */,
+				79E83783279AD17400258682 /* WeekViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +227,7 @@
 			files = (
 				79FDEEA12795ACB3005A25F9 /* EventSeries+CoreDataClass.swift in Sources */,
 				79FDEEA22795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift in Sources */,
+				79E83786279D73DA00258682 /* WeekViewController2.swift in Sources */,
 				79FDEE9E2795A7F0005A25F9 /* DateEvent+CoreDataProperties.swift in Sources */,
 				79AD23F02791CD2F00DC21F5 /* DateEvent+CoreDataClass.swift in Sources */,
 				7990F5D3276F91BD0066EDC6 /* DateViewController.swift in Sources */,
@@ -233,6 +240,7 @@
 				7990F5D1276F70130066EDC6 /* DayViewController.swift in Sources */,
 				79AD23EF2791CD2F00DC21F5 /* Calendar+CoreDataProperties.swift in Sources */,
 				79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */,
+				79E83784279AD17400258682 /* WeekViewController.swift in Sources */,
 				799C1D4627831B0600AC954F /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
