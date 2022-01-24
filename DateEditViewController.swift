@@ -17,21 +17,38 @@ class DateEditViewController: UIViewController, UITextFieldDelegate,UITextViewDe
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return reminderData.count
+        if component == 0 {
+            return reminderData.count
+        }
+        return reminderWordsData.count
+      
+        
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return reminderData[row]
+        if component == 0 {
+            return reminderData[row]
+        }
+        
+        return reminderWordsData[row]
+        
     }
+    
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("\(reminderData[row])")
-            
+        //print("\(reminderData[row])")?
+        let a = "\(reminderData[row])"
+        
+        
+        print (a)
     }
     
     
+    let reminderData = ["1","2","3","4","5","6","7"]
+    let reminderWordsData = ["without" , "min before" , "hour before" , "day(s) before" ,"week(s) before", "year(s) before"]
     
 
     @IBOutlet weak var fullDaySwitch : UISwitch?
@@ -42,9 +59,12 @@ class DateEditViewController: UIViewController, UITextFieldDelegate,UITextViewDe
     @IBOutlet weak var URL : UITextField!
     @IBOutlet weak var Address : UITextField!
     @IBOutlet weak var reminder : UIPickerView!
+    
   
     
-    var reminderData : [String] = [String]()
+    //var reminderData : [String] = [String]()
+    //var reminderWordsData : [String] = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         titleSetting()
@@ -58,12 +78,23 @@ class DateEditViewController: UIViewController, UITextFieldDelegate,UITextViewDe
         self.reminder.delegate = self
         self.reminder.dataSource = self
         
-        reminderData = ["wihout" , "5 min before" , "10 min before" , "15 min before" , "30 min before" , "1 hour before" , "2 hours before" , "1 day before" , "2 days before" , "1 week before"]
         
+       
+        
+        setReminder()
     }
+    
     
     func setReminder() {
         
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
