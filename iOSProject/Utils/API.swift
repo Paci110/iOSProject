@@ -109,4 +109,23 @@ public func getYear(year: Int, filterFor: [String]? = nil) -> [[[DateEvent]]] {
     return events
 }
 
+
+public func getCalendars(filterFor: [String]? = nil) -> [Calendar] {
+    let context = getContext()
+    
+    let calendarsFetch = NSFetchRequest<Calendar>(entityName: "Calendar")
+    if(filterFor != nil) {
+        calendarsFetch.predicate = NSPredicate(format: "name IN %@", argumentArray: [filterFor!])
+    }
+    
+    var calendars: [Calendar]
+    do {
+        calendars = try context.fetch(calendarsFetch)
+    } catch {
+        fatalError("Calendars couldn't be fetched: \(error)")
+    }
+    
+    return calendars
+}
+
 //TODO: Upload calendar implementation files
