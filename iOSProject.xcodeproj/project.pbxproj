@@ -22,6 +22,7 @@
 		79AD23F02791CD2F00DC21F5 /* DateEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD23EC2791CD2F00DC21F5 /* DateEvent+CoreDataClass.swift */; };
 		79AD23F12791CD2F00DC21F5 /* DateEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD23ED2791CD2F00DC21F5 /* DateEvent+CoreDataProperties.swift */; };
 		79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C2BFCF2779EFFC009A104A /* ViewClasses.swift */; };
+		7CFC950A279CA3A50094A3C2 /* DateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFC9509279CA3A50094A3C2 /* DateEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		79AD23EC2791CD2F00DC21F5 /* DateEvent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateEvent+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		79AD23ED2791CD2F00DC21F5 /* DateEvent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateEvent+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		79C2BFCF2779EFFC009A104A /* ViewClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClasses.swift; sourceTree = "<group>"; };
+		7CFC9509279CA3A50094A3C2 /* DateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		7990F5CF276F6FD60066EDC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7CFC9509279CA3A50094A3C2 /* DateEditViewController.swift */,
 				7990F5D0276F70130066EDC6 /* DayViewController.swift */,
 				7990F5D2276F91BD0066EDC6 /* DateViewController.swift */,
 			);
@@ -214,6 +217,7 @@
 				79AD23F02791CD2F00DC21F5 /* DateEvent+CoreDataClass.swift in Sources */,
 				7990F5D3276F91BD0066EDC6 /* DateViewController.swift in Sources */,
 				7983AEF8276B7E0C00FC4301 /* ViewController.swift in Sources */,
+				7CFC950A279CA3A50094A3C2 /* DateEditViewController.swift in Sources */,
 				7983AEF4276B7E0C00FC4301 /* AppDelegate.swift in Sources */,
 				7983AEF6276B7E0C00FC4301 /* SceneDelegate.swift in Sources */,
 				79AD23EE2791CD2F00DC21F5 /* Calendar+CoreDataClass.swift in Sources */,
