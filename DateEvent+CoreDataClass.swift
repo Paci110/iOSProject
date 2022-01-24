@@ -70,6 +70,8 @@ public class DateEvent: NSManagedObject {
             print(start)
             print(end)
         }
+        
+        self.calendar.addToDateEvents(self)
     }
     
     ///Initialzator if user uses address for location
