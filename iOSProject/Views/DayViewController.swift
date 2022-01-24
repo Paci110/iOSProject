@@ -12,6 +12,12 @@ class DayViewController: UITableViewController {
     
     @IBOutlet weak var navigationItems: UINavigationItem!
     
+    
+    
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    
     var dateEvents: [DateEvent]?
     var date: Date?
     
@@ -28,7 +34,7 @@ class DayViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if date == nil {
+        if (date == nil) {
             print("No date provided. Using current date")
             date = Date()
         }
@@ -38,9 +44,29 @@ class DayViewController: UITableViewController {
         swipeRight.direction = .right
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipe))
         swipeLeft.direction = .left
+        
+        
+        
+        
+        
+        
+        
+        
+        // add Pinch
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
+        self.view.addGestureRecognizer(pinchGesture)
+        
+        
+        
+        
+        
+        
+        
 
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeLeft)
+        
+        
         
         reloadData()
     }
@@ -50,7 +76,12 @@ class DayViewController: UITableViewController {
         let dmy = dateToDMY(date: date!)
         dateEvents = getDay(day: dmy[0], month: dmy[1], year: dmy[2])
         
-        navigationItems.title = getDate(FromDate: date!, Format: "EE, DD.MM.YYYY")
+        //navigationItems.title = getDate(FromDate: date!, Format: "EE, DD.MM.YYYY")
+        
+        
+        dateLabel.text = getDate(FromDate: date!, Format: "EE, DD.MM.YYYY")
+        
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -149,9 +180,65 @@ class DayViewController: UITableViewController {
         }
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @objc func respondToPinch(gesture: UIGestureRecognizer){
+        guard let pinchGesture = gesture as? UIPinchGestureRecognizer else {return}
+        //view.backgroundColor = .green
+        //scale can be changed here
+        if (pinchGesture.scale >= CGFloat(2)) {
+            //view.backgroundColor = .black
+            
+            //get controller from StoryBoard
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let AnotherController = storyBoard.instantiateViewController(withIdentifier: "monthViewController") as! MonthViewController
+            self.navigationController?.pushViewController(AnotherController, animated: false)
+            return
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private func jumpToToday()
     {
         self.date = Date()
         reloadData()
     }
+    
+    
+
+    
+    
+    
+    @IBAction func nextDay(_ sender: Any) {
+        self.date = Foundation.Calendar.current.date(byAdding: .day, value: 1, to: self.date!)
+        reloadData()
+    }
+    
+    
+    
+    @IBAction func prevDay(_ sender: Any) {
+        self.date = Foundation.Calendar.current.date(byAdding: .day, value: -1, to: self.date!)
+        reloadData()
+    }
+    
+    
 }
