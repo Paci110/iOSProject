@@ -17,7 +17,10 @@ class WeekViewController2: UIViewController {
     @IBOutlet weak var title2: UILabel!
     @IBOutlet weak var title3: UILabel!
     var titles: [UILabel] {
-        return [title1, title2, title3]
+        [title1, title2, title3]
+    }
+    var tables: [UITableView] {
+        [tableView1, tableView2, tableView3]
     }
     
     var dateEvents: [[DateEvent]]?
@@ -39,8 +42,12 @@ class WeekViewController2: UIViewController {
                 }
             }
         }
+        calendar.locale = Locale(identifier: "de")
         let dates = calendar.dateComponents([.weekOfYear, .year], from: Date())
-        dateEvents = getWeek(cw: dates.weekOfYear!, year: dates.year!)
+        print("Test, ", getWeek(cw: dates.weekOfYear!, year: dates.year!))
+        //dateEvents = getWeek(cw: dates.weekOfYear!, year: dates.year!)
+        dateEvents = getWeek(cw: 4, year: 2022)
+        
         fetch()
     }
     
@@ -92,19 +99,24 @@ extension WeekViewController2: UICollectionViewDelegate, UICollectionViewDataSou
 
 extension WeekViewController2: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        for (index, selectedTable) in tables.enumerated() {
+            if tableView == selectedTable {
+                let event = dateEvents![index+currentDate][indexPath.row]
+                cell.textLabel?.text = event.title
+                cell.detailTextLabel?.text = getDate(FromDate: event.start, Format: "HH:mm")
+            }
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == tableView1
-        switch tableView {
-        case tableView1:
-            print("Works")
-        default:
-            print("Default")
+        for (index, selectedTable) in tables.enumerated() {
+            if tableView == selectedTable {
+                return dateEvents![index+currentDate].count
+            }
         }
-        return 1
+        return 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

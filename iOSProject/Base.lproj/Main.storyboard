@@ -376,9 +376,9 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mqs-6C-VqF">
-                                                                    <rect key="frame" x="16" y="6" width="25" height="14.5"/>
+                                                                    <rect key="frame" x="16" y="6" width="27" height="14.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="0.0"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -393,6 +393,10 @@
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                 </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="AYi-1U-yZW" id="dLh-9w-oAy"/>
+                                                    <outlet property="delegate" destination="AYi-1U-yZW" id="Ih3-7Y-XYp"/>
+                                                </connections>
                                             </tableView>
                                         </subviews>
                                     </stackView>
@@ -420,9 +424,9 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8wY-G2-4Pb">
-                                                                    <rect key="frame" x="16" y="6" width="25" height="14.5"/>
+                                                                    <rect key="frame" x="16" y="6" width="27" height="14.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="0.0"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -437,6 +441,10 @@
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                 </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="AYi-1U-yZW" id="5K0-T6-ICg"/>
+                                                    <outlet property="delegate" destination="AYi-1U-yZW" id="I2u-oK-dUx"/>
+                                                </connections>
                                             </tableView>
                                         </subviews>
                                     </stackView>
@@ -464,9 +472,9 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u7X-6g-2WO">
-                                                                    <rect key="frame" x="16" y="6" width="25" height="14.5"/>
+                                                                    <rect key="frame" x="16" y="6" width="27" height="14.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="0.0"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -481,6 +489,10 @@
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                 </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="AYi-1U-yZW" id="Jvx-Te-CTk"/>
+                                                    <outlet property="delegate" destination="AYi-1U-yZW" id="bbL-w4-6w5"/>
+                                                </connections>
                                             </tableView>
                                         </subviews>
                                     </stackView>
