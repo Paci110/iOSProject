@@ -40,6 +40,17 @@
                                     <segue destination="Z2h-EA-0RW" kind="show" id="Kwb-cb-7Ti"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3PR-BY-suD">
+                                <rect key="frame" x="138" y="650" width="139" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Go to SearchView"/>
+                                <connections>
+                                    <segue destination="yCF-hq-alE" kind="popoverPresentation" identifier="searchView" popoverAnchorView="3PR-BY-suD" id="shx-Lj-chw">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -389,6 +400,72 @@
             </objects>
             <point key="canvasLocation" x="-545" y="106"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="eqY-Ne-i9Y">
+            <objects>
+                <viewController id="yCF-hq-alE" customClass="SearchViewController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kOQ-69-6Df">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Event Name" translatesAutoresizingMaskIntoConstraints="NO" id="2IQ-C8-T4b">
+                                <rect key="frame" x="20" y="10" width="374" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="clq-GX-AHy">
+                                <rect key="frame" x="0.0" y="71" width="414" height="737"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" textLabel="kzt-2N-9GM" detailTextLabel="zev-ol-U7o" style="IBUITableViewCellStyleValue1" id="Ncd-ft-q1I">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ncd-ft-q1I" id="0vY-0p-5TR">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kzt-2N-9GM">
+                                                    <rect key="frame" x="20" y="15" width="25" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zev-ol-U7o">
+                                                    <rect key="frame" x="361" y="15" width="33" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dFh-wJ-SIM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dFh-wJ-SIM" firstAttribute="trailing" secondItem="2IQ-C8-T4b" secondAttribute="trailing" constant="20" id="2hC-MJ-UR2"/>
+                            <constraint firstItem="dFh-wJ-SIM" firstAttribute="bottom" secondItem="clq-GX-AHy" secondAttribute="bottom" id="Bq8-Xd-EYf"/>
+                            <constraint firstItem="clq-GX-AHy" firstAttribute="leading" secondItem="dFh-wJ-SIM" secondAttribute="leading" id="FC5-FN-OHv"/>
+                            <constraint firstItem="clq-GX-AHy" firstAttribute="top" secondItem="2IQ-C8-T4b" secondAttribute="bottom" constant="10" id="PSu-BZ-eTD"/>
+                            <constraint firstItem="dFh-wJ-SIM" firstAttribute="trailing" secondItem="clq-GX-AHy" secondAttribute="trailing" id="man-zj-no1"/>
+                            <constraint firstItem="2IQ-C8-T4b" firstAttribute="top" secondItem="dFh-wJ-SIM" secondAttribute="top" constant="10" id="naI-Tp-feA"/>
+                            <constraint firstItem="2IQ-C8-T4b" firstAttribute="leading" secondItem="dFh-wJ-SIM" secondAttribute="leading" constant="20" id="sOz-Of-7Fr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="2IQ-C8-T4b" id="StA-ye-Nly"/>
+                        <outlet property="tableView" destination="clq-GX-AHy" id="8ox-Vr-56z"/>
+                        <segue destination="AgL-Tg-dFM" kind="popoverPresentation" identifier="dateView" popoverAnchorView="kOQ-69-6Df" id="gpU-wn-vMo">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HXp-wH-uN9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="214" y="832"/>
         <!--Month View Controller-->
         <scene sceneID="Fuw-7Y-Taf">
             <objects>
@@ -612,7 +689,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Cg9-ip-0Pg"/>
+        <segue reference="gpU-wn-vMo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
