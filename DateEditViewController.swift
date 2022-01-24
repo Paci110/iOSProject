@@ -8,7 +8,30 @@ import Foundation
 import UIKit
 
 
-class DateEditViewController: UIViewController, UITextViewDelegate {
+class DateEditViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+        }
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return reminderData.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return reminderData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("\(reminderData[row])")
+            
+    }
+    
+    
     
 
     @IBOutlet weak var fullDaySwitch : UISwitch?
@@ -16,25 +39,45 @@ class DateEditViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var chooseEndTime : UIDatePicker!
     @IBOutlet weak var titleNote : UITextField!
     @IBOutlet weak var note : UITextView!
-    @IBOutlet weak var reminder : UIDatePicker!
+    @IBOutlet weak var URL : UITextField!
+    @IBOutlet weak var Address : UITextField!
+    @IBOutlet weak var reminder : UIPickerView!
+  
     
-    
-    
+    var reminderData : [String] = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         titleSetting()
         note.text = "Notes and URL"
         note.textColor = .lightGray
         note.delegate = self
+       
+        urlSetting()
+        addressSetting()
         
+        self.reminder.delegate = self
+        self.reminder.dataSource = self
         
+        reminderData = ["wihout" , "5 min before" , "10 min before" , "15 min before" , "30 min before" , "1 hour before" , "2 hours before" , "1 day before" , "2 days before" , "1 week before"]
+        
+    }
     
-        }
-
+    func setReminder() {
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
+    
+    
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if note.text == "Notes and URL" {
             note.text = ""
             note.textColor = .black
+            //note.backgroundColor = .lightGray
         }
     }
     
@@ -42,6 +85,7 @@ class DateEditViewController: UIViewController, UITextViewDelegate {
         if note.text == "" {
             note.text = "Notes and URL"
             note.textColor = .lightGray
+            note.backgroundColor = .white
             
         }
     }
@@ -56,7 +100,18 @@ class DateEditViewController: UIViewController, UITextViewDelegate {
         
     }
     
-   
+    private func urlSetting() {
+        URL.delegate = self
+        URL.returnKeyType = .done
+        URL.autocorrectionType = .no
+        URL.placeholder = "URL"
+    }
+    
+    private func addressSetting() {
+        Address.delegate = self
+        Address.returnKeyType = .done
+        Address.placeholder = "Address"
+    }
     
  
     @IBAction func fullDaySwitch(_ sender: UISwitch) {
@@ -72,7 +127,7 @@ class DateEditViewController: UIViewController, UITextViewDelegate {
                 chooseStartTime.setDate(startdate, animated: true)
                 chooseEndTime.setDate(enddate, animated: true)
                 
-        }
+            }
     }
     
 
@@ -96,13 +151,13 @@ class DateEditViewController: UIViewController, UITextViewDelegate {
 
 }
 
-extension DateEditViewController: UITextFieldDelegate {
+/*extension DateEditViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-}
+        }
+}*/
 
-        
+
 
 
