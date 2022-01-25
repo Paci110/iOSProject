@@ -520,11 +520,14 @@
                         <outlet property="title1" destination="rK6-Vg-mLq" id="sq5-Pz-43F"/>
                         <outlet property="title2" destination="uBT-6i-SQc" id="Tqs-s7-ZhJ"/>
                         <outlet property="title3" destination="bN5-I7-ozS" id="oQv-XR-Dux"/>
+                        <segue destination="AgL-Tg-dFM" kind="popoverPresentation" identifier="dateView" popoverAnchorView="zRs-zd-flB" id="1fy-ro-MXs">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nip-Ff-mEm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3489.8550724637685" y="114.50892857142857"/>
+            <point key="canvasLocation" x="3464" y="106"/>
         </scene>
         <!--Date View-->
         <scene sceneID="NN7-Sn-xfD">
@@ -688,7 +691,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ifS-e1-GEB"/>
+        <segue reference="1fy-ro-MXs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

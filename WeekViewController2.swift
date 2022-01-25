@@ -25,12 +25,21 @@ class WeekViewController2: UIViewController {
     
     var dateEvents: [[DateEvent]]?
     var days: [Date] = []
-    //TODO: currentDate have to be less then 4
+    //TODO: currentDate have to be less then 5
     var currentDate: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         render(size: CGSize(width: view.frame.width, height: view.frame.height))
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipe))
+        swipeRight.direction = .right
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipe))
+        swipeLeft.direction = .left
+
+        self.view.addGestureRecognizer(swipeRight)
+        self.view.addGestureRecognizer(swipeLeft)
+        
         //TODO implement fetch
         var calendar = NSCalendar.current
         calendar.locale = Locale(identifier: "en")
@@ -42,12 +51,6 @@ class WeekViewController2: UIViewController {
                 }
             }
         }
-        calendar.locale = Locale(identifier: "de")
-        let dates = calendar.dateComponents([.weekOfYear, .year], from: Date())
-        print("Test, ", getWeek(cw: dates.weekOfYear!, year: dates.year!))
-        //dateEvents = getWeek(cw: dates.weekOfYear!, year: dates.year!)
-        dateEvents = getWeek(cw: 4, year: 2022)
-        
         fetch()
     }
     
@@ -56,6 +59,10 @@ class WeekViewController2: UIViewController {
             let pos = index + currentDate
             title.text = getDate(FromDate: days[pos], Format: "EE, DD.MM")
         }
+        dateEvents = getWeek(date: days[0], filterFor: nil)
+        for table in tables {
+            table.reloadData()
+        }
     }
     
     func render(size: CGSize) {
@@ -63,16 +70,54 @@ class WeekViewController2: UIViewController {
         for cell in collectionView.visibleCells {
             cell.prepareForReuse()
         }
-        let cellWidth = view.frame.width / 7
+        let cellWidth = size.width / 7
         let cellLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         cellLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         cellLayout.itemSize = CGSize(width: cellWidth, height: cellLayout.itemSize.height)
     }
     
+    func getTableIndex(_ tableView: UITableView) -> Int {
+        for (index, table) in tables.enumerated() {
+            if table == tableView {
+                return index
+            }
+        }
+        return 0
+    }
+    
+    @objc func respondToSwipe(gesture: UIGestureRecognizer)
+    {
+        guard let swipeGesture = gesture as? UISwipeGestureRecognizer else {return}
+
+        switch swipeGesture.direction {
+        case .left:
+            //Jump to the previous day
+            currentDate = min(currentDate + 3, 4)
+            fetch()
+        case .right:
+            //Jump to the next day
+            currentDate = max(currentDate - 3, 0)
+            fetch()
+        default:
+            break
+        }
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         render(size: size)
         viewDidLoad()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //TODO: implement
+        if let (table, indexPath) = sender as? (UITableView, IndexPath) {
+            let tableIndex = getTableIndex(table)
+            let date = dateEvents![tableIndex + currentDate][indexPath.row]
+            if let dest = segue.destination as? DateViewController {
+                dest.testDate = date
+            }
+        }
     }
 }
 
@@ -94,6 +139,14 @@ extension WeekViewController2: UICollectionViewDelegate, UICollectionViewDataSou
         cell.title.text = weekday
         cell.title.textAlignment = .center
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        currentDate = indexPath.row
+        if currentDate > 4 {
+            currentDate = 4
+        }
+        fetch()
     }
 }
 
@@ -121,5 +174,10 @@ extension WeekViewController2: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         1
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        performSegue(withIdentifier: "dateView", sender: (tableView, indexPath))
     }
 }
