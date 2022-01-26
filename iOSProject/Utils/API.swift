@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import CoreVideo
 
 
 func getEvents(start: Date, end: Date, filterFor: [String]? = nil) -> [DateEvent] { //TODO: should probably be filterFor: [Calendar]? with an unwrapper later
@@ -47,7 +48,34 @@ public func getDay(from date: Date, filterFor: [String]? = nil) -> [DateEvent] {
     return getDay(day: Int(dateString[0])!, month: Int(dateString[1])!, year: Int(dateString[2])!)
 }
 
+public func getWeek(date: Date, filterFor: [String]? = nil) -> [[DateEvent]] {
+    var dateEvents: [[DateEvent]] = []
+    var calendar = NSCalendar.current
+    calendar.firstWeekday = 2
+    if let interv = calendar.dateInterval(of: .weekOfYear, for: date) {
+        for i in 0...6 {
+            if let day = calendar.date(byAdding: .day, value: i, to: interv.start) {
+                dateEvents.append(getDay(from: day))
+            }
+        }
+    }
+    return dateEvents
+}
 
+public func getWeek(cw: Int, year: Int, filterFor: [String]? = nil) -> [[DateEvent]] {
+    var calendar = NSCalendar.current
+    calendar.firstWeekday = 2
+    calendar.locale = Locale(identifier: "de")
+    var dateComponents = DateComponents()
+    dateComponents.year = year
+    dateComponents.weekOfYear = cw
+    dateComponents.weekday = 2
+    let day = calendar.date(from: dateComponents)!
+    print("Weekday ", day)
+    return getWeek(date: day, filterFor: filterFor)
+}
+
+/*
 public func getWeek(cw: Int, year: Int, filterFor: [String]? = nil) -> [[DateEvent]] { //TODO: needs value checking
     let firstDay = getDate(fromString: "1/1/\(year) 01:00")//FIXME: 00:00 returns 31st december 23:00 in locale 0000 :/
     let offset: Int = 7 - getWeekDay(date: firstDay).rawValue
@@ -69,6 +97,7 @@ public func getWeek(cw: Int, year: Int, filterFor: [String]? = nil) -> [[DateEve
     
     return events
 }
+ */
 
 public func getMonth(month: Int, year: Int, filterFor: [String]? = nil) -> [[DateEvent]] {
     let firstDay = getDate(fromString: "1/\(month)/\(year) 01:00")//FIXME: as above

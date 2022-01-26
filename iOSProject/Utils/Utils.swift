@@ -91,11 +91,36 @@ public func getWeekDay(date: Date) -> Int {
 */
 
 
-public enum WeekDay:Int {
+public enum WeekDay: Int {
     case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Undefined = -1
+    
+    var description: String {
+        switch self.rawValue {
+        case 0:
+            return "Monday"
+        case 1:
+            return "Tuesday"
+        case 2:
+            return "Wednesday"
+        case 3:
+            return "Thursday"
+        case 4:
+            return "Friday"
+        case 5:
+            return "Saturday"
+        case 6:
+            return "Sunday"
+        default:
+            return "Undefined"
+        }
+    }
 }
 
-public func getWeekDay(date: Date) -> WeekDay{
+public func getWeekDay(weekDay: WeekDay) -> String {
+    return ""
+}
+
+public func getWeekDay(date: Date) -> WeekDay {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "EEEE"
     
