@@ -13,10 +13,10 @@ class WeekViewController2: UIViewController {
     @IBOutlet weak var tableView1: UITableView!
     @IBOutlet weak var tableView2: UITableView!
     @IBOutlet weak var tableView3: UITableView!
-    @IBOutlet weak var title1: UILabel!
-    @IBOutlet weak var title2: UILabel!
-    @IBOutlet weak var title3: UILabel!
-    var titles: [UILabel] {
+    @IBOutlet weak var title1: UIButton!
+    @IBOutlet weak var title2: UIButton!
+    @IBOutlet weak var title3: UIButton!
+    var titles: [UIButton] {
         [title1, title2, title3]
     }
     var tables: [UITableView] {
@@ -36,7 +36,7 @@ class WeekViewController2: UIViewController {
         swipeRight.direction = .right
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipe))
         swipeLeft.direction = .left
-
+        
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeLeft)
         
@@ -57,7 +57,7 @@ class WeekViewController2: UIViewController {
     func fetch() {
         for (index, title) in titles.enumerated() {
             let pos = index + currentDate
-            title.text = getDate(FromDate: days[pos], Format: "EE, DD.MM")
+            title.setTitle(getDate(FromDate: days[pos], Format: "EE, DD.MM"), for: .normal) 
         }
         dateEvents = getWeek(date: days[0], filterFor: nil)
         for table in tables {
@@ -86,10 +86,25 @@ class WeekViewController2: UIViewController {
         return 0
     }
     
+    @IBAction func headerButtonClicked(_ sender: UIButton) {
+        let button = getButtonIndex(sender)
+        let date = days[button+currentDate]
+        performSegue(withIdentifier: "dayView", sender: date)
+    }
+    
+    func getButtonIndex(_ buttonElement: UIButton) -> Int {
+        for (index, button) in titles.enumerated() {
+            if buttonElement == button {
+                return index
+            }
+        }
+        return 0
+    }
+    
     @objc func respondToSwipe(gesture: UIGestureRecognizer)
     {
         guard let swipeGesture = gesture as? UISwipeGestureRecognizer else {return}
-
+        
         switch swipeGesture.direction {
         case .left:
             //Jump to the previous day
@@ -116,7 +131,13 @@ class WeekViewController2: UIViewController {
             let date = dateEvents![tableIndex + currentDate][indexPath.row]
             if let dest = segue.destination as? DateViewController {
                 dest.testDate = date
+                return
             }
+        }
+        if let dest = segue.destination as? DayViewController,
+            let sender = sender as? Date{
+            dest.date = sender
+            return
         }
     }
 }

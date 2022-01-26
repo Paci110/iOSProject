@@ -355,15 +355,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K4E-Vq-ubM">
                                         <rect key="frame" x="0.0" y="0.0" width="138" height="724"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK6-Vg-mLq">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4f-Qz-Hph">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="qNw-He-vuG"/>
+                                                    <constraint firstAttribute="height" constant="30" id="fss-X2-GUV"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Title1"/>
+                                                <connections>
+                                                    <action selector="headerButtonClicked:" destination="AYi-1U-yZW" eventType="touchUpInside" id="Sty-gf-VIk"/>
+                                                </connections>
+                                            </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bHR-Ne-qgX">
                                                 <rect key="frame" x="0.0" y="30" width="138" height="694"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -403,15 +405,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="L0F-Do-QKA">
                                         <rect key="frame" x="138" y="0.0" width="138" height="724"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBT-6i-SQc">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Etx-xf-cQC">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="v7q-2d-rMa"/>
+                                                    <constraint firstAttribute="height" constant="30" id="ph4-wh-hLf"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Title2"/>
+                                                <connections>
+                                                    <action selector="headerButtonClicked:" destination="AYi-1U-yZW" eventType="touchUpInside" id="4LI-Oz-b4O"/>
+                                                </connections>
+                                            </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PP4-yc-BlM">
                                                 <rect key="frame" x="0.0" y="30" width="138" height="694"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -451,15 +455,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EU0-bL-gBH">
                                         <rect key="frame" x="276" y="0.0" width="138" height="724"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bN5-I7-ozS">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y43-Lc-z3k">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="dYe-Gr-Qb4"/>
+                                                    <constraint firstAttribute="height" constant="30" id="N4w-93-1ER"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Title3"/>
+                                                <connections>
+                                                    <action selector="headerButtonClicked:" destination="AYi-1U-yZW" eventType="touchUpInside" id="Jvk-l1-n8m"/>
+                                                </connections>
+                                            </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oWA-bm-6sC">
                                                 <rect key="frame" x="0.0" y="30" width="138" height="694"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -517,12 +523,13 @@
                         <outlet property="tableView1" destination="bHR-Ne-qgX" id="xPM-ly-0PB"/>
                         <outlet property="tableView2" destination="PP4-yc-BlM" id="iot-ud-iYF"/>
                         <outlet property="tableView3" destination="oWA-bm-6sC" id="n1K-ew-GA9"/>
-                        <outlet property="title1" destination="rK6-Vg-mLq" id="sq5-Pz-43F"/>
-                        <outlet property="title2" destination="uBT-6i-SQc" id="Tqs-s7-ZhJ"/>
-                        <outlet property="title3" destination="bN5-I7-ozS" id="oQv-XR-Dux"/>
+                        <outlet property="title1" destination="K4f-Qz-Hph" id="fBo-Sk-t6V"/>
+                        <outlet property="title2" destination="Etx-xf-cQC" id="haQ-CQ-dNq"/>
+                        <outlet property="title3" destination="Y43-Lc-z3k" id="v4Z-lm-tRU"/>
                         <segue destination="AgL-Tg-dFM" kind="popoverPresentation" identifier="dateView" popoverAnchorView="zRs-zd-flB" id="1fy-ro-MXs">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
+                        <segue destination="Z2h-EA-0RW" kind="show" identifier="dayView" id="rOO-e5-OpA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nip-Ff-mEm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -692,8 +699,12 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="1fy-ro-MXs"/>
+        <segue reference="rOO-e5-OpA"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
