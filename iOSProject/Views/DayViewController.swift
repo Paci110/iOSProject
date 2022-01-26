@@ -102,8 +102,8 @@ class DayViewController: UITableViewController {
             let url = URL(string: "www.rwth-aachen.de")
             let address = "Templergraben 57, 52062 Aachen"
             let eventSeries = EventSeries(value: 10, timeInterval: TimeInterval.Day)
-            let reminder = Date(timeIntervalSinceNow: -300000)
-            _ = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: false, start: start, end: end, shouldRemind: false, calendar: calendar, notes: note, series: eventSeries, reminder: reminder, url: url, address: address)
+            let reminder = Date(timeIntervalSinceNow: 10)
+            _ = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: false, start: start, end: end, shouldRemind: true, calendar: calendar, notes: note, series: eventSeries, reminder: reminder, url: url, address: address)
             print("Save data")
             saveData()
             let dat = getData(entityName: "DateEvent")

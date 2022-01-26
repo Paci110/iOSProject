@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 import MapKit
-
+import UserNotifications
 
 public class DateEvent: NSManagedObject {
     
@@ -42,10 +42,43 @@ public class DateEvent: NSManagedObject {
         self.title = title
         self.notes = notes
         self.shouldRemind = remind
+        self.reminder = reminder
+        if shouldRemind, let reminder = reminder {
+            let notiCenter = UNUserNotificationCenter.current()
+            notiCenter.requestAuthorization(options: [.alert]) { (auth, error) in
+                guard auth else {
+                    self.shouldRemind = false
+                    let alert = UIAlertController(title: "Notifications not allowed", message: "Please enable notfications in the settings. Reminder will be deactivated for this event.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    //FIXME: display user warning in displayed view
+                    /*
+                    let viewCon = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController
+                    viewCon?.present(alert, animated: true, completion: nil)
+                    */
+                    return
+                }
+                let content = UNMutableNotificationContent()
+                content.title = title
+                content.body = notes ?? ""
+                
+                let calendar = NSCalendar.current
+                let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: reminder)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                
+                let id = UUID().uuidString
+                let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+                
+                let notiCenter = UNUserNotificationCenter.current()
+                notiCenter.add(request) { error in
+                    if let error = error {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+            }
+        }
         self.url = url
         self.calendar = calendar
         self.series = series
-        self.reminder = reminder
         
         self.fullDayEvent = fullDayEvent
         self.start = start
