@@ -126,7 +126,7 @@ class WeekViewController: UIViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         render(size: size)
-        viewDidLoad()
+        super.viewDidLoad()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -203,7 +203,6 @@ extension WeekViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
         performSegue(withIdentifier: "dateView", sender: (tableView, indexPath))
     }
 }
