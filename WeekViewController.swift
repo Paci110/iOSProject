@@ -71,7 +71,6 @@ class WeekViewController: UIViewController {
     }
     
     func render(size: CGSize) {
-        //TODO: How to fit the size if device is rotating
         for cell in collectionView.visibleCells {
             cell.prepareForReuse()
         }
@@ -130,7 +129,6 @@ class WeekViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //TODO: implement
         if let (table, indexPath) = sender as? (UITableView, IndexPath) {
             let tableIndex = getTableIndex(table)
             let date = dateEvents![tableIndex + currentDate][indexPath.row]
