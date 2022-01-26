@@ -1,5 +1,5 @@
 //
-//  WeekViewController2.swift
+//  WeekViewController.swift
 //  iOSProject
 //
 //  Created by Pascal Köhler on 23.01.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeekViewController2: UIViewController {
+class WeekViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView1: UITableView!
@@ -25,8 +25,20 @@ class WeekViewController2: UIViewController {
     
     var dateEvents: [[DateEvent]]?
     var days: [Date] = []
-    //TODO: currentDate have to be less then 5
     var currentDate: Int = 0
+    
+    func setDays(dateInWeek date: Date) {
+        var calendar = NSCalendar.current
+        calendar.locale = Locale(identifier: "en")
+        calendar.firstWeekday = 2
+        if let interv = calendar.dateInterval(of: .weekOfYear, for: Date()) {
+            for i in 0...6 {
+                if let day = calendar.date(byAdding: .day, value: i, to: interv.start) {
+                    days.append(day)
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +52,10 @@ class WeekViewController2: UIViewController {
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeLeft)
         
-        //TODO implement fetch
-        var calendar = NSCalendar.current
-        calendar.locale = Locale(identifier: "en")
-        calendar.firstWeekday = 2
-        if let interv = calendar.dateInterval(of: .weekOfYear, for: Date()) {
-            for i in 0...6 {
-                if let day = calendar.date(byAdding: .day, value: i, to: interv.start) {
-                    days.append(day)
-                }
-            }
+        if days.count == 0 {
+            setDays(dateInWeek: Date())
         }
+        
         fetch()
     }
     
@@ -143,7 +148,7 @@ class WeekViewController2: UIViewController {
 }
 
 
-extension WeekViewController2: UICollectionViewDelegate, UICollectionViewDataSource {
+extension WeekViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         7
     }
@@ -171,7 +176,7 @@ extension WeekViewController2: UICollectionViewDelegate, UICollectionViewDataSou
     }
 }
 
-extension WeekViewController2: UITableViewDelegate, UITableViewDataSource {
+extension WeekViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         for (index, selectedTable) in tables.enumerated() {

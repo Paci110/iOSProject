@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         }
         
         if let dest = (segue.destination) as? WeekViewController {
-            dest.date = Date()
+            dest.setDays(dateInWeek: Date())
         }
     }
 

@@ -202,12 +202,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trl-TB-htD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1540.5797101449277" y="105.80357142857143"/>
+            <point key="canvasLocation" x="2184" y="106"/>
         </scene>
-        <!--Week View Controller2-->
+        <!--Week View Controller-->
         <scene sceneID="eDb-XZ-FzX">
             <objects>
-                <viewController id="AYi-1U-yZW" customClass="WeekViewController2" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AYi-1U-yZW" customClass="WeekViewController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zRs-zd-flB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -441,7 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nip-Ff-mEm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3464" y="106"/>
+            <point key="canvasLocation" x="1306" y="-279"/>
         </scene>
         <!--Date View-->
         <scene sceneID="NN7-Sn-xfD">
@@ -582,7 +582,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xTn-Gx-4oE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013" y="833"/>
+            <point key="canvasLocation" x="1307" y="837"/>
         </scene>
         <!--Item-->
         <scene sceneID="Qlu-0h-BWR">
@@ -605,7 +605,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Cg9-ip-0Pg"/>
+        <segue reference="1fy-ro-MXs"/>
         <segue reference="rOO-e5-OpA"/>
     </inferredMetricsTieBreakers>
     <resources>
