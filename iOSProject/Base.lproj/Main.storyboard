@@ -70,6 +70,17 @@
                                     <segue destination="GNJ-Vf-ueX" kind="show" id="qF5-jx-twF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNm-ib-CBg">
+                                <rect key="frame" x="63" y="742" width="288" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Week View">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="AYi-1U-yZW" kind="show" id="vKd-1Y-23A"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -78,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-546" y="896"/>
+            <point key="canvasLocation" x="-546.37681159420299" y="895.98214285714278"/>
         </scene>
         <!--Day View Controller-->
         <scene sceneID="8vH-9h-Qb1">
@@ -118,7 +129,7 @@
                         </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DateEventCell" rowHeight="88" id="x4W-D8-LVu" customClass="DateEventCell" customModule="iOSProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="93.5" width="414" height="88"/>
+                                <rect key="frame" x="0.0" y="148" width="414" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x4W-D8-LVu" id="lXY-Fp-MF9">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
@@ -1072,6 +1083,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ft1-Sz-8Xe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="744"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="OSv-A3-1ar"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
@@ -1082,12 +1094,11 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ifS-e1-GEB"/>
-        <segue reference="1fy-ro-MXs"/>
-        <segue reference="rOO-e5-OpA"/>
+        <segue reference="Kwb-cb-7Ti"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="chevron.left.circle.fill" catalog="system" width="32" height="32"/>
+        <image name="chevron.left.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.right.circle.fill" catalog="system" width="128" height="121"/>
         <image name="tag.fill" catalog="system" width="128" height="119"/>
         <systemColor name="labelColor">
