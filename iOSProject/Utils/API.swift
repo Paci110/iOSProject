@@ -12,18 +12,7 @@ import CoreVideo
 
 func getEvents(start: Date, end: Date, filterFor: [String]? = nil) -> [DateEvent] { //TODO: should probably be filterFor: [Calendar]? with an unwrapper later
     let context = getContext()
-    
-    let calendarsFetch = NSFetchRequest<Calendar>(entityName: "Calendar")
-    if(filterFor != nil) {
-        calendarsFetch.predicate = NSPredicate(format: "name IN %@", argumentArray: [filterFor!])
-    }
-    
-    var calendars: [Calendar]
-    do {
-        calendars = try context.fetch(calendarsFetch)
-    } catch {
-        fatalError("Calendars couldn't be fetched: \(error)")
-    }
+    let calendars = getCalendars(filterFor: filterFor)
     
     let eventsFetch = NSFetchRequest<DateEvent>(entityName: "DateEvent")
     if(filterFor != nil) {
@@ -136,6 +125,25 @@ public func getYear(year: Int, filterFor: [String]? = nil) -> [[[DateEvent]]] {
     }
     
     return events
+}
+
+
+public func getCalendars(filterFor: [String]? = nil) -> [Calendar] {
+    let context = getContext()
+    
+    let calendarsFetch = NSFetchRequest<Calendar>(entityName: "Calendar")
+    if(filterFor != nil) {
+        calendarsFetch.predicate = NSPredicate(format: "name IN %@", argumentArray: [filterFor!])
+    }
+    
+    var calendars: [Calendar]
+    do {
+        calendars = try context.fetch(calendarsFetch)
+    } catch {
+        fatalError("Calendars couldn't be fetched: \(error)")
+    }
+    
+    return calendars
 }
 
 //TODO: Upload calendar implementation files

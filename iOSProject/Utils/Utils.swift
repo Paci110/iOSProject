@@ -39,6 +39,7 @@ func saveData() {
     let context = getContext()
     do {
         try context.save()
+        
     } catch {
         //TODO: show message box with error
         print("Error in save data \(error)")
