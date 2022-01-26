@@ -204,99 +204,6 @@
             </objects>
             <point key="canvasLocation" x="1540.5797101449277" y="105.80357142857143"/>
         </scene>
-        <!--Week View Controller-->
-        <scene sceneID="3Ek-a4-cQt">
-            <objects>
-                <tableViewController id="fOF-ch-JeL" customClass="WeekViewController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="mj5-F8-89L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Hpi-L3-j6o">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hpi-L3-j6o" id="7s8-Xw-CVn">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Y1-8S-UPS">
-                                            <rect key="frame" x="0.0" y="-42" width="414" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dH6-aP-DDv">
-                                                <size key="itemSize" width="128" height="128"/>
-                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            </collectionViewFlowLayout>
-                                            <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="hH4-Iv-Xsn" customClass="HeaderWeekCell" customModule="iOSProject" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9sg-OG-9G8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eAI-bh-3eJ">
-                                                                <rect key="frame" x="-143" y="-0.5" width="414" height="128"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </collectionViewCellContentView>
-                                                    <connections>
-                                                        <outlet property="title" destination="eAI-bh-3eJ" id="ANu-Ex-Sft"/>
-                                                    </connections>
-                                                </collectionViewCell>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="event" id="a6G-6n-FCy" customClass="EventWeekCell" customModule="iOSProject" customModuleProvider="target">
-                                                    <rect key="frame" x="138" y="0.0" width="128" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="INf-cO-Xzy">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rn5-Ml-9nE">
-                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="rn5-Ml-9nE" secondAttribute="bottom" id="QF2-R1-dqQ"/>
-                                                            <constraint firstItem="rn5-Ml-9nE" firstAttribute="leading" secondItem="INf-cO-Xzy" secondAttribute="leading" id="RRk-MV-fnO"/>
-                                                            <constraint firstItem="rn5-Ml-9nE" firstAttribute="top" secondItem="INf-cO-Xzy" secondAttribute="top" id="kOz-6D-And"/>
-                                                            <constraint firstAttribute="trailing" secondItem="rn5-Ml-9nE" secondAttribute="trailing" id="tfa-od-psp"/>
-                                                        </constraints>
-                                                    </collectionViewCellContentView>
-                                                    <connections>
-                                                        <outlet property="title" destination="rn5-Ml-9nE" id="8qK-AA-TkM"/>
-                                                    </connections>
-                                                </collectionViewCell>
-                                            </cells>
-                                            <connections>
-                                                <outlet property="dataSource" destination="fOF-ch-JeL" id="gfV-t5-8Bb"/>
-                                                <outlet property="delegate" destination="fOF-ch-JeL" id="8vo-i7-e01"/>
-                                            </connections>
-                                        </collectionView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="fOF-ch-JeL" id="SaF-Yc-RTU"/>
-                            <outlet property="delegate" destination="fOF-ch-JeL" id="PKI-PK-dNz"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="a3G-F2-2d2"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RsY-iO-aPu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2580" y="106"/>
-        </scene>
         <!--Week View Controller2-->
         <scene sceneID="eDb-XZ-FzX">
             <objects>
@@ -698,7 +605,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1fy-ro-MXs"/>
+        <segue reference="Cg9-ip-0Pg"/>
         <segue reference="rOO-e5-OpA"/>
     </inferredMetricsTieBreakers>
     <resources>
