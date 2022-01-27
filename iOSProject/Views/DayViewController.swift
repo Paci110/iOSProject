@@ -11,22 +11,10 @@ import MapKit
 class DayViewController: UITableViewController {
     
     @IBOutlet weak var navigationItems: UINavigationItem!
-    
-    
-    
-    
     @IBOutlet weak var dateLabel: UILabel!
-    
     
     var dateEvents: [DateEvent]?
     var date: Date?
-    
-    /*
-    //Priorises this view as responder
-    override canBecomeFirstResponder {
-        get {return true}
-    }
-    */
     
     @IBAction func todayButtonClicked(_ sender: UIBarButtonItem) {
         jumpToToday()
@@ -45,28 +33,12 @@ class DayViewController: UITableViewController {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipe))
         swipeLeft.direction = .left
         
-        
-        
-        
-        
-        
-        
-        
         // add Pinch
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
+        
         self.view.addGestureRecognizer(pinchGesture)
-        
-        
-        
-        
-        
-        
-        
-
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeLeft)
-        
-        
         
         reloadData()
     }
@@ -78,11 +50,9 @@ class DayViewController: UITableViewController {
         
         //navigationItems.title = getDate(FromDate: date!, Format: "EE, DD.MM.YYYY")
         
-        
-        dateLabel.text = getDate(FromDate: date!, Format: "EE, DD.MM.YYYY")
-        
-        
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            self.dateLabel.text = getDate(FromDate: self.date!, Format: "EE, DD.MM.YYYY")
             self.tableView.reloadData()
         }
     }
@@ -103,7 +73,7 @@ class DayViewController: UITableViewController {
             let address = "Templergraben 57, 52062 Aachen"
             let eventSeries = EventSeries(value: 10, timeInterval: TimeInterval.Day)
             let reminder = Date(timeIntervalSinceNow: 10)
-            _ = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: false, start: start, end: end, shouldRemind: true, calendar: calendar, notes: note, series: eventSeries, reminder: reminder, url: url, address: address)
+            _ = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: false, start: start, end: end, shouldRemind: true, calendar: calendar, notes: note, series: eventSeries, reminder: reminder, url: url, address: address, locationHanlder: self.locationHandler, notificationHanlder: self.notificationHandler)
             print("Save data")
             saveData()
             let dat = getData(entityName: "DateEvent")
@@ -111,6 +81,35 @@ class DayViewController: UITableViewController {
             self.reloadData()
         })
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func locationHandler(success: Bool, error: Error?) {
+        if let error = error {
+            print(error)
+        }
+        guard success else {
+            let alert = UIAlertController(title: "Location not found", message: "Location could not be found or an error occured", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
+            return
+        }
+        reloadData()
+    }
+    
+    func notificationHandler(success: Bool, error: Error?) {
+        if let error = error {
+            print(error)
+        }
+        guard success else {
+            let alert = UIAlertController(title: "Notifications not allowed", message: "Please enable notfications in the settings. Reminder will be deactivated for this event.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
+            return
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -180,17 +179,6 @@ class DayViewController: UITableViewController {
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     @objc func respondToPinch(gesture: UIGestureRecognizer){
         guard let pinchGesture = gesture as? UIPinchGestureRecognizer else {return}
         //view.backgroundColor = .green
@@ -205,40 +193,20 @@ class DayViewController: UITableViewController {
             return
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     private func jumpToToday()
     {
         self.date = Date()
         reloadData()
     }
-    
-    
-
-    
-    
-    
+   
     @IBAction func nextDay(_ sender: Any) {
         self.date = Foundation.Calendar.current.date(byAdding: .day, value: 1, to: self.date!)
         reloadData()
     }
-    
-    
-    
+  
     @IBAction func prevDay(_ sender: Any) {
         self.date = Foundation.Calendar.current.date(byAdding: .day, value: -1, to: self.date!)
         reloadData()
     }
-    
-    
 }

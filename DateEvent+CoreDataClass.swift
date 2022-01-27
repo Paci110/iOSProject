@@ -15,7 +15,7 @@ public class DateEvent: NSManagedObject {
     
     ///Creates a new dateEvent with the given arguements. Optional arguements that are not specified are set to nil.
     ///Checks if beginning and ending date are set correctly.
-    convenience init(title: String, fullDayEvent: Bool, start: Date, end: Date, shouldRemind remind: Bool, calendar: Calendar, notes: String? = nil, series: EventSeries? = nil, reminder: Date? = nil, url: URL? = nil, location: CLLocation? = nil) {
+    convenience init(title: String, fullDayEvent: Bool, start: Date, end: Date, shouldRemind remind: Bool, calendar: Calendar, notes: String? = nil, series: EventSeries? = nil, reminder: Date? = nil, url: URL? = nil, location: CLLocation? = nil, locationHanlder: ((Bool, Error?) -> Void)?, notificationHanlder: ((Bool, Error?) -> Void)?) {
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.init(context: context)
@@ -24,6 +24,11 @@ public class DateEvent: NSManagedObject {
         if let location = location {
             CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
                 if let error = error {
+                    guard let locationHanlder = locationHanlder else {
+                        return
+                    }
+
+                    locationHanlder(false, error)
                     print(error)
                     return
                 }
@@ -31,11 +36,21 @@ public class DateEvent: NSManagedObject {
                     let placemarks = placemarks,
                     let first = placemarks.first
                 else {
+                    guard let locationHanlder = locationHanlder else {
+                        return
+                    }
+
+                    locationHanlder(false, nil)
                     print("No such address found")
                     return
                 }
                 self.place = first
                 saveData()
+                guard let locationHanlder = locationHanlder else {
+                    return
+                }
+
+                locationHanlder(true, nil)
             }
         }
         
@@ -46,8 +61,21 @@ public class DateEvent: NSManagedObject {
         if shouldRemind, let reminder = reminder {
             let notiCenter = UNUserNotificationCenter.current()
             notiCenter.requestAuthorization(options: [.alert]) { (auth, error) in
+                if let error = error {
+                    guard let notificationHanlder = notificationHanlder else {
+                        return
+                    }
+                    notificationHanlder(false, error)
+                    return
+                }
                 guard auth else {
                     self.shouldRemind = false
+                    guard let notificationHanlder = notificationHanlder else {
+                        return
+                    }
+
+                    notificationHanlder(false, nil)
+                    print("Not authorized")
                     let alert = UIAlertController(title: "Notifications not allowed", message: "Please enable notfications in the settings. Reminder will be deactivated for this event.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                     //FIXME: display user warning in displayed view
@@ -55,6 +83,7 @@ public class DateEvent: NSManagedObject {
                     let viewCon = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController
                     viewCon?.present(alert, animated: true, completion: nil)
                     */
+                    DayViewController().present(alert, animated: true, completion: nil)
                     return
                 }
                 let content = UNMutableNotificationContent()
@@ -74,6 +103,11 @@ public class DateEvent: NSManagedObject {
                         fatalError(error.localizedDescription)
                     }
                 }
+                guard let notificationHanlder = notificationHanlder else {
+                    return
+                }
+
+                notificationHanlder(true, nil)
             }
         }
         self.url = url
@@ -108,11 +142,16 @@ public class DateEvent: NSManagedObject {
     }
     
     ///Initialzator if user uses address for location
-    convenience init(title: String, fullDayEvent: Bool, start: Date, end: Date, shouldRemind: Bool, calendar: Calendar, notes: String? = nil, series: EventSeries? = nil, reminder: Date? = nil, url: URL? = nil, address: String) {
+    convenience init(title: String, fullDayEvent: Bool, start: Date, end: Date, shouldRemind: Bool, calendar: Calendar, notes: String? = nil, series: EventSeries? = nil, reminder: Date? = nil, url: URL? = nil, address: String, locationHanlder: ((Bool, Error?) -> Void)?, notificationHanlder: ((Bool, Error?) -> Void)?) {
         //TODO: update current view after lcoation is fetshed?
-        self.init(title: title, fullDayEvent: fullDayEvent, start: start, end: end, shouldRemind: shouldRemind, calendar: calendar, notes: notes, series: series, reminder: reminder, url: url)
+        self.init(title: title, fullDayEvent: fullDayEvent, start: start, end: end, shouldRemind: shouldRemind, calendar: calendar, notes: notes, series: series, reminder: reminder, url: url, locationHanlder: nil, notificationHanlder: notificationHanlder)
         CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
             if let error = error {
+                guard let locationHanlder = locationHanlder else {
+                    return
+                }
+
+                locationHanlder(false, error)
                 print(error)
                 return
             }
@@ -120,11 +159,23 @@ public class DateEvent: NSManagedObject {
                 let placemarks = placemarks,
                 let first = placemarks.first
             else {
+                guard let locationHanlder = locationHanlder else {
+                    return
+                }
+                
+                locationHanlder(false, nil)
                 print("No such address found")
                 return
             }
+        
             self.place = first
             saveData()
+            
+            guard let locationHanlder = locationHanlder else {
+                return
+            }
+
+            locationHanlder(true, nil)
         }
     }
     
