@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        EKUtils().loadEKEvents(completionHandler: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

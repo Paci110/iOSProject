@@ -34,6 +34,7 @@
 		79FDEEA22795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEEA02795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift */; };
 		A1043385279ECC6100E11B5F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1043384279ECC6100E11B5F /* CalendarViewController.swift */; };
 		A1043387279EFF8E00E11B5F /* CalendarEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1043386279EFF8E00E11B5F /* CalendarEditViewController.swift */; };
+		A104338927A2E1CF00E11B5F /* EKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104338827A2E1CF00E11B5F /* EKUtils.swift */; };
 		A190A91A279C12B700DA2D43 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190A919279C12B700DA2D43 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		79FDEEA02795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventSeries+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		A1043384279ECC6100E11B5F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A1043386279EFF8E00E11B5F /* CalendarEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEditViewController.swift; sourceTree = "<group>"; };
+		A104338827A2E1CF00E11B5F /* EKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKUtils.swift; sourceTree = "<group>"; };
 		A190A919279C12B700DA2D43 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,6 +155,7 @@
 				79C2BFCF2779EFFC009A104A /* ViewClasses.swift */,
 				799C1D4527831B0600AC954F /* Utils.swift */,
 				3047C58D2795BD1F00DE5EC4 /* API.swift */,
+				A104338827A2E1CF00E11B5F /* EKUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				79AD23F02791CD2F00DC21F5 /* DateEvent+CoreDataClass.swift in Sources */,
 				7990F5D3276F91BD0066EDC6 /* DateViewController.swift in Sources */,
 				55F23CE1279B81F900E4F163 /* CHelp.swift in Sources */,
+				A104338927A2E1CF00E11B5F /* EKUtils.swift in Sources */,
 				7983AEF8276B7E0C00FC4301 /* ViewController.swift in Sources */,
 				55F23CE7279B8B4D00E4F163 /* MonthForYearViewController.swift in Sources */,
 				55F23CE5279B8A0E00E4F163 /* YearViewController.swift in Sources */,
