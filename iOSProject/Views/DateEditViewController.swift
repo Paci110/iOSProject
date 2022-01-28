@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class DateEditViewController: UIViewController {
     
@@ -25,6 +26,8 @@ class DateEditViewController: UIViewController {
     var dateEvent: DateEvent?
     var calendars: [Calendar]?
     
+    private var subscriber: AnyCancellable?
+    
     @IBAction func saveButton(_ sender: UIButton) {
         saveData()
         //TODO: go back to previous vc
@@ -39,6 +42,8 @@ class DateEditViewController: UIViewController {
             self.calendarPicker.reloadAllComponents()
         }
     }
+    
+    //TODO: change dates to equal format
     
     override func viewDidLoad() {
         DispatchQueue.main.async {
@@ -106,13 +111,9 @@ extension DateEditViewController: UIPickerViewDelegate {
             performSegue(withIdentifier: "createCalendar", sender: cal)
             calendars!.append(cal)
             self.refresh()
-            //TODO: Refresh doesnt work
-            _ = cal.publisher(for: \.title).sink() {value in
-                print(value)
+            subscriber = cal.publisher(for: \.title).sink() { _ in
                 DispatchQueue.main.async {
                     pickerView.reloadAllComponents()
-                    pickerView.selectRow(0, inComponent: component, animated: true)
-                    pickerView.selectRow(row, inComponent: component, animated: true)
                 }
             }
         }

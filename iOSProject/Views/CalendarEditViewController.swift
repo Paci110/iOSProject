@@ -27,9 +27,8 @@ class CalendarEditViewController: UIViewController {
         picker?.selectedColor = calendar!.color
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         calendar?.title = nameTextField.text ?? calendar!.title
         calendar?.color = picker?.selectedColor ?? calendar!.color
-        calendarView?.reloadData() // Cheesy workaround
     }
 }
