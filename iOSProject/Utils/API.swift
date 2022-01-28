@@ -133,7 +133,7 @@ public func getCalendars(filterFor: [String]? = nil) -> [Calendar] {
     
     let calendarsFetch = NSFetchRequest<Calendar>(entityName: "Calendar")
     if(filterFor != nil) {
-        calendarsFetch.predicate = NSPredicate(format: "name IN %@", argumentArray: [filterFor!])
+        calendarsFetch.predicate = NSPredicate(format: "title IN %@", argumentArray: [filterFor!])
     }
     
     var calendars: [Calendar]

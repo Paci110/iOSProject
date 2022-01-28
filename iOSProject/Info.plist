@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>To synchronize with the cloud, this app needs access to your calendar.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>To synchronize with the cloud, this app needs access to you reminders.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>To snychronize with the cloud, access to you contacts may be required.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
