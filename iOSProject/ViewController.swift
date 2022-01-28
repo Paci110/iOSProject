@@ -8,8 +8,6 @@
 import UIKit
 import MapKit
 
-let col = UIColor(red: 1, green: 165/255, blue: 0, alpha: 1)
-
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -37,9 +35,5 @@ class ViewController: UIViewController {
         if let dest = (segue.destination) as? WeekViewController {
             dest.setDays(dateInWeek: Date())
         }
-    }
-    
-    @IBAction func colorUpdate(_ sender: UIButton) {
-        UIView.appearance().tintColor = col
     }
 }

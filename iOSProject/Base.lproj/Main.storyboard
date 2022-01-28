@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="TEw-kW-35N">
             <objects>
-                <viewController id="noq-66-vAd" sceneMemberID="viewController">
+                <viewController id="noq-66-vAd" customClass="SettingsViewController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MDq-Mp-OzD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="colorUpdate:" destination="ILF-rA-RWL" eventType="touchUpInside" id="bg6-4D-qA5"/>
+                                    <action selector="colorUpdate:" destination="noq-66-vAd" eventType="touchUpInside" id="o5F-vb-xFW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -35,7 +35,6 @@
                     <navigationItem key="navigationItem" id="ZL7-SI-Anv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnF-xQ-hwD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="ILF-rA-RWL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1961" y="836"/>
         </scene>
@@ -120,8 +119,7 @@
                                     <color key="baseBackgroundColor" name="AccentColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="colorUpdate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WA7-IA-EEk"/>
-                                    <segue destination="noq-66-vAd" kind="show" id="DOL-iO-THL"/>
+                                    <segue destination="noq-66-vAd" kind="show" id="vWU-Po-g4o"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -172,7 +170,7 @@
                         </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DateEventCell" rowHeight="88" id="x4W-D8-LVu" customClass="DateEventCell" customModule="iOSProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="93.5" width="414" height="88"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x4W-D8-LVu" id="lXY-Fp-MF9">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>

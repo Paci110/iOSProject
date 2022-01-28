@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301E24C327A414D700B5895B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301E24C227A414D700B5895B /* SettingsViewController.swift */; };
 		3047C58E2795BD1F00DE5EC4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3047C58D2795BD1F00DE5EC4 /* API.swift */; };
 		55F23CDD279B815E00E4F163 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CDC279B815E00E4F163 /* MonthViewController.swift */; };
 		55F23CDF279B81B600E4F163 /* CCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CDE279B81B600E4F163 /* CCell.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		301E24C227A414D700B5895B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = iOSProject/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
 		3047C58D2795BD1F00DE5EC4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		55F23CDC279B815E00E4F163 /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		55F23CDE279B81B600E4F163 /* CCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCell.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		7990F5CF276F6FD60066EDC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				301E24C227A414D700B5895B /* SettingsViewController.swift */,
 				79E83785279D73DA00258682 /* WeekViewController.swift */,
 				7990F5D0276F70130066EDC6 /* DayViewController.swift */,
 				55F23CE4279B8A0E00E4F163 /* YearViewController.swift */,
@@ -272,6 +275,7 @@
 				55F23CE9279B8D7D00E4F163 /* DateCell.swift in Sources */,
 				79AD23EF2791CD2F00DC21F5 /* Calendar+CoreDataProperties.swift in Sources */,
 				79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */,
+				301E24C327A414D700B5895B /* SettingsViewController.swift in Sources */,
 				799C1D4627831B0600AC954F /* Utils.swift in Sources */,
 				55F23CDD279B815E00E4F163 /* MonthViewController.swift in Sources */,
 			);
