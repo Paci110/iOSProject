@@ -11,8 +11,7 @@ class FeatureController: UIViewController {
 
     @IBOutlet weak var themes : UIPickerView!
     
-    //edit this!!
-    let something = ["1","2"]
+    let themesArray = ["-----","Default","Mint","Scarlet","Plum"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,32 +20,24 @@ class FeatureController: UIViewController {
         self.themes.dataSource = self
         
         
-        
-       
-        
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension FeatureController : UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return something[row]
+        return themesArray[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let choose = "\(something[row])"
-        print (choose)
+        let choice = "\(themesArray[row])"
+        switch(choice){
+            case "Default": col = UIColor.systemBlue
+            case "Mint": col = UIColor(red: 52.0/255, green: 238.0/255, blue: 219.0/255, alpha: 1)
+            case "Scarlet": col = UIColor.systemRed
+            case "Plum": col = UIColor(red: 160.0/255, green: 102.0/255, blue: 227.0/255, alpha: 1)
+            default: ()
+        }
+        UIView.appearance().tintColor = col
+        view.window?.tintColor = col
     }
 }
 
@@ -56,6 +47,6 @@ extension FeatureController : UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return something.count
+        return themesArray.count
     }
 }
