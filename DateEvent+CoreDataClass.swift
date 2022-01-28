@@ -44,7 +44,7 @@ public class DateEvent: NSManagedObject {
                     return
                 }
                 self.place = first
-                saveData()
+                saveData(completionHanlder: nil)
                 guard let locationHanlder = locationHanlder else {
                     return
                 }
@@ -168,7 +168,7 @@ public class DateEvent: NSManagedObject {
             }
         
             self.place = first
-            saveData()
+            saveData(completionHanlder: nil)
             
             guard let locationHanlder = locationHanlder else {
                 return

@@ -21,7 +21,11 @@ class CalendarViewController: UIViewController {
     var colorCancellable: AnyCancellable?
     
     @IBAction func saveButton(_ sender: Any) {
-        saveData()
+        saveData() {
+            let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "calendarEdit", sender: Calendar(title: "New Calendar", color: UIColor.darkGray))
@@ -112,7 +116,11 @@ extension CalendarViewController: UITableViewDelegate {
             if((calendar.dateEvents?.count ?? 0) > 0) {
                 askToDelete(calendar, completionHandler)
             }else {
-                deleteData(dataToDelete: calendar)
+                deleteData(dataToDelete: calendar) {
+                    let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 
                 self.reloadData()
             }
@@ -125,10 +133,18 @@ extension CalendarViewController: UITableViewDelegate {
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive) {
             _ in
             for event in calendar.dateEvents! {
-                deleteData(dataToDelete: event as! NSManagedObject)
+                deleteData(dataToDelete: event as! NSManagedObject) {
+                    let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
             
-            deleteData(dataToDelete: calendar)
+            deleteData(dataToDelete: calendar) {
+                let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
             
             self.reloadData()
         })
