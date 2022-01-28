@@ -10,6 +10,36 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="TEw-kW-35N">
+            <objects>
+                <viewController id="noq-66-vAd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MDq-Mp-OzD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jm9-5G-hRQ">
+                                <rect key="frame" x="87" y="395" width="241" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Change Color">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="colorUpdate:" destination="ILF-rA-RWL" eventType="touchUpInside" id="bg6-4D-qA5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5JB-aJ-xxb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZL7-SI-Anv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fnF-xQ-hwD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ILF-rA-RWL" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-1961" y="836"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -79,6 +109,19 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="AYi-1U-yZW" kind="show" id="vKd-1Y-23A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Crh-sx-oNO">
+                                <rect key="frame" x="79" y="173" width="257" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Settings (change color for now)">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                    <color key="baseBackgroundColor" name="AccentColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="colorUpdate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WA7-IA-EEk"/>
+                                    <segue destination="noq-66-vAd" kind="show" id="DOL-iO-THL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1092,7 +1135,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Cg9-ip-0Pg"/>
+        <segue reference="ifS-e1-GEB"/>
         <segue reference="Kwb-cb-7Ti"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1100,6 +1143,9 @@
         <image name="chevron.left.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.right.circle.fill" catalog="system" width="128" height="121"/>
         <image name="tag.fill" catalog="system" width="128" height="119"/>
+        <namedColor name="AccentColor">
+            <color red="0.63660608853788647" green="1" blue="0.88506728668687107" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
