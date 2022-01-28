@@ -17,6 +17,7 @@ extension Calendar {
         return NSFetchRequest<Calendar>(entityName: "Calendar")
     }
 
+    @NSManaged public var title: String
     @NSManaged public var color: UIColor
     @NSManaged public var dateEvents: NSSet?
 
