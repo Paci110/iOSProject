@@ -11,8 +11,8 @@ class FeatureController: UIViewController {
 
     @IBOutlet weak var themes : UIPickerView!
     
-    
-    var something : [String] = [String]()
+    //edit this!!
+    let something = ["1","2"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +20,8 @@ class FeatureController: UIViewController {
         self.themes.delegate = self
         self.themes.dataSource = self
         
-        //edit this!!
-        something = ["1","2"]
+        
+        
        
         
         // Do any additional setup after loading the view.
