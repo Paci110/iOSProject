@@ -129,7 +129,7 @@
                         </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DateEventCell" rowHeight="88" id="x4W-D8-LVu" customClass="DateEventCell" customModule="iOSProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="93.5" width="414" height="88"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x4W-D8-LVu" id="lXY-Fp-MF9">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
@@ -641,6 +641,49 @@
             </objects>
             <point key="canvasLocation" x="1307" y="837"/>
         </scene>
+        <!--Date Edit View Controller-->
+        <scene sceneID="d8l-pA-b52">
+            <objects>
+                <viewController id="WHp-05-bHe" customClass="DateEditViewController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L6T-k8-Y3u">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEV-Y7-cpZ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="1122"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaK-E1-sr5">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1200" id="UtH-6R-rOo"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="jaK-E1-sr5" firstAttribute="leading" secondItem="IEV-Y7-cpZ" secondAttribute="leading" id="8Xz-0m-sdD"/>
+                                    <constraint firstItem="jaK-E1-sr5" firstAttribute="top" secondItem="IEV-Y7-cpZ" secondAttribute="top" id="JDj-DJ-Qud"/>
+                                    <constraint firstAttribute="trailing" secondItem="jaK-E1-sr5" secondAttribute="trailing" id="Vn1-Sb-4Zg"/>
+                                    <constraint firstAttribute="bottom" secondItem="jaK-E1-sr5" secondAttribute="bottom" id="sgT-oH-4Vn"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="C9e-kj-QM6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="IEV-Y7-cpZ" firstAttribute="leading" secondItem="C9e-kj-QM6" secondAttribute="leading" id="4Cc-he-dxH"/>
+                            <constraint firstItem="IEV-Y7-cpZ" firstAttribute="top" secondItem="C9e-kj-QM6" secondAttribute="top" id="hSx-S7-hDf"/>
+                            <constraint firstItem="jaK-E1-sr5" firstAttribute="width" secondItem="L6T-k8-Y3u" secondAttribute="width" id="jN1-ij-0Wm"/>
+                            <constraint firstItem="IEV-Y7-cpZ" firstAttribute="trailing" secondItem="C9e-kj-QM6" secondAttribute="trailing" id="pDz-WO-gvz"/>
+                            <constraint firstItem="IEV-Y7-cpZ" firstAttribute="bottom" secondItem="C9e-kj-QM6" secondAttribute="bottom" id="tua-6i-0tb"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="414" height="1200"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pAI-i8-G6K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2163.768115942029" y="937.5"/>
+        </scene>
         <!--Item-->
         <scene sceneID="Qlu-0h-BWR">
             <objects>
@@ -1092,12 +1135,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Cg9-ip-0Pg"/>
+        <segue reference="ifS-e1-GEB"/>
         <segue reference="Kwb-cb-7Ti"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="chevron.left.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="chevron.left.circle.fill" catalog="system" width="32" height="32"/>
         <image name="chevron.right.circle.fill" catalog="system" width="128" height="121"/>
         <image name="tag.fill" catalog="system" width="128" height="119"/>
         <systemColor name="labelColor">
