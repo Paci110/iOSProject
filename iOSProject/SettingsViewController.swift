@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController {
 
     @IBAction func colorUpdate(_ sender: UIButton) {
         UIView.appearance().tintColor = col
+        view.window?.tintColor = col
         navigationController?.popViewController(animated: true)
     }
 }
