@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Feature Controller-->
         <scene sceneID="iuz-qG-akM">
             <objects>
-                <viewController id="Ako-E2-4RS" sceneMemberID="viewController">
+                <viewController id="Ako-E2-4RS" customClass="FeatureController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A41-zZ-4BL">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,6 +41,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PlK-0g-Oec"/>
+                    <connections>
+                        <outlet property="themes" destination="XNl-Mg-CcQ" id="zRy-2X-TA9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnE-Wf-y2L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
