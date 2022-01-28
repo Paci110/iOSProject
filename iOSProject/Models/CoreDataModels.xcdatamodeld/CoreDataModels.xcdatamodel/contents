@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Calendar" representedClassName=".Calendar" syncable="YES">
         <attribute name="color" attributeType="Transformable" valueTransformerName="" customClassName="UIColor"/>
+        <attribute name="selected" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="dateEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DateEvent" inverseName="calendar" inverseEntity="DateEvent"/>
     </entity>
@@ -23,7 +24,7 @@
         <attribute name="value" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName=".TimeInterval"/>
     </entity>
     <elements>
-        <element name="Calendar" positionX="-45" positionY="27" width="128" height="74"/>
+        <element name="Calendar" positionX="-45" positionY="27" width="128" height="89"/>
         <element name="DateEvent" positionX="-54" positionY="-9" width="128" height="194"/>
         <element name="EventSeries" positionX="-45" positionY="63" width="128" height="59"/>
     </elements>

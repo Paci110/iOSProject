@@ -63,9 +63,24 @@ extension CalendarViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "calendarCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "calendarCustomCell") as! CalendarCustomCell
+        /*
         cell.textLabel?.text = filteredCalendars![indexPath.row].title
         cell.imageView?.tintColor = filteredCalendars![indexPath.row].color
+         */
+        let calendar = filteredCalendars![indexPath.row]
+        cell.calendar = calendar
+        cell.title.text = calendar.title
+        cell.imageLabel.tintColor = calendar.color
+        cell.selectedButton.layer.cornerRadius = 0.5 * cell.selectedButton.bounds.size.width
+        cell.selectedButton.layer.cornerCurve = .continuous
+        cell.selectedButton.clipsToBounds = true
+        if calendar.selected {
+            cell.selectedButton.tintColor = .blue
+        }
+        else {
+            cell.selectedButton.tintColor = .systemGray6
+        }
         return cell
     }
     

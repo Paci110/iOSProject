@@ -41,7 +41,7 @@ class DateEventCell: UITableViewCell {
             }
             
             switch info {
-                case let info as String:
+            case let info as String:
                 self.contentStackView.addArrangedSubview(self.createLabel(text: info))
             case let info as EventSeries:                self.contentStackView.addArrangedSubview(self.createLabel(text: "Repeating every \(info.value) \(info.timeInterval)"))
             case let info as Date:
@@ -67,14 +67,14 @@ class DateEventCell: UITableViewCell {
             }
             //TODO: use line seperators?
             /*
-            if index != data.count {
-                let view = UIView()
-                view.backgroundColor = .systemGray4
-                let constr = NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 1)
-                constr.priority = UILayoutPriority(999)
-                view.addConstraint(constr)
-                self.contentStackView.addArrangedSubview(view)
-            }
+             if index != data.count {
+             let view = UIView()
+             view.backgroundColor = .systemGray4
+             let constr = NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 1)
+             constr.priority = UILayoutPriority(999)
+             view.addConstraint(constr)
+             self.contentStackView.addArrangedSubview(view)
+             }
              */
         }
     }
@@ -105,4 +105,29 @@ class EventWeekCell: UICollectionViewCell {
 
 class WeekCollectionLayout: UICollectionViewLayout {
     
+}
+
+class CalendarCustomCell: UITableViewCell {
+    @IBOutlet weak var imageLabel: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var selectedButton: UIButton!
+    
+    weak var calendar: Calendar?
+    
+    func changeColor() {
+        if selectedButton.tintColor == .systemGray6 {
+            selectedButton.tintColor = .blue
+        }
+        else {
+            selectedButton.tintColor = .systemGray6
+        }
+    }
+    
+    @IBAction func selectedButtonClick(_ sender: UIButton) {
+        guard let calendar = calendar else {
+            return
+        }
+        calendar.selected = !calendar.selected
+        changeColor()
+    }
 }
