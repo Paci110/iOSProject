@@ -95,7 +95,7 @@ class DateEditViewController: UIViewController {
                 
                 let value = self.repeatPicker.selectedRow(inComponent: 0)+1
                 
-                let interval = self.repeatPicker.selectedRow(inComponent: 1)
+                let interval = self.repeatPicker.selectedRow(inComponent: 1)-1
                 
                 self.dateEvent!.series = EventSeries(value: Int64(value), timeInterval: TimeInterval(rawValue: Int16(interval))!)
             }else {

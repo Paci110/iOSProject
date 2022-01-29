@@ -781,6 +781,7 @@
                                                     </switch>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Z5P-yN-NfY">
                                                         <rect key="frame" x="125" y="75" width="269" height="31"/>
+                                                        <locale key="locale" localeIdentifier="de_DE"/>
                                                     </datePicker>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
