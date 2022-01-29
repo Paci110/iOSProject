@@ -28,6 +28,8 @@ class DateEditViewController: UIViewController {
     var calendars: [Calendar]?
     var calendarCancellable: AnyCancellable?
     
+    private var subscriber: AnyCancellable?
+    
     @IBAction func saveButton(_ sender: UIButton) {
         saveToDateEvent()
         //TODO: go back to previous vc
@@ -163,8 +165,6 @@ extension DateEditViewController: UIPickerViewDelegate {
                 print(value)
                 DispatchQueue.main.async {
                     pickerView.reloadAllComponents()
-                    pickerView.selectRow(0, inComponent: component, animated: true)
-                    pickerView.selectRow(row, inComponent: component, animated: true)
                 }
             }
         }
