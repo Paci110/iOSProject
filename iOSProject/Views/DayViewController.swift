@@ -60,7 +60,7 @@ class DayViewController: UITableViewController {
     @IBAction func addButtonClicked(_ sender: Any) {
         let alert = UIAlertController(title: "Add new element", message: "Please enter the name of the element you want to add", preferredStyle: .alert)
         alert.addTextField()
-        alert.addAction(UIAlertAction(title: "OK", style: .default) {_ in
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
             let textfield = alert.textFields![0]
             let start = self.date!
             let end = self.date!
@@ -74,8 +74,15 @@ class DayViewController: UITableViewController {
             let eventSeries = EventSeries(value: 10, timeInterval: TimeInterval.Day)
             let reminder = Date(timeIntervalSinceNow: 10)
             _ = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: false, start: start, end: end, shouldRemind: true, calendar: calendar, notes: note, series: eventSeries, reminder: reminder, url: url, address: address, locationHanlder: self.locationHandler, notificationHanlder: self.notificationHandler)
+            
             print("Save data")
-            saveData()
+            
+            saveData() {
+                let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
+                                
             let dat = getData(entityName: "DateEvent")
             print("Data count \(String(describing: dat?.count))")
             self.reloadData()
@@ -148,7 +155,11 @@ class DayViewController: UITableViewController {
             //self.tableView.deleteSections([indexPath.section], with: .left)
             //self.tableView.deleteRows(at: [indexPath], with: .fade)
             //TODO: implement undo with popup
-            deleteData(dataToDelete: event)
+            deleteData(dataToDelete: event) {
+                let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
             reloadData()
         }
         return UISwipeActionsConfiguration(actions: [delete])

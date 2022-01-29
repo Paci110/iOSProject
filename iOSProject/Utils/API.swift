@@ -133,7 +133,7 @@ public func getCalendars(filterFor: [String]? = nil) -> [Calendar] {
     
     let calendarsFetch = NSFetchRequest<Calendar>(entityName: "Calendar")
     if(filterFor != nil) {
-        calendarsFetch.predicate = NSPredicate(format: "name IN %@", argumentArray: [filterFor!])
+        calendarsFetch.predicate = NSPredicate(format: "title IN %@", argumentArray: [filterFor!])
     }
     
     var calendars: [Calendar]
@@ -144,6 +144,17 @@ public func getCalendars(filterFor: [String]? = nil) -> [Calendar] {
     }
     
     return calendars
+}
+
+/// Returns all calenders that should events be fetched from
+public var toFetchCalendars: [Calendar] {
+    var toFetchCalendar: [Calendar] = []
+    for calendar in getCalendars() {
+        if calendar.selected {
+            toFetchCalendar.append(calendar)
+        }
+    }
+    return toFetchCalendar
 }
 
 //TODO: Upload calendar implementation files

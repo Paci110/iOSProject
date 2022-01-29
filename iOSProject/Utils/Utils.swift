@@ -35,21 +35,26 @@ func getDate(FromDate fromDate: Date, Format format: String) -> String {
 func getContext() -> NSManagedObjectContext {
     return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 }
-func saveData() {
+
+func saveData(completionHanlder: (() -> Void)?) {
     let context = getContext()
     do {
         try context.save()
         
     } catch {
-        //TODO: show message box with error
-        print("Error in save data \(error)")
+        if let completionHanlder = completionHanlder {
+            completionHanlder()
+        }
+        else {
+            print("Error in save data \(error)")
+        }
     }
 }
 
-func deleteData(dataToDelete: NSManagedObject) {
+func deleteData(dataToDelete: NSManagedObject, completionHanlder: (() -> Void)?) {
     let context = getContext()
     context.delete(dataToDelete)
-    saveData()
+    saveData(completionHanlder: completionHanlder)
 }
 
 func getData(entityName: String) -> [Any]? {

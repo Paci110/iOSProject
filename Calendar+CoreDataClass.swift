@@ -13,11 +13,13 @@ import UIKit
 
 public class Calendar: NSManagedObject {
     
+    //TODO: should save if calendar is selected or not
     convenience init(title: String, color: UIColor) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.init(context: context)
         self.title = title
         self.color = color
+        self.selected = true
     }
     
     convenience init(title: String, color: UIColor, dateEvents: [DateEvent]) {

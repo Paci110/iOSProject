@@ -16,8 +16,7 @@ public class DateEvent: NSManagedObject {
     ///Creates a new dateEvent with the given arguements. Optional arguements that are not specified are set to nil.
     ///Checks if beginning and ending date are set correctly.
     convenience init(title: String, fullDayEvent: Bool, start: Date, end: Date, shouldRemind remind: Bool, calendar: Calendar, notes: String? = nil, series: EventSeries? = nil, reminder: Date? = nil, url: URL? = nil, location: CLLocation? = nil, locationHanlder: ((Bool, Error?) -> Void)?, notificationHanlder: ((Bool, Error?) -> Void)?) {
-        
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let context = getContext()
         self.init(context: context)
         
         //TOOD: reminder and repeater
@@ -45,7 +44,7 @@ public class DateEvent: NSManagedObject {
                     return
                 }
                 self.place = first
-                saveData()
+                saveData(completionHanlder: nil)
                 guard let locationHanlder = locationHanlder else {
                     return
                 }
@@ -169,7 +168,7 @@ public class DateEvent: NSManagedObject {
             }
         
             self.place = first
-            saveData()
+            saveData(completionHanlder: nil)
             
             guard let locationHanlder = locationHanlder else {
                 return
