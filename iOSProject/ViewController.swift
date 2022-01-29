@@ -12,7 +12,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let theme = fetchSettings().colorTheme
+        applyTheme(theme: theme)
+        UIView.appearance().tintColor = col
+        view.window?.tintColor = col
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -21,7 +27,7 @@ class ViewController: UIViewController {
             print(dateEvents!.count)
             if let dateEvents = dateEvents, !dateEvents.isEmpty, let dateEvent = dateEvents[0] as? DateEvent {
                 print("Works")
-                dest.testDate = dateEvent
+                dest.dateEvent = dateEvent
             }
             else {
                 print("Fetch went wrong")
@@ -36,5 +42,4 @@ class ViewController: UIViewController {
             dest.setDays(dateInWeek: Date())
         }
     }
-
 }

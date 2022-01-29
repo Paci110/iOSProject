@@ -27,29 +27,34 @@ func getDate(fromString: String) -> Date {
 
 func getDate(FromDate fromDate: Date, Format format: String) -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = format
     formatter.locale = Locale(identifier: "en")
+    formatter.dateFormat = format
     return formatter.string(from: fromDate)
 }
 
 func getContext() -> NSManagedObjectContext {
     return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 }
-func saveData() {
+
+func saveData(completionHanlder: (() -> Void)?) {
     let context = getContext()
     do {
         try context.save()
         
     } catch {
-        //TODO: show message box with error
-        print("Error in save data \(error)")
+        if let completionHanlder = completionHanlder {
+            completionHanlder()
+        }
+        else {
+            print("Error in save data \(error)")
+        }
     }
 }
 
-func deleteData(dataToDelete: NSManagedObject) {
+func deleteData(dataToDelete: NSManagedObject, completionHanlder: (() -> Void)?) {
     let context = getContext()
     context.delete(dataToDelete)
-    saveData()
+    saveData(completionHanlder: completionHanlder)
 }
 
 func getData(entityName: String) -> [Any]? {
@@ -155,4 +160,40 @@ public func dateToDMY (date: Date) -> [Int] {
     }
     
     return IntDMY
+}
+
+
+public func applyTheme(theme: String){
+    var settings = fetchSettings()
+    
+    switch(theme){
+        case "Default": col = UIColor.systemBlue
+        case "Mint": col = UIColor(red: 52.0/255, green: 238.0/255, blue: 219.0/255, alpha: 1)
+        case "Scarlet": col = UIColor.systemRed
+        case "Plum": col = UIColor(red: 160.0/255, green: 102.0/255, blue: 227.0/255, alpha: 1)
+        default: ()
+    }
+    
+    settings.colorTheme = theme
+    
+    saveData(completionHanlder: nil)
+    
+    print(settings)
+}
+
+
+public func fetchSettings() -> Settings {
+    let context = getContext()
+    
+    var settings: [Settings]
+    do {
+        settings = try context.fetch(NSFetchRequest<Settings>(entityName: "Settings"))
+        if(settings == []){
+            settings = [Settings(colorTheme: "Default", startWithLastView: false, defaultView: "DayView")]
+        }
+    } catch {
+        fatalError("couldn't fetch settings!")
+    }
+    
+    return settings.first!
 }

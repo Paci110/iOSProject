@@ -21,7 +21,11 @@ class CalendarViewController: UIViewController {
     var colorCancellable: AnyCancellable?
     
     @IBAction func saveButton(_ sender: Any) {
-        saveData()
+        saveData() {
+            let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "calendarEdit", sender: Calendar(title: "New Calendar", color: UIColor.darkGray))
@@ -63,9 +67,24 @@ extension CalendarViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "calendarCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "calendarCustomCell") as! CalendarCustomCell
+        /*
         cell.textLabel?.text = filteredCalendars![indexPath.row].title
         cell.imageView?.tintColor = filteredCalendars![indexPath.row].color
+         */
+        let calendar = filteredCalendars![indexPath.row]
+        cell.calendar = calendar
+        cell.title.text = calendar.title
+        cell.imageLabel.tintColor = calendar.color
+        cell.selectedButton.layer.cornerRadius = 0.5 * cell.selectedButton.bounds.size.width
+        cell.selectedButton.layer.cornerCurve = .continuous
+        cell.selectedButton.clipsToBounds = true
+        if calendar.selected {
+            cell.selectedButton.tintColor = .blue
+        }
+        else {
+            cell.selectedButton.tintColor = .systemGray6
+        }
         return cell
     }
     
@@ -97,7 +116,11 @@ extension CalendarViewController: UITableViewDelegate {
             if((calendar.dateEvents?.count ?? 0) > 0) {
                 askToDelete(calendar, completionHandler)
             }else {
-                deleteData(dataToDelete: calendar)
+                deleteData(dataToDelete: calendar) {
+                    let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 
                 self.reloadData()
             }
@@ -110,10 +133,18 @@ extension CalendarViewController: UITableViewDelegate {
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive) {
             _ in
             for event in calendar.dateEvents! {
-                deleteData(dataToDelete: event as! NSManagedObject)
+                deleteData(dataToDelete: event as! NSManagedObject) {
+                    let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
             
-            deleteData(dataToDelete: calendar)
+            deleteData(dataToDelete: calendar) {
+                let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
             
             self.reloadData()
         })

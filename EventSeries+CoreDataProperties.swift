@@ -11,6 +11,16 @@ import CoreData
 
 public enum TimeInterval: Int16 {
     case Hour, Day, Week, Month, Year
+    
+    var description: String {
+        switch self {
+        case .Hour: return "Hour"
+        case .Day: return "Day"
+        case .Week: return "Week"
+        case .Month: return "Month"
+        case .Year: return "Year"
+        }
+    }
 }
 
 extension EventSeries {
