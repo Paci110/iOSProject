@@ -15,6 +15,7 @@ class FeatureController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.window?.tintColor = col
         
         self.themes.delegate = self
         self.themes.dataSource = self
@@ -29,13 +30,7 @@ extension FeatureController : UIPickerViewDelegate {
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let choice = "\(themesArray[row])"
-        switch(choice){
-            case "Default": col = UIColor.systemBlue
-            case "Mint": col = UIColor(red: 52.0/255, green: 238.0/255, blue: 219.0/255, alpha: 1)
-            case "Scarlet": col = UIColor.systemRed
-            case "Plum": col = UIColor(red: 160.0/255, green: 102.0/255, blue: 227.0/255, alpha: 1)
-            default: ()
-        }
+        applyTheme(theme: choice)
         UIView.appearance().tintColor = col
         view.window?.tintColor = col
     }

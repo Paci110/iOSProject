@@ -12,7 +12,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let theme = fetchSettings().colorTheme
+        applyTheme(theme: theme)
+        UIView.appearance().tintColor = col
+        view.window?.tintColor = col
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

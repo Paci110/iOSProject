@@ -15,14 +15,7 @@ public class Settings: NSManagedObject {
     convenience init(colorTheme: String, startWithLastView: Bool, defaultView: String? = nil) {
         self.init(context: getContext())
         
-        switch colorTheme {
-        case "first theme":
-            self.colorTheme = colorTheme
-        default:
-            self.colorTheme = "default theme"
-        }
-        
-        print(self.colorTheme)
+        self.colorTheme = colorTheme
         
         self.startWithLastView = startWithLastView
         
