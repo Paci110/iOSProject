@@ -85,7 +85,7 @@ class DateEditViewController: UIViewController {
             self.dateEvent!.fullDayEvent = self.fulldaySwitch.isOn
             self.dateEvent!.start = self.startPicker.date
             self.dateEvent!.end = self.endPicker.date
-            self.dateEvent!.notes = self.notesTextView.text
+            self.dateEvent!.notes = self.notesTextView.text == "" ? nil : self.notesTextView.text
             self.dateEvent!.url = self.urlTextField.text != nil ? URL(string: self.urlTextField.text!) : nil
             self.dateEvent!.shouldRemind = self.reminderSwitch.isOn
             self.dateEvent!.reminder = self.reminderPicker.date
@@ -101,7 +101,7 @@ class DateEditViewController: UIViewController {
             }else {
                 self.dateEvent!.series = nil
             }
-            saveData()
+            saveData(completionHanlder: nil)
             //Set the dateEvents place
             if let address = self.addressTextField.text {
                 CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
@@ -118,7 +118,7 @@ class DateEditViewController: UIViewController {
                     }
                     self.dateEvent!.place = first
                     
-                    saveData()
+                    saveData(completionHanlder: nil)
                 }
             }
         }
