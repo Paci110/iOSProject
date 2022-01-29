@@ -91,7 +91,7 @@ public class EKUtils {
         
         //"Synchronize by reseting all events in the calendar
         for event in calendar.dateEvents! {
-            deleteData(dataToDelete: event as! NSManagedObject)
+            deleteData(dataToDelete: event as! NSManagedObject, completionHanlder: nil)
         }
         fetchEKEvents() {
             events, permission in
@@ -119,7 +119,7 @@ public class EKUtils {
                 
             }
             DispatchQueue.main.async {
-                saveData()
+                saveData(completionHanlder: nil)
                 completionHandler(.done)
             }
         }

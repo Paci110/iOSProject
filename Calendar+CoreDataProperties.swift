@@ -19,6 +19,7 @@ extension Calendar {
 
     @NSManaged public var title: String
     @NSManaged public var color: UIColor
+    @NSManaged public var selected: Bool
     @NSManaged public var dateEvents: NSSet?
 
 }

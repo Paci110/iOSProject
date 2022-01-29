@@ -146,4 +146,15 @@ public func getCalendars(filterFor: [String]? = nil) -> [Calendar] {
     return calendars
 }
 
+/// Returns all calenders that should events be fetched from
+public var toFetchCalendars: [Calendar] {
+    var toFetchCalendar: [Calendar] = []
+    for calendar in getCalendars() {
+        if calendar.selected {
+            toFetchCalendar.append(calendar)
+        }
+    }
+    return toFetchCalendar
+}
+
 //TODO: Upload calendar implementation files
