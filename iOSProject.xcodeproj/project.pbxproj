@@ -36,7 +36,6 @@
 		79FDEEA12795ACB3005A25F9 /* EventSeries+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEE9F2795ACB3005A25F9 /* EventSeries+CoreDataClass.swift */; };
 		79FDEEA22795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEEA02795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift */; };
 		7C4E175D27A42D3D00B627E7 /* FeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4E175C27A42D3D00B627E7 /* FeatureController.swift */; };
-		7CFC950A279CA3A50094A3C2 /* DateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFC9509279CA3A50094A3C2 /* DateEditViewController.swift */; };
 		A1043385279ECC6100E11B5F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1043384279ECC6100E11B5F /* CalendarViewController.swift */; };
 		A1043387279EFF8E00E11B5F /* CalendarEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1043386279EFF8E00E11B5F /* CalendarEditViewController.swift */; };
 		A104338927A2E1CF00E11B5F /* EKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104338827A2E1CF00E11B5F /* EKUtils.swift */; };
@@ -286,7 +285,6 @@
 				7C4E175D27A42D3D00B627E7 /* FeatureController.swift in Sources */,
 				55F23CE7279B8B4D00E4F163 /* MonthForYearViewController.swift in Sources */,
 				55F23CE5279B8A0E00E4F163 /* YearViewController.swift in Sources */,
-				7CFC950A279CA3A50094A3C2 /* DateEditViewController.swift in Sources */,
 				7983AEF4276B7E0C00FC4301 /* AppDelegate.swift in Sources */,
 				A1043387279EFF8E00E11B5F /* CalendarEditViewController.swift in Sources */,
 				792DACB127A4AFA800BDDF6E /* Settings+CoreDataClass.swift in Sources */,
