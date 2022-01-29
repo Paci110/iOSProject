@@ -176,7 +176,7 @@ public func applyTheme(theme: String){
     
     settings.colorTheme = theme
     
-    saveData()
+    saveData(completionHanlder: nil)
     
     print(settings)
 }
