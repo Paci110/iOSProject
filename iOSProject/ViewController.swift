@@ -21,7 +21,7 @@ class ViewController: UIViewController {
             print(dateEvents!.count)
             if let dateEvents = dateEvents, !dateEvents.isEmpty, let dateEvent = dateEvents[0] as? DateEvent {
                 print("Works")
-                dest.testDate = dateEvent
+                dest.dateEvent = dateEvent
             }
             else {
                 print("Fetch went wrong")

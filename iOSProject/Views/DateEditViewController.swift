@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import Combine
+import CoreLocation
 
 class DateEditViewController: UIViewController {
     
@@ -24,9 +26,10 @@ class DateEditViewController: UIViewController {
     
     var dateEvent: DateEvent?
     var calendars: [Calendar]?
+    var calendarCancellable: AnyCancellable?
     
     @IBAction func saveButton(_ sender: UIButton) {
-        saveData()
+        saveToDateEvent()
         //TODO: go back to previous vc
     }
     @IBAction func cancelButton(_ sender: UIButton) {
@@ -40,13 +43,7 @@ class DateEditViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        DispatchQueue.main.async {
-            self.calendars = getCalendars(filterFor: nil)
-            self.refresh()
-        }
-        
-        
+    func reloadData() {
         titleTextField.text = dateEvent?.title
         fulldaySwitch.isOn = dateEvent?.fullDayEvent ?? false
         startPicker.date = dateEvent?.start ?? Date()
@@ -56,6 +53,15 @@ class DateEditViewController: UIViewController {
         notesTextView.text = dateEvent?.notes ?? ""
         urlTextField.text = dateEvent?.url?.absoluteString ?? ""
         addressTextField.text = dateEvent?.place != nil ? "\(dateEvent?.place?.locality ?? ""), \(dateEvent?.place?.name ?? "")" : ""
+    }
+    
+    override func viewDidLoad() {
+        DispatchQueue.main.async {
+            self.calendars = getCalendars(filterFor: nil)
+            self.refresh()
+        }
+        
+        reloadData()
         
         //TODO: reminder, calendar, repeat
         self.repeatPicker.dataSource = self
@@ -69,6 +75,53 @@ class DateEditViewController: UIViewController {
         if let sender = sender as? Calendar, let dest = segue.destination as? CalendarEditViewController{
             dest.calendar = sender
         }
+    }
+    
+    func saveToDateEvent() {
+        DispatchQueue.main.async {
+            self.dateEvent!.title = self.titleTextField.text ?? self.dateEvent!.title
+            self.dateEvent!.fullDayEvent = self.fulldaySwitch.isOn
+            self.dateEvent!.start = self.startPicker.date
+            self.dateEvent!.end = self.endPicker.date
+            self.dateEvent!.notes = self.notesTextView.text
+            self.dateEvent!.url = self.urlTextField.text != nil ? URL(string: self.urlTextField.text!) : nil
+            self.dateEvent!.shouldRemind = self.reminderSwitch.isOn
+            self.dateEvent!.reminder = self.reminderPicker.date
+            self.dateEvent!.calendar = self.calendars![self.calendarPicker.selectedRow(inComponent: 0)]
+            
+            if self.pickerView(self.repeatPicker, titleForRow: self.repeatPicker.selectedRow(inComponent: 1), forComponent: 1) != "Never"{
+                
+                let value = self.repeatPicker.selectedRow(inComponent: 0)+1
+                
+                let interval = self.repeatPicker.selectedRow(inComponent: 1)
+                
+                self.dateEvent!.series = EventSeries(value: Int64(value), timeInterval: TimeInterval(rawValue: Int16(interval))!)
+            }else {
+                self.dateEvent!.series = nil
+            }
+            saveData()
+            //Set the dateEvents place
+            if let address = self.addressTextField.text {
+                CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    guard
+                        let placemarks = placemarks,
+                        let first = placemarks.first
+                    else {
+                        print("No such address found")
+                        return
+                    }
+                    self.dateEvent!.place = first
+                    
+                    saveData()
+                }
+            }
+        }
+
+        
     }
     
 }
@@ -106,8 +159,7 @@ extension DateEditViewController: UIPickerViewDelegate {
             performSegue(withIdentifier: "createCalendar", sender: cal)
             calendars!.append(cal)
             self.refresh()
-            //TODO: Refresh doesnt work
-            _ = cal.publisher(for: \.title).sink() {value in
+            calendarCancellable = cal.publisher(for: \.title).sink() {value in
                 print(value)
                 DispatchQueue.main.async {
                     pickerView.reloadAllComponents()

@@ -65,7 +65,7 @@ extension SearchViewController: UITableViewDelegate
         if segue.identifier == "dateView",
            let path = sender as? IndexPath,
            let dest = segue.destination as? DateViewController {
-            dest.testDate = filteredEvents![path.row]
+            dest.dateEvent = filteredEvents![path.row]
             
         }
     }

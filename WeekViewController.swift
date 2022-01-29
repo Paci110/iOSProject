@@ -133,7 +133,7 @@ class WeekViewController: UIViewController {
             let tableIndex = getTableIndex(table)
             let date = dateEvents![tableIndex + currentDate][indexPath.row]
             if let dest = segue.destination as? DateViewController {
-                dest.testDate = date
+                dest.dateEvent = date
                 return
             }
         }

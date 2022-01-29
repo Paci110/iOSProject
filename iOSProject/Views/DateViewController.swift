@@ -14,7 +14,7 @@ class DateViewController: UIViewController {
     @IBOutlet weak var labelDateTitle: UILabel!
     @IBOutlet weak var tableViewDates: UITableView!
     
-    var testDate: DateEvent?
+    var dateEvent: DateEvent?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +22,21 @@ class DateViewController: UIViewController {
         tableViewDates.delegate = self
         tableViewDates.dataSource = self
         
-        labelDateTitle.text = testDate?.title
+        labelDateTitle.text = dateEvent?.title
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? DateEditViewController {
+            dest.dateEvent = self.dateEvent
+        }
+    }
     
 }
 
 extension DateViewController: UITableViewDataSource {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        guard let testDate = testDate else {
+        guard let testDate = dateEvent else {
             return 0
         }
 
@@ -47,7 +52,7 @@ extension DateViewController: UITableViewDataSource {
             //TODO: first header is not displayed correctly
             //return "Time"
         }
-        let data = testDate?.getData()[section+3]
+        let data = dateEvent?.getData()[section+3]
         
         if (data as? (String)) != nil
         {
@@ -84,7 +89,7 @@ extension DateViewController: UITableViewDataSource {
             prevRows += tableView.numberOfRows(inSection: i)
         }
         prevRows -= tableView.numberOfRows(inSection: indexPath.section)
-        let dateText = testDate?.getData()[prevRows + indexPath.row]
+        let dateText = dateEvent?.getData()[prevRows + indexPath.row]
         if let data = dateText as? String {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
             cell.textLabel?.text = data
@@ -131,7 +136,7 @@ extension DateViewController: UITableViewDataSource {
         }
         else if let data = dateText as? Date {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
-            var dateBetween = testDate!.start.distance(to: data)
+            var dateBetween = dateEvent!.start.distance(to: data)
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.day, .hour, .minute]
             formatter.unitsStyle = .abbreviated

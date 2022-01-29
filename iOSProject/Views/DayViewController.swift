@@ -58,29 +58,10 @@ class DayViewController: UITableViewController {
     }
     
     @IBAction func addButtonClicked(_ sender: Any) {
-        let alert = UIAlertController(title: "Add new element", message: "Please enter the name of the element you want to add", preferredStyle: .alert)
-        alert.addTextField()
-        alert.addAction(UIAlertAction(title: "OK", style: .default) {_ in
-            let textfield = alert.textFields![0]
-            let start = self.date!
-            let end = self.date!
-            let calendar = Calendar(title: "TestCalendar", color: UIColor(red: 1, green: 0, blue: 0, alpha: 1))
-            if textfield.text == "" {
-                textfield.text = "New DateEvent (title to short)"
-            }
-            let note = "This is a test note. This should be longer than a lable can hold."
-            let url = URL(string: "www.rwth-aachen.de")
-            let address = "Templergraben 57, 52062 Aachen"
-            let eventSeries = EventSeries(value: 10, timeInterval: TimeInterval.Day)
-            let reminder = Date(timeIntervalSinceNow: 10)
-            _ = DateEvent(title: textfield.text ?? "New DateEvent", fullDayEvent: false, start: start, end: end, shouldRemind: true, calendar: calendar, notes: note, series: eventSeries, reminder: reminder, url: url, address: address, locationHanlder: self.locationHandler, notificationHanlder: self.notificationHandler)
-            print("Save data")
-            saveData()
-            let dat = getData(entityName: "DateEvent")
-            print("Data count \(String(describing: dat?.count))")
-            self.reloadData()
-        })
-        self.present(alert, animated: true, completion: nil)
+        //TODO: Give default calendar
+        let calendar = Calendar(title: "Sample Calendar", color: UIColor.orange)
+        let event = DateEvent(title: "New Event", fullDayEvent: false, start: Date(), end: Date(), shouldRemind: false, calendar: calendar, notes: nil, series: nil, reminder: nil, url: nil, location: nil, locationHanlder: nil, notificationHanlder: nil)
+        performSegue(withIdentifier: "editSegue", sender: event)
     }
     
     func locationHandler(success: Bool, error: Error?) {
@@ -116,7 +97,11 @@ class DayViewController: UITableViewController {
         //TODO: implement
         if let cell = sender as? DateEventCell,
            let dest = segue.destination as? DateViewController {
-            dest.testDate = cell.dateEvent
+            dest.dateEvent = cell.dateEvent
+        }
+        if let sender = sender as? DateEvent, let dest = segue.destination as? DateEditViewController {
+            print("Creating new Event")
+            dest.dateEvent = sender
         }
     }
     
