@@ -161,3 +161,39 @@ public func dateToDMY (date: Date) -> [Int] {
     
     return IntDMY
 }
+
+
+public func applyTheme(theme: String){
+    var settings = fetchSettings()
+    
+    switch(theme){
+        case "Default": col = UIColor.systemBlue
+        case "Mint": col = UIColor(red: 52.0/255, green: 238.0/255, blue: 219.0/255, alpha: 1)
+        case "Scarlet": col = UIColor.systemRed
+        case "Plum": col = UIColor(red: 160.0/255, green: 102.0/255, blue: 227.0/255, alpha: 1)
+        default: ()
+    }
+    
+    settings.colorTheme = theme
+    
+    saveData(completionHanlder: nil)
+    
+    print(settings)
+}
+
+
+public func fetchSettings() -> Settings {
+    let context = getContext()
+    
+    var settings: [Settings]
+    do {
+        settings = try context.fetch(NSFetchRequest<Settings>(entityName: "Settings"))
+        if(settings == []){
+            settings = [Settings(colorTheme: "Default", startWithLastView: false, defaultView: "DayView")]
+        }
+    } catch {
+        fatalError("couldn't fetch settings!")
+    }
+    
+    return settings.first!
+}
