@@ -133,7 +133,11 @@ class DayViewController: UITableViewController {
             //self.tableView.deleteSections([indexPath.section], with: .left)
             //self.tableView.deleteRows(at: [indexPath], with: .fade)
             //TODO: implement undo with popup
-            deleteData(dataToDelete: event)
+            deleteData(dataToDelete: event) {
+                let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
             reloadData()
         }
         return UISwipeActionsConfiguration(actions: [delete])

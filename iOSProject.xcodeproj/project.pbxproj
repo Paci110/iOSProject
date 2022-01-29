@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301E24C327A414D700B5895B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301E24C227A414D700B5895B /* SettingsViewController.swift */; };
 		3047C58E2795BD1F00DE5EC4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3047C58D2795BD1F00DE5EC4 /* API.swift */; };
 		55F23CDD279B815E00E4F163 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CDC279B815E00E4F163 /* MonthViewController.swift */; };
 		55F23CDF279B81B600E4F163 /* CCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CDE279B81B600E4F163 /* CCell.swift */; };
@@ -14,6 +15,8 @@
 		55F23CE5279B8A0E00E4F163 /* YearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CE4279B8A0E00E4F163 /* YearViewController.swift */; };
 		55F23CE7279B8B4D00E4F163 /* MonthForYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CE6279B8B4D00E4F163 /* MonthForYearViewController.swift */; };
 		55F23CE9279B8D7D00E4F163 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CE8279B8D7D00E4F163 /* DateCell.swift */; };
+		792DACB127A4AFA800BDDF6E /* Settings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792DACAF27A4AFA800BDDF6E /* Settings+CoreDataClass.swift */; };
+		792DACB227A4AFA800BDDF6E /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792DACB027A4AFA800BDDF6E /* Settings+CoreDataProperties.swift */; };
 		7983AEF4276B7E0C00FC4301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983AEF3276B7E0C00FC4301 /* AppDelegate.swift */; };
 		7983AEF6276B7E0C00FC4301 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983AEF5276B7E0C00FC4301 /* SceneDelegate.swift */; };
 		7983AEF8276B7E0C00FC4301 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983AEF7276B7E0C00FC4301 /* ViewController.swift */; };
@@ -32,6 +35,8 @@
 		79FDEE9E2795A7F0005A25F9 /* DateEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEE9D2795A7F0005A25F9 /* DateEvent+CoreDataProperties.swift */; };
 		79FDEEA12795ACB3005A25F9 /* EventSeries+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEE9F2795ACB3005A25F9 /* EventSeries+CoreDataClass.swift */; };
 		79FDEEA22795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEEA02795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift */; };
+		7C4E175D27A42D3D00B627E7 /* FeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4E175C27A42D3D00B627E7 /* FeatureController.swift */; };
+		7CFC950A279CA3A50094A3C2 /* DateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFC9509279CA3A50094A3C2 /* DateEditViewController.swift */; };
 		A1043385279ECC6100E11B5F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1043384279ECC6100E11B5F /* CalendarViewController.swift */; };
 		A1043387279EFF8E00E11B5F /* CalendarEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1043386279EFF8E00E11B5F /* CalendarEditViewController.swift */; };
 		A104338927A2E1CF00E11B5F /* EKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104338827A2E1CF00E11B5F /* EKUtils.swift */; };
@@ -40,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		301E24C227A414D700B5895B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = iOSProject/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
 		3047C58D2795BD1F00DE5EC4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		55F23CDC279B815E00E4F163 /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		55F23CDE279B81B600E4F163 /* CCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCell.swift; sourceTree = "<group>"; };
@@ -47,6 +53,8 @@
 		55F23CE4279B8A0E00E4F163 /* YearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewController.swift; sourceTree = "<group>"; };
 		55F23CE6279B8B4D00E4F163 /* MonthForYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthForYearViewController.swift; sourceTree = "<group>"; };
 		55F23CE8279B8D7D00E4F163 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		792DACAF27A4AFA800BDDF6E /* Settings+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		792DACB027A4AFA800BDDF6E /* Settings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7983AEF0276B7E0C00FC4301 /* iOSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7983AEF3276B7E0C00FC4301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7983AEF5276B7E0C00FC4301 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +75,8 @@
 		79FDEE9D2795A7F0005A25F9 /* DateEvent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateEvent+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		79FDEE9F2795ACB3005A25F9 /* EventSeries+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventSeries+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		79FDEEA02795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventSeries+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		7C4E175C27A42D3D00B627E7 /* FeatureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureController.swift; sourceTree = "<group>"; };
+		7CFC9509279CA3A50094A3C2 /* DateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditViewController.swift; sourceTree = SOURCE_ROOT; };
 		A1043384279ECC6100E11B5F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A1043386279EFF8E00E11B5F /* CalendarEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEditViewController.swift; sourceTree = "<group>"; };
 		A104338827A2E1CF00E11B5F /* EKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKUtils.swift; sourceTree = "<group>"; };
@@ -127,6 +137,8 @@
 				79FDEE9D2795A7F0005A25F9 /* DateEvent+CoreDataProperties.swift */,
 				79FDEE9F2795ACB3005A25F9 /* EventSeries+CoreDataClass.swift */,
 				79FDEEA02795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift */,
+				792DACAF27A4AFA800BDDF6E /* Settings+CoreDataClass.swift */,
+				792DACB027A4AFA800BDDF6E /* Settings+CoreDataProperties.swift */,
 				79842AAA2786563400391AC7 /* CoreDataModels.xcdatamodeld */,
 			);
 			path = Models;
@@ -135,7 +147,10 @@
 		7990F5CF276F6FD60066EDC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				301E24C227A414D700B5895B /* SettingsViewController.swift */,
 				79E83785279D73DA00258682 /* WeekViewController.swift */,
+				7CFC9509279CA3A50094A3C2 /* DateEditViewController.swift */,
+				7C4E175C27A42D3D00B627E7 /* FeatureController.swift */,
 				7990F5D0276F70130066EDC6 /* DayViewController.swift */,
 				55F23CE4279B8A0E00E4F163 /* YearViewController.swift */,
 				7990F5D2276F91BD0066EDC6 /* DateViewController.swift */,
@@ -258,6 +273,7 @@
 				79FDEEA12795ACB3005A25F9 /* EventSeries+CoreDataClass.swift in Sources */,
 				A104338B27A434F100E11B5F /* DateEditViewController.swift in Sources */,
 				79FDEEA22795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift in Sources */,
+				792DACB227A4AFA800BDDF6E /* Settings+CoreDataProperties.swift in Sources */,
 				79E83786279D73DA00258682 /* WeekViewController.swift in Sources */,
 				55F23CDF279B81B600E4F163 /* CCell.swift in Sources */,
 				79FDEE9E2795A7F0005A25F9 /* DateEvent+CoreDataProperties.swift in Sources */,
@@ -267,10 +283,13 @@
 				55F23CE1279B81F900E4F163 /* CHelp.swift in Sources */,
 				A104338927A2E1CF00E11B5F /* EKUtils.swift in Sources */,
 				7983AEF8276B7E0C00FC4301 /* ViewController.swift in Sources */,
+				7C4E175D27A42D3D00B627E7 /* FeatureController.swift in Sources */,
 				55F23CE7279B8B4D00E4F163 /* MonthForYearViewController.swift in Sources */,
 				55F23CE5279B8A0E00E4F163 /* YearViewController.swift in Sources */,
+				7CFC950A279CA3A50094A3C2 /* DateEditViewController.swift in Sources */,
 				7983AEF4276B7E0C00FC4301 /* AppDelegate.swift in Sources */,
 				A1043387279EFF8E00E11B5F /* CalendarEditViewController.swift in Sources */,
+				792DACB127A4AFA800BDDF6E /* Settings+CoreDataClass.swift in Sources */,
 				7983AEF6276B7E0C00FC4301 /* SceneDelegate.swift in Sources */,
 				79AD23EE2791CD2F00DC21F5 /* Calendar+CoreDataClass.swift in Sources */,
 				79842AAC2786563400391AC7 /* CoreDataModels.xcdatamodeld in Sources */,
@@ -280,6 +299,7 @@
 				55F23CE9279B8D7D00E4F163 /* DateCell.swift in Sources */,
 				79AD23EF2791CD2F00DC21F5 /* Calendar+CoreDataProperties.swift in Sources */,
 				79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */,
+				301E24C327A414D700B5895B /* SettingsViewController.swift in Sources */,
 				799C1D4627831B0600AC954F /* Utils.swift in Sources */,
 				55F23CDD279B815E00E4F163 /* MonthViewController.swift in Sources */,
 			);
@@ -430,7 +450,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = S4BPV3U589;
+				DEVELOPMENT_TEAM = 2929VWU3PU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -458,7 +478,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = S4BPV3U589;
+				DEVELOPMENT_TEAM = 2929VWU3PU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
