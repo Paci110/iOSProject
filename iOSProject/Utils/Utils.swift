@@ -27,8 +27,8 @@ func getDate(fromString: String) -> Date {
 
 func getDate(FromDate fromDate: Date, Format format: String) -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = format
     formatter.locale = Locale(identifier: "en")
+    formatter.dateFormat = format
     return formatter.string(from: fromDate)
 }
 

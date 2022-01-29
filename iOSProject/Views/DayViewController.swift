@@ -52,7 +52,7 @@ class DayViewController: UITableViewController {
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
-            self.dateLabel.text = getDate(FromDate: self.date!, Format: "EE, DD.MM.YYYY")
+            self.dateLabel.text = getDate(FromDate: self.date!, Format: "EE, d.MM.yyyy")
             self.tableView.reloadData()
         }
     }
