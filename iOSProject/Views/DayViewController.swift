@@ -109,6 +109,7 @@ class DayViewController: UITableViewController {
         if let sender = sender as? DateEvent, let dest = segue.destination as? DateEditViewController {
             print("Creating new Event")
             dest.dateEvent = sender
+            dest.date = date
         }
         
         if let dest = segue.destination as? NavigationMenuController {

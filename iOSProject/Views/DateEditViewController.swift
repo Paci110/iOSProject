@@ -24,6 +24,7 @@ class DateEditViewController: UIViewController {
     @IBOutlet weak var repeatPicker: UIPickerView!
     @IBOutlet weak var calendarPicker: UIPickerView!
     
+    var date: Date?
     var dateEvent: DateEvent?
     var calendars: [Calendar]?
     var calendarCancellable: AnyCancellable?
@@ -33,12 +34,10 @@ class DateEditViewController: UIViewController {
     @IBAction func saveButton(_ sender: UIButton) {
         saveToDateEvent()
         self.dismiss(animated: true, completion: nil)
-        //TODO: go back to previous vc
     }
     @IBAction func cancelButton(_ sender: UIButton) {
         getContext().rollback()
         self.dismiss(animated: true, completion: nil)
-        //TODO: go back to previous vc
     }
     
     func refresh() {
@@ -54,7 +53,9 @@ class DateEditViewController: UIViewController {
         startPicker.date = dateEvent?.start ?? Date()
         endPicker.date = dateEvent?.end ?? Date()
         reminderSwitch.isOn = dateEvent?.shouldRemind ?? false
-        reminderPicker.date = dateEvent?.reminder ?? Foundation.Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+        //TODO: what to use next day or hour before?
+        //reminderPicker.date = dateEvent?.reminder ?? Foundation.Calendar.current.date(byAdding: .day, value: 1, to: date ?? Date()) ?? Date()
+        reminderPicker.date = dateEvent?.reminder ?? Foundation.Calendar.current.date(byAdding: .minute, value: -30, to: date ?? Date()) ?? Date()
         notesTextView.text = dateEvent?.notes ?? ""
         urlTextField.text = dateEvent?.url?.absoluteString ?? ""
         addressTextField.text = dateEvent?.place != nil ? "\(dateEvent?.place?.locality ?? ""), \(dateEvent?.place?.name ?? "")" : ""
@@ -74,6 +75,11 @@ class DateEditViewController: UIViewController {
         
         self.repeatPicker.delegate = self
         self.calendarPicker.delegate = self
+        
+        if let date = date {
+            startPicker.date = date
+            endPicker.date = Foundation.Calendar.current.date(byAdding: .hour, value: 1, to: date) ?? date
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
