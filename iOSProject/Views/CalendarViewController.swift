@@ -98,6 +98,10 @@ extension CalendarViewController: UITableViewDataSource {
             dest.calendar = sender
             dest.calendarView = self
         }
+        
+        if let dest = segue.destination as? NavigationMenuController {
+            dest.previousController = self
+        }
     }
 }
 

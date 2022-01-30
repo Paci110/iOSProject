@@ -13,4 +13,10 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? NavigationMenuController {
+            dest.previousController = self
+        }
+    }
 }
