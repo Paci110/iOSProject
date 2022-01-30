@@ -142,6 +142,10 @@ class WeekViewController: UIViewController {
             dest.date = sender
             return
         }
+        
+        if let dest = segue.destination as? NavigationMenuController {
+            dest.previousController = self
+        }
     }
 }
 

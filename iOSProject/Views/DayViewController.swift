@@ -103,6 +103,10 @@ class DayViewController: UITableViewController {
             print("Creating new Event")
             dest.dateEvent = sender
         }
+        
+        if let dest = segue.destination as? NavigationMenuController {
+            dest.previousController = self
+        }
     }
     
     public override func numberOfSections(in tableView: UITableView) -> Int {
@@ -197,5 +201,8 @@ class DayViewController: UITableViewController {
     @IBAction func prevDay(_ sender: Any) {
         self.date = Foundation.Calendar.current.date(byAdding: .day, value: -1, to: self.date!)
         reloadData()
+    }
+    
+    @IBAction func unwindToDay(_ segue: UIStoryboardSegue) {
     }
 }

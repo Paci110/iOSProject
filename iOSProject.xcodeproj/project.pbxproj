@@ -15,6 +15,7 @@
 		55F23CE5279B8A0E00E4F163 /* YearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CE4279B8A0E00E4F163 /* YearViewController.swift */; };
 		55F23CE7279B8B4D00E4F163 /* MonthForYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CE6279B8B4D00E4F163 /* MonthForYearViewController.swift */; };
 		55F23CE9279B8D7D00E4F163 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CE8279B8D7D00E4F163 /* DateCell.swift */; };
+		79242C4C27A6B75B00210B4D /* NavigationMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79242C4B27A6B75B00210B4D /* NavigationMenuController.swift */; };
 		792DACB127A4AFA800BDDF6E /* Settings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792DACAF27A4AFA800BDDF6E /* Settings+CoreDataClass.swift */; };
 		792DACB227A4AFA800BDDF6E /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792DACB027A4AFA800BDDF6E /* Settings+CoreDataProperties.swift */; };
 		7983AEF4276B7E0C00FC4301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983AEF3276B7E0C00FC4301 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		55F23CE4279B8A0E00E4F163 /* YearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewController.swift; sourceTree = "<group>"; };
 		55F23CE6279B8B4D00E4F163 /* MonthForYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthForYearViewController.swift; sourceTree = "<group>"; };
 		55F23CE8279B8D7D00E4F163 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		79242C4B27A6B75B00210B4D /* NavigationMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenuController.swift; sourceTree = "<group>"; };
 		792DACAF27A4AFA800BDDF6E /* Settings+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		792DACB027A4AFA800BDDF6E /* Settings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7983AEF0276B7E0C00FC4301 /* iOSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +164,7 @@
 				A1043384279ECC6100E11B5F /* CalendarViewController.swift */,
 				A1043386279EFF8E00E11B5F /* CalendarEditViewController.swift */,
 				A104338A27A434F100E11B5F /* DateEditViewController.swift */,
+				79242C4B27A6B75B00210B4D /* NavigationMenuController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			files = (
 				79FDEEA12795ACB3005A25F9 /* EventSeries+CoreDataClass.swift in Sources */,
 				A104338B27A434F100E11B5F /* DateEditViewController.swift in Sources */,
+				79242C4C27A6B75B00210B4D /* NavigationMenuController.swift in Sources */,
 				79FDEEA22795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift in Sources */,
 				792DACB227A4AFA800BDDF6E /* Settings+CoreDataProperties.swift in Sources */,
 				79E83786279D73DA00258682 /* WeekViewController.swift in Sources */,

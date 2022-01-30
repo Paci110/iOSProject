@@ -159,12 +159,18 @@ class YearViewController: UIViewController
             
             //get controller from StoryBoard
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let AnotherController = storyBoard.instantiateViewController(withIdentifier: "monthViewController") as! MonthViewController
+            let AnotherController = storyBoard.instantiateViewController(withIdentifier: "monthView") as! MonthViewController
             self.navigationController?.pushViewController(AnotherController, animated: false)
             return
         }
         
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? NavigationMenuController {
+            dest.previousController = self
+        }
     }
     
     

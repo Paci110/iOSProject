@@ -40,10 +40,7 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
         super.viewDidLoad()
         
         renderCells()
-        renderMonth()
-        
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        
+        renderMonth()      
         
         
         
@@ -118,19 +115,26 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let AnotherController = storyBoard.instantiateViewController(withIdentifier: "dayViewController") as! DayViewController
             self.navigationController?.pushViewController(AnotherController, animated: false)
+            
             return
         }else {
             
             //change to year view
             //get controller from StoryBoard
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let AnotherController = storyBoard.instantiateViewController(withIdentifier: "yearViewController") as! YearViewController
+            let AnotherController = storyBoard.instantiateViewController(withIdentifier: "yearView") as! YearViewController
             self.navigationController?.pushViewController(AnotherController, animated: false)
             return
             
         }
         
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? NavigationMenuController {
+            dest.previousController = self
+        }
     }
     
     
