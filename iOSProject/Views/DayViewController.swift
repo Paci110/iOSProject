@@ -20,6 +20,13 @@ class DayViewController: UITableViewController {
         jumpToToday()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let theme = fetchSettings().colorTheme
+        applyTheme(theme: theme)
+        UIView.appearance().tintColor = col
+        view.window?.tintColor = col
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (date == nil) {
@@ -103,6 +110,10 @@ class DayViewController: UITableViewController {
             print("Creating new Event")
             dest.dateEvent = sender
         }
+        
+        if let dest = segue.destination as? NavigationMenuController {
+            dest.previousController = self
+        }
     }
     
     public override func numberOfSections(in tableView: UITableView) -> Int {
@@ -177,7 +188,7 @@ class DayViewController: UITableViewController {
             
             //get controller from StoryBoard
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let AnotherController = storyBoard.instantiateViewController(withIdentifier: "monthViewController") as! MonthViewController
+            let AnotherController = storyBoard.instantiateViewController(withIdentifier: "monthView") as! MonthViewController
             self.navigationController?.pushViewController(AnotherController, animated: false)
             return
         }
@@ -197,5 +208,8 @@ class DayViewController: UITableViewController {
     @IBAction func prevDay(_ sender: Any) {
         self.date = Foundation.Calendar.current.date(byAdding: .day, value: -1, to: self.date!)
         reloadData()
+    }
+    
+    @IBAction func unwindToDay(_ segue: UIStoryboardSegue) {
     }
 }

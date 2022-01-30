@@ -41,5 +41,17 @@ class ViewController: UIViewController {
         if let dest = (segue.destination) as? WeekViewController {
             dest.setDays(dateInWeek: Date())
         }
+        
+        if let dest = segue.destination as? NavigationMenuController {
+            dest.previousController = self
+        }
     }
+    
+    @IBAction func unwindToExampleView(_ segue: UIStoryboardSegue) {
+        if let navMenu = segue.source as? NavigationMenuController,
+           let segueIdentifier = navMenu.segueIdentifier {
+            performSegue(withIdentifier: segueIdentifier, sender: nil)
+        }
+    }
+    
 }

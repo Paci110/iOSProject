@@ -32,9 +32,12 @@ class DateEditViewController: UIViewController {
     
     @IBAction func saveButton(_ sender: UIButton) {
         saveToDateEvent()
+        self.dismiss(animated: true, completion: nil)
         //TODO: go back to previous vc
     }
     @IBAction func cancelButton(_ sender: UIButton) {
+        getContext().rollback()
+        self.dismiss(animated: true, completion: nil)
         //TODO: go back to previous vc
     }
     
