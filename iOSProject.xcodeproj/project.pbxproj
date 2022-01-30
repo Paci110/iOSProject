@@ -77,7 +77,6 @@
 		79FDEE9F2795ACB3005A25F9 /* EventSeries+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventSeries+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		79FDEEA02795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventSeries+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7C4E175C27A42D3D00B627E7 /* FeatureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureController.swift; sourceTree = "<group>"; };
-		7CFC9509279CA3A50094A3C2 /* DateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditViewController.swift; sourceTree = SOURCE_ROOT; };
 		A1043384279ECC6100E11B5F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A1043386279EFF8E00E11B5F /* CalendarEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEditViewController.swift; sourceTree = "<group>"; };
 		A104338827A2E1CF00E11B5F /* EKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKUtils.swift; sourceTree = "<group>"; };
@@ -150,7 +149,6 @@
 			children = (
 				301E24C227A414D700B5895B /* SettingsViewController.swift */,
 				79E83785279D73DA00258682 /* WeekViewController.swift */,
-				7CFC9509279CA3A50094A3C2 /* DateEditViewController.swift */,
 				7C4E175C27A42D3D00B627E7 /* FeatureController.swift */,
 				7990F5D0276F70130066EDC6 /* DayViewController.swift */,
 				55F23CE4279B8A0E00E4F163 /* YearViewController.swift */,

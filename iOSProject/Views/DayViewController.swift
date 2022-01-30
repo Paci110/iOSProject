@@ -20,6 +20,13 @@ class DayViewController: UITableViewController {
         jumpToToday()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let theme = fetchSettings().colorTheme
+        applyTheme(theme: theme)
+        UIView.appearance().tintColor = col
+        view.window?.tintColor = col
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (date == nil) {
