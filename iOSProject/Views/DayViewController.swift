@@ -101,14 +101,14 @@ class DayViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //TODO: implement
         if let cell = sender as? DateEventCell,
            let dest = segue.destination as? DateViewController {
             dest.dateEvent = cell.dateEvent
+            dest.sender = self
         }
         if let sender = sender as? DateEvent, let dest = segue.destination as? DateEditViewController {
-            print("Creating new Event")
             dest.dateEvent = sender
+            dest.sender = self
         }
         
         if let dest = segue.destination as? NavigationMenuController {

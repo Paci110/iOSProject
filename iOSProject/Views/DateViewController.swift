@@ -15,6 +15,7 @@ class DateViewController: UIViewController {
     @IBOutlet weak var tableViewDates: UITableView!
     
     var dateEvent: DateEvent?
+    var sender: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +26,22 @@ class DateViewController: UIViewController {
         labelDateTitle.text = dateEvent?.title
     }
     
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.tableViewDates.reloadData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let dayView = sender as? DayViewController {
+            dayView.reloadData()
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? DateEditViewController {
             dest.dateEvent = self.dateEvent
+            dest.sender = self
         }
     }
     

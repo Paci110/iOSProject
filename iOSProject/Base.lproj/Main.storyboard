@@ -691,6 +691,9 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="eab-Tj-fl5"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <action selector="changeFullDaySwitch:" destination="WHp-05-bHe" eventType="valueChanged" id="4vv-Gt-Pho"/>
+                                                        </connections>
                                                     </switch>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1567,7 +1570,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VLh-8D-Kob"/>
+        <segue reference="oux-Nr-0VY"/>
         <segue reference="FOA-bt-otb"/>
         <segue reference="w0r-eI-fRq"/>
         <segue reference="Cg9-ip-0Pg"/>
