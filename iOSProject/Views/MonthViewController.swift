@@ -113,7 +113,7 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
             
             //get controller from StoryBoard
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let AnotherController = storyBoard.instantiateViewController(withIdentifier: "dayViewController") as! DayViewController
+            let AnotherController = storyBoard.instantiateViewController(withIdentifier: "dayView") as! DayViewController
             self.navigationController?.pushViewController(AnotherController, animated: false)
             
             return

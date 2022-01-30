@@ -34,8 +34,11 @@ class NavigationMenuController: UIViewController {
                     if controller.restorationIdentifier == segueIdentifier {
                         foundController = true
                         let count = nav.viewControllers.count
-                        for _ in 0...(count - index) {
-                            self.previousController?.navigationController?.popViewController(animated: false)
+                        guard count != index + 1 else {
+                            break
+                        }
+                        for _ in 1...(count - index - 1) {
+                            nav.popViewController(animated: false)
                         }
                     }
                 }
