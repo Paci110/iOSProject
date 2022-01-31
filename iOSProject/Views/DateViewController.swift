@@ -47,6 +47,8 @@ class DateViewController: UIViewController {
     
 }
 
+//MARK: Table view functions
+
 extension DateViewController: UITableViewDataSource {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,7 +65,6 @@ extension DateViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 0)
         {
-            //TODO: first header is not displayed correctly
             //return "Time"
         }
         let data = dateEvent?.getData()[section+3]
@@ -97,6 +98,7 @@ extension DateViewController: UITableViewDataSource {
         return 1
     }
     
+    ///Dynamically creates the info cells
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var prevRows = 1
         for i in 0...indexPath.section {
@@ -123,7 +125,6 @@ extension DateViewController: UITableViewDataSource {
             return cell
         }
         else if let data = dateText as? URL {
-            //TODO: clickable link
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
             let linkString = NSAttributedString(string: data.absoluteString, attributes: [NSAttributedString.Key.link: data])
             cell.textLabel?.attributedText = linkString

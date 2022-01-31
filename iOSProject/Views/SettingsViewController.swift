@@ -55,6 +55,7 @@ class SettingsViewController: UIViewController {
     }
 }
 
+//MARK: UIPicker functions
 extension SettingsViewController : UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return themesArray[row]

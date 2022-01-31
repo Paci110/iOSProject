@@ -66,6 +66,8 @@ class CalendarViewController: UIViewController {
     }
 }
 
+//MARK: Table view functions
+
 extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredCalendars?.count ?? 0

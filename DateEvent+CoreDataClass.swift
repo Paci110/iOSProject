@@ -44,8 +44,6 @@ public class DateEvent: NSManagedObject {
                     return
                 }
                 self.place = first
-                //TODO: Has to update somewhere else
-                //                saveData()
                 guard let locationHanlder = locationHanlder else {
                     return
                 }
@@ -79,7 +77,7 @@ public class DateEvent: NSManagedObject {
                     /*
                     let alert = UIAlertController(title: "Notifications not allowed", message: "Please enable notfications in the settings. Reminder will be deactivated for this event.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                    //FIXME: display user warning in displayed view
+                    
                     /*
                      let viewCon = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController
                      viewCon?.present(alert, animated: true, completion: nil)
@@ -127,7 +125,6 @@ public class DateEvent: NSManagedObject {
         }
         
         //If the date is an full day event the date is edited to start at 0:00 and end at 23:59 of the start, end date
-        //FIXME: Start and End are not set to what is expected (00:00 and 23:59). Instead,it is the start and end given in the parameters, but 1 hour early.
         if fullDayEvent {
             let startDateString = getDate(FromDate: start, Format: "DD.MM.YYYY") + " 0:00"
             self.start = getDate(fromString: startDateString)

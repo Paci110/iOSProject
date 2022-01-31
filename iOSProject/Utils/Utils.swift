@@ -167,7 +167,7 @@ public func dateToDMY (date: Date) -> [Int] {
 
 
 public func applyTheme(theme: String){
-    var settings = fetchSettings()
+    let settings = fetchSettings()
     
     switch(theme){
         case "Default": col = UIColor.systemBlue
@@ -181,7 +181,6 @@ public func applyTheme(theme: String){
     
     saveData(completionHanlder: nil)
     
-    print(settings)
 }
 
 

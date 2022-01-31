@@ -50,6 +50,7 @@ class DayViewController: UITableViewController {
         reloadData()
     }
     
+    ///Reloads the data
     func reloadData() {
         //dateEvents = getDay(day: 19, month: 1, year: 2022)
         let dmy = dateToDMY(date: date!)
@@ -70,6 +71,7 @@ class DayViewController: UITableViewController {
         }
     }
     
+    ///Create new Event and open the edit view
     @IBAction func addButtonClicked(_ sender: Any) {
         let calendars = getCalendars(filterFor: nil)
         var calendar: Calendar!
@@ -82,6 +84,7 @@ class DayViewController: UITableViewController {
         let event = DateEvent(title: "New Event", fullDayEvent: false, start: Date(), end: Date(), shouldRemind: false, calendar: calendar, notes: nil, series: nil, reminder: nil, url: nil, location: nil, locationHanlder: nil, notificationHanlder: nil)
         performSegue(withIdentifier: "editSegue", sender: event)
     }
+    
     
     func locationHandler(success: Bool, error: Error?) {
         if let error = error {
@@ -133,6 +136,7 @@ class DayViewController: UITableViewController {
         }
     }
     
+    //MARK: Table view functions
     public override func numberOfSections(in tableView: UITableView) -> Int {
         return dateEvents?.count ?? 0
     }
@@ -153,14 +157,12 @@ class DayViewController: UITableViewController {
         performSegue(withIdentifier: "dateView", sender: cell)
     }
     
-    //TODO: change?
     public override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "Delete") {
             [unowned self] action, view, completionHandler in
             let event: DateEvent = (tableView.cellForRow(at: indexPath) as! DateEventCell).dateEvent
             //self.tableView.deleteSections([indexPath.section], with: .left)
             //self.tableView.deleteRows(at: [indexPath], with: .fade)
-            //TODO: implement undo with popup
             deleteData(dataToDelete: event) {
                 let alert = UIAlertController(title: "Could not save changes", message: "The changes could not be saved. Please try again.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -170,6 +172,8 @@ class DayViewController: UITableViewController {
         }
         return UISwipeActionsConfiguration(actions: [delete])
     }
+    
+    //MARK: gesture functions
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if(motion == .motionShake)
@@ -214,6 +218,8 @@ class DayViewController: UITableViewController {
     }
    */
     
+    
+    //MARK: helper functions
     private func jumpToToday()
     {
         self.date = Date()
