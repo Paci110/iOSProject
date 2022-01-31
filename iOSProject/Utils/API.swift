@@ -65,7 +65,7 @@ public func getDay(day: Int, month: Int, year: Int, filterFor: [String]? = nil) 
  - Returns: array of DateEvents in the selected day
  */
 public func getDay(from date: Date, filterFor: [String]? = nil) -> [DateEvent] {
-    let dateString = getDate(FromDate: date, Format: "DD.MM.YYYY").split(separator: ".")
+    let dateString = getDate(FromDate: date, Format: "d.MM.YYYY").split(separator: ".")
     return getDay(day: Int(dateString[0])!, month: Int(dateString[1])!, year: Int(dateString[2])!, filterFor: filterFor)
 }
 
