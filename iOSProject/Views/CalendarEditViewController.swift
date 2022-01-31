@@ -13,7 +13,7 @@ class CalendarEditViewController: UIViewController {
     var picker: UIColorPickerViewController?
     var calendar: Calendar?
     
-    var calendarView: CalendarViewController?
+    var sender: UIViewController?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? UIColorPickerViewController{
@@ -38,13 +38,18 @@ class CalendarEditViewController: UIViewController {
                 text = "\(text)(\(i))"
                 let alert = UIAlertController(title: "Calendar Name was Taken", message: "\"\(former)\" has been changed to \"\(text)\"", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                calendarView!.present(alert, animated: true, completion: nil)
+                sender!.present(alert, animated: true, completion: nil)
             } else {
                 break
             }
             i += 1
         }
         calendar?.title = text
-        calendarView?.reloadData()
+        
+        if let sender = sender as? CalendarViewController{
+            sender.reloadData()
+        } else if let sender = sender as? DateEditViewController{
+            sender.reloadData()
+        }
     }
 }
