@@ -7,7 +7,4 @@
 
 import UIKit
 
-class CCell: UICollectionViewCell
-{
-    @IBOutlet weak var dayOfMonth: UILabel!
-}
+
