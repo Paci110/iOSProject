@@ -27,20 +27,24 @@ class CalendarEditViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        calendar?.color = picker?.selectedColor ?? calendar!.color
         let cals = getCalendars().map { $0.title }
         var text:String = nameTextField.text ?? calendar!.title
+        let former = text
         var i = 0 //counter
         while(true){
             if(cals.contains(text)){
                 text = nameTextField.text ?? calendar!.title
                 text = "\(text)(\(i))"
+                let alert = UIAlertController(title: "Calendar Name was Taken", message: "\"\(former)\" has been changed to \"\(text)\"", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                calendarView!.present(alert, animated: true, completion: nil)
             } else {
                 break
             }
             i += 1
         }
         calendar?.title = text
-        calendar?.color = picker?.selectedColor ?? calendar!.color
         calendarView?.reloadData()
     }
 }
