@@ -12,7 +12,7 @@ import CoreData
 @objc(Settings)
 public class Settings: NSManagedObject {
     
-    convenience init(colorTheme: String, startWithLastView: Bool, defaultView: String? = nil) {
+    convenience init(colorTheme: String, startWithLastView: Bool, defaultView: String? = nil, showWeekNumbers: Bool) {
         self.init(context: getContext())
         
         self.colorTheme = colorTheme
@@ -22,6 +22,8 @@ public class Settings: NSManagedObject {
         self.defaultView = defaultView
         
         self.lastView = "Month View"
+        
+        self.showWeekNumbers = showWeekNumbers
         
     }
 

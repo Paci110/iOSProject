@@ -16,6 +16,7 @@ class CalendarEditViewController: UIViewController {
     var calendarView: CalendarViewController?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(segue.destination)
         if let dest = segue.destination as? UIColorPickerViewController{
             picker = dest
         }
@@ -29,6 +30,5 @@ class CalendarEditViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         calendar?.title = nameTextField.text ?? calendar!.title
         calendar?.color = picker?.selectedColor ?? calendar!.color
-        calendarView?.reloadData()
     }
 }

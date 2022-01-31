@@ -7,9 +7,12 @@
 
 import UIKit
 
-class FeatureController: UIViewController {
+class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var themes : UIPickerView!
+    @IBOutlet weak var themes: UIPickerView!
+    @IBOutlet weak var weekNumbersSwitch: UISwitch!
+    
+    weak var prevController: UIViewController?
     
     let themesArray = ["-----","Default","Mint","Scarlet","Plum"]
     
@@ -20,11 +23,27 @@ class FeatureController: UIViewController {
         self.themes.delegate = self
         self.themes.dataSource = self
         
-        
+        weekNumbersSwitch.isOn = fetchSettings().showWeekNumbers
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        prevController?.viewDidLoad()
+    }
+    
+    @IBAction func weekNumbersSwitchChanged(_ sender: UISwitch) {
+        let settings = fetchSettings()
+        settings.showWeekNumbers = sender.isOn
+        saveData() {
+            let alarm = UIAlertController(title: "Could not save settings", message: "", preferredStyle: .alert)
+            alarm.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            DispatchQueue.main.async {
+                self.present(alarm, animated: true, completion: nil)
+            }
+        }
     }
 }
 
-extension FeatureController : UIPickerViewDelegate {
+extension SettingsViewController : UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return themesArray[row]
     }
@@ -36,7 +55,7 @@ extension FeatureController : UIPickerViewDelegate {
     }
 }
 
-extension FeatureController : UIPickerViewDataSource {
+extension SettingsViewController : UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

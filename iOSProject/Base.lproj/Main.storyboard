@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Feature Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="iuz-qG-akM">
             <objects>
-                <viewController storyboardIdentifier="settingsView" id="Ako-E2-4RS" customClass="FeatureController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingsView" id="Ako-E2-4RS" customClass="SettingsViewController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A41-zZ-4BL">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,59 +25,48 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNl-Mg-CcQ">
-                                <rect key="frame" x="0.0" y="80" width="390" height="260"/>
+                                <rect key="frame" x="0.0" y="80" width="390" height="216"/>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show week numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcR-li-fwh">
+                                <rect key="frame" x="20" y="346" width="133.33333333333334" height="31"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DnP-aw-qup">
+                                <rect key="frame" x="311" y="346" width="51" height="31"/>
+                                <connections>
+                                    <action selector="weekNumbersSwitchChanged:" destination="Ako-E2-4RS" eventType="valueChanged" id="aLJ-HG-hyg"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DQs-Bc-q4M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wcR-li-fwh" firstAttribute="top" secondItem="DnP-aw-qup" secondAttribute="top" id="2VP-hy-xdw"/>
                             <constraint firstItem="NnD-71-NSb" firstAttribute="leading" secondItem="DQs-Bc-q4M" secondAttribute="leading" id="Dhl-fn-67O"/>
                             <constraint firstItem="NnD-71-NSb" firstAttribute="trailing" secondItem="DQs-Bc-q4M" secondAttribute="trailing" id="Gvy-qv-cVg"/>
                             <constraint firstItem="XNl-Mg-CcQ" firstAttribute="top" secondItem="NnD-71-NSb" secondAttribute="bottom" id="N1d-oI-KfB"/>
                             <constraint firstItem="XNl-Mg-CcQ" firstAttribute="leading" secondItem="DQs-Bc-q4M" secondAttribute="leading" id="Q62-FG-9w1"/>
+                            <constraint firstItem="wcR-li-fwh" firstAttribute="bottom" secondItem="DnP-aw-qup" secondAttribute="bottom" id="TRR-wc-fcS"/>
                             <constraint firstItem="NnD-71-NSb" firstAttribute="top" secondItem="DQs-Bc-q4M" secondAttribute="top" id="Ubb-Cu-6SB"/>
+                            <constraint firstItem="wcR-li-fwh" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="DnP-aw-qup" secondAttribute="leading" constant="8" symbolic="YES" id="Zd6-Cl-QfA"/>
                             <constraint firstItem="XNl-Mg-CcQ" firstAttribute="top" secondItem="NnD-71-NSb" secondAttribute="bottom" id="aIa-gO-nhe"/>
+                            <constraint firstItem="DnP-aw-qup" firstAttribute="top" secondItem="XNl-Mg-CcQ" secondAttribute="bottom" constant="50" id="bAg-cK-woQ"/>
                             <constraint firstItem="XNl-Mg-CcQ" firstAttribute="trailing" secondItem="DQs-Bc-q4M" secondAttribute="trailing" id="d1N-Iy-slH"/>
-                            <constraint firstItem="DQs-Bc-q4M" firstAttribute="bottom" secondItem="XNl-Mg-CcQ" secondAttribute="bottom" constant="470" id="y62-8k-lNC"/>
+                            <constraint firstItem="DQs-Bc-q4M" firstAttribute="trailing" secondItem="DnP-aw-qup" secondAttribute="trailing" constant="30" id="eCb-T0-T5r"/>
+                            <constraint firstItem="wcR-li-fwh" firstAttribute="leading" secondItem="DQs-Bc-q4M" secondAttribute="leading" constant="20" id="pjd-ZS-pOE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="PlK-0g-Oec"/>
                     <connections>
                         <outlet property="themes" destination="XNl-Mg-CcQ" id="zRy-2X-TA9"/>
+                        <outlet property="weekNumbersSwitch" destination="DnP-aw-qup" id="XEc-d3-kNb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnE-Wf-y2L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1666.1538461538462" y="895.73459715639808"/>
-        </scene>
-        <!--Settings View Controller-->
-        <scene sceneID="TEw-kW-35N">
-            <objects>
-                <viewController id="noq-66-vAd" customClass="SettingsViewController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MDq-Mp-OzD">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jm9-5G-hRQ">
-                                <rect key="frame" x="87" y="395" width="241" height="107"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Change Color">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="colorUpdate:" destination="noq-66-vAd" eventType="touchUpInside" id="o5F-vb-xFW"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="5JB-aJ-xxb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ZL7-SI-Anv"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fnF-xQ-hwD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3590" y="446"/>
         </scene>
         <!--Day View Controller-->
         <scene sceneID="8vH-9h-Qb1">
@@ -99,12 +88,21 @@
                                         <action selector="prevDay:" destination="Z2h-EA-0RW" eventType="touchUpInside" id="lZx-En-Fiz"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekb-hf-aVo">
-                                    <rect key="frame" x="164.33333333333334" y="6.3333333333333339" width="61.666666666666657" height="31.333333333333329"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blO-At-VrX">
+                                    <rect key="frame" x="177.33333333333334" y="13.666666666666664" width="35.333333333333343" height="17"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekb-hf-aVo">
+                                            <rect key="frame" x="0.0" y="0.0" width="35.333333333333336" height="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ekb-hf-aVo" firstAttribute="top" secondItem="blO-At-VrX" secondAttribute="top" id="eds-28-Rzd"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ekb-hf-aVo" secondAttribute="bottom" id="qCz-v4-cEG"/>
+                                    </constraints>
+                                </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcE-cD-WlC">
                                     <rect key="frame" x="344.66666666666669" y="6.6666666666666661" width="45.333333333333314" height="30.666666666666671"/>
                                     <state key="normal" title="Button"/>
@@ -117,7 +115,7 @@
                         </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DateEventCell" rowHeight="88" id="x4W-D8-LVu" customClass="DateEventCell" customModule="iOSProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="93" width="390" height="88"/>
+                                <rect key="frame" x="0.0" y="39" width="390" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x4W-D8-LVu" id="lXY-Fp-MF9">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="88"/>
@@ -1583,6 +1581,10 @@
         <segue reference="w0r-eI-fRq"/>
         <segue reference="Cg9-ip-0Pg"/>
         <segue reference="f6f-Pv-11f"/>
+        <segue reference="oux-Nr-0VY"/>
+        <segue reference="hcf-pC-lYp"/>
+        <segue reference="1fy-ro-MXs"/>
+        <segue reference="rOO-e5-OpA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>

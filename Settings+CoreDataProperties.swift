@@ -20,6 +20,7 @@ extension Settings {
     @NSManaged public var defaultView: String?
     @NSManaged public var lastView: String
     @NSManaged public var startWithLastView: Bool
+    @NSManaged public var showWeekNumbers: Bool
 
 }
 
