@@ -37,12 +37,12 @@
 		A1043387279EFF8E00E11B5F /* CalendarEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1043386279EFF8E00E11B5F /* CalendarEditViewController.swift */; };
 		A104338927A2E1CF00E11B5F /* EKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104338827A2E1CF00E11B5F /* EKUtils.swift */; };
 		A104338B27A434F100E11B5F /* DateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104338A27A434F100E11B5F /* DateEditViewController.swift */; };
-		A116D73027A86D6700022F46 /* icon-1.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D72A27A86D6700022F46 /* icon-1.png */; };
-		A116D73127A86D6700022F46 /* icon-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D72B27A86D6700022F46 /* icon-1@3x.png */; };
-		A116D73227A86D6700022F46 /* icon-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D72C27A86D6700022F46 /* icon-1@2x.png */; };
-		A116D73327A86D6700022F46 /* icon-2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D72D27A86D6700022F46 /* icon-2@3x.png */; };
-		A116D73427A86D6700022F46 /* icon-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D72E27A86D6700022F46 /* icon-2@2x.png */; };
-		A116D73527A86D6700022F46 /* icon-2.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D72F27A86D6700022F46 /* icon-2.png */; };
+		A116D73C27A8778100022F46 /* icon-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D73627A8778000022F46 /* icon-2@2x.png */; };
+		A116D73D27A8778100022F46 /* icon-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D73727A8778000022F46 /* icon-1@3x.png */; };
+		A116D73E27A8778100022F46 /* icon-2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D73827A8778000022F46 /* icon-2@3x.png */; };
+		A116D73F27A8778100022F46 /* icon-1.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D73927A8778000022F46 /* icon-1.png */; };
+		A116D74027A8778100022F46 /* icon-2.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D73A27A8778000022F46 /* icon-2.png */; };
+		A116D74127A8778100022F46 /* icon-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D73B27A8778100022F46 /* icon-1@2x.png */; };
 		A190A91A279C12B700DA2D43 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190A919279C12B700DA2D43 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,12 +79,12 @@
 		A1043386279EFF8E00E11B5F /* CalendarEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEditViewController.swift; sourceTree = "<group>"; };
 		A104338827A2E1CF00E11B5F /* EKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKUtils.swift; sourceTree = "<group>"; };
 		A104338A27A434F100E11B5F /* DateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditViewController.swift; sourceTree = "<group>"; };
-		A116D72A27A86D6700022F46 /* icon-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-1.png"; path = "../../../Downloads/Archive/icon-1.png"; sourceTree = "<group>"; };
-		A116D72B27A86D6700022F46 /* icon-1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-1@3x.png"; path = "../../../Downloads/Archive/icon-1@3x.png"; sourceTree = "<group>"; };
-		A116D72C27A86D6700022F46 /* icon-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-1@2x.png"; path = "../../../Downloads/Archive/icon-1@2x.png"; sourceTree = "<group>"; };
-		A116D72D27A86D6700022F46 /* icon-2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-2@3x.png"; path = "../../../Downloads/Archive/icon-2@3x.png"; sourceTree = "<group>"; };
-		A116D72E27A86D6700022F46 /* icon-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-2@2x.png"; path = "../../../Downloads/Archive/icon-2@2x.png"; sourceTree = "<group>"; };
-		A116D72F27A86D6700022F46 /* icon-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-2.png"; path = "../../../Downloads/Archive/icon-2.png"; sourceTree = "<group>"; };
+		A116D73627A8778000022F46 /* icon-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-2@2x.png"; sourceTree = "<group>"; };
+		A116D73727A8778000022F46 /* icon-1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1@3x.png"; sourceTree = "<group>"; };
+		A116D73827A8778000022F46 /* icon-2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-2@3x.png"; sourceTree = "<group>"; };
+		A116D73927A8778000022F46 /* icon-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1.png"; sourceTree = "<group>"; };
+		A116D73A27A8778000022F46 /* icon-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-2.png"; sourceTree = "<group>"; };
+		A116D73B27A8778100022F46 /* icon-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1@2x.png"; sourceTree = "<group>"; };
 		A190A919279C12B700DA2D43 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,12 +182,12 @@
 		A116D72927A86CE900022F46 /* AppIcons */ = {
 			isa = PBXGroup;
 			children = (
-				A116D72B27A86D6700022F46 /* icon-1@3x.png */,
-				A116D72C27A86D6700022F46 /* icon-1@2x.png */,
-				A116D72A27A86D6700022F46 /* icon-1.png */,
-				A116D72D27A86D6700022F46 /* icon-2@3x.png */,
-				A116D72E27A86D6700022F46 /* icon-2@2x.png */,
-				A116D72F27A86D6700022F46 /* icon-2.png */,
+				A116D73927A8778000022F46 /* icon-1.png */,
+				A116D73B27A8778100022F46 /* icon-1@2x.png */,
+				A116D73727A8778000022F46 /* icon-1@3x.png */,
+				A116D73A27A8778000022F46 /* icon-2.png */,
+				A116D73627A8778000022F46 /* icon-2@2x.png */,
+				A116D73827A8778000022F46 /* icon-2@3x.png */,
 			);
 			path = AppIcons;
 			sourceTree = "<group>";
@@ -251,15 +251,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A116D73527A86D6700022F46 /* icon-2.png in Resources */,
 				7983AF00276B7E2700FC4301 /* LaunchScreen.storyboard in Resources */,
 				7983AEFD276B7E2700FC4301 /* Assets.xcassets in Resources */,
-				A116D73427A86D6700022F46 /* icon-2@2x.png in Resources */,
-				A116D73027A86D6700022F46 /* icon-1.png in Resources */,
-				A116D73227A86D6700022F46 /* icon-1@2x.png in Resources */,
-				A116D73327A86D6700022F46 /* icon-2@3x.png in Resources */,
+				A116D73E27A8778100022F46 /* icon-2@3x.png in Resources */,
+				A116D73F27A8778100022F46 /* icon-1.png in Resources */,
+				A116D74127A8778100022F46 /* icon-1@2x.png in Resources */,
+				A116D73D27A8778100022F46 /* icon-1@3x.png in Resources */,
+				A116D73C27A8778100022F46 /* icon-2@2x.png in Resources */,
+				A116D74027A8778100022F46 /* icon-2.png in Resources */,
 				7983AEFB276B7E0D00FC4301 /* Main.storyboard in Resources */,
-				A116D73127A86D6700022F46 /* icon-1@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
