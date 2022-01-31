@@ -87,7 +87,6 @@ class DateEditViewController: UIViewController {
         startPicker.date = dateEvent?.start ?? Date()
         endPicker.date = dateEvent?.end ?? Date()
         reminderSwitch.isOn = dateEvent?.shouldRemind ?? false
-        //TODO: what to use next day or hour before?
         //reminderPicker.date = dateEvent?.reminder ?? Foundation.Calendar.current.date(byAdding: .day, value: 1, to: date ?? Date()) ?? Date()
         reminderPicker.date = dateEvent?.reminder ?? Foundation.Calendar.current.date(byAdding: .minute, value: -30, to: date ?? Date()) ?? Date()
         notesTextView.text = dateEvent?.notes ?? ""
@@ -103,7 +102,6 @@ class DateEditViewController: UIViewController {
         
         reloadData()
         
-        //TODO: reminder, calendar, repeat
         self.repeatPicker.dataSource = self
         self.calendarPicker.dataSource = self
         

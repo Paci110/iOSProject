@@ -51,7 +51,7 @@ func getEvents(start: Date, end: Date, filterFor: [String]? = nil) -> [DateEvent
  - Parameter filterFor?: calendars to filter for
  - Returns: array of DateEvents in the selected day
  */
-public func getDay(day: Int, month: Int, year: Int, filterFor: [String]? = nil) -> [DateEvent] { //TODO: needs value checking
+public func getDay(day: Int, month: Int, year: Int, filterFor: [String]? = nil) -> [DateEvent] {
     let start = getDate(fromString: "\(day)/\(month)/\(year) 00:00")
     let end = getDate(fromString: "\(day)/\(month)/\(year) 23:59")
     
@@ -110,8 +110,8 @@ public func getWeek(cw: Int, year: Int, filterFor: [String]? = nil) -> [[DateEve
 }
 
 /*
-public func getWeek(cw: Int, year: Int, filterFor: [String]? = nil) -> [[DateEvent]] { //TODO: needs value checking
-    let firstDay = getDate(fromString: "1/1/\(year) 01:00")//FIXME: 00:00 returns 31st december 23:00 in locale 0000 :/
+public func getWeek(cw: Int, year: Int, filterFor: [String]? = nil) -> [[DateEvent]] {
+    let firstDay = getDate(fromString: "1/1/\(year) 01:00")//
     let offset: Int = 7 - getWeekDay(date: firstDay).rawValue
     
     var start: Date
@@ -141,7 +141,7 @@ public func getWeek(cw: Int, year: Int, filterFor: [String]? = nil) -> [[DateEve
  - Returns: 2D-array of DateEvents in the selected month, array'd by day
  */
 public func getMonth(month: Int, year: Int, filterFor: [String]? = nil) -> [[DateEvent]] {
-    let firstDay = getDate(fromString: "1/\(month)/\(year) 01:00")//FIXME: as above
+    let firstDay = getDate(fromString: "1/\(month)/\(year) 01:00")
     
     var events: [[DateEvent]] = []
     var currentDay = firstDay
@@ -162,8 +162,6 @@ public func getMonth(month: Int, year: Int, filterFor: [String]? = nil) -> [[Dat
  - Returns: 3D-array of DateEvents in the selected year, array'd by month, array'd by day
  */
 public func getYear(year: Int, filterFor: [String]? = nil) -> [[[DateEvent]]] {
-    let firstDay = getDate(fromString: "1/1/\(year)")
-    
     var events: [[[DateEvent]]] = []
     for index in 1...12 {
         let monthEvents = getMonth(month: index, year: year, filterFor: filterFor)
@@ -221,6 +219,7 @@ private func onSameDay(one: [Int], two: [Int]) -> Bool {
     return one[0] == two[0] && one[1] == two[1] && one[2] == two[2]
 }
 
+///Creates RepeatDateEvent Objects which fall on the given date
 public func createRepeatedEvents(forDate: Date, filterFor: [String]) -> [RepeatDateEvent]{
     var clones: [RepeatDateEvent] = []
     for original in getOriginalRepeatingEvents(filterFor: filterFor){

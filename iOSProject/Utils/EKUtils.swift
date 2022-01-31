@@ -101,7 +101,6 @@ public class EKUtils {
             }
             
             for ekEvent in events {
-                print(ekEvent.title)
                 //Skip events of our calendar from the iOS app
                 if(ekEvent.calendar.title == self.nameForEKCalendar) {
                     continue
@@ -142,6 +141,7 @@ public class EKUtils {
         }
     }
     
+    
     private func removeEventsFromEK(cal: EKCalendar) {
         let oneMonthAgo = Date(timeIntervalSinceNow: -30*24*3600)
         let inThreeYears = Foundation.Calendar.current.date(byAdding: .year, value: 3, to: oneMonthAgo) ?? Date(timeIntervalSinceNow: 60*60*24*30)
@@ -181,6 +181,7 @@ public class EKUtils {
         return calendar
     }
     
+    ///Asks the user for permission
     public func askForPermission(store: EKEventStore, completionHandler: @escaping (CompletionType) -> Void) {
         store.requestAccess(to: .event ) {
             res,error in

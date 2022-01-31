@@ -36,10 +36,6 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
                 cell.cwLabel.text = getCalendarWeek(date: cell.date!)
             }
         }
-        
-        
-        
-        
         return cell
     }
     

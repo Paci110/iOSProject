@@ -36,6 +36,8 @@ class SearchViewController: UIViewController {
     }
 }
 
+//MARK: Table view functions
+
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell")!
@@ -70,6 +72,8 @@ extension SearchViewController: UITableViewDelegate
         }
     }
 }
+
+//MARK: SearchBar functions
 
 extension SearchViewController: UISearchBarDelegate {
     

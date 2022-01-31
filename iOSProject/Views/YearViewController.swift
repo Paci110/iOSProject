@@ -18,9 +18,9 @@ class YearViewController: UIViewController
         //monthViewContr.didMove(toParent: self)
         
         
-        var formatter = DateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyy"
-        var dateStr = formatter.string(from: Date())
+        let dateStr = formatter.string(from: Date())
         yearLabel.text = dateStr
         
         // add Pinch
@@ -38,17 +38,18 @@ class YearViewController: UIViewController
         addMonthContr(heightOfCell: heightOfCell, widthOfCell: widthOfCell)
     }
     
+    ///Adds the month controllers to the view
     func addMonthContr(heightOfCell: Float, widthOfCell: Float) {
         var count: Int = 0
         while count < 12 {
-            var monthViewContr = MonthForYearViewController()
+            let monthViewContr = MonthForYearViewController()
             var dateComp = DateComponents()
             
             dateComp.year = Int(yearLabel.text!)
             
             dateComp.month = count+1
             dateComp.day = 1
-            var userCal = NSCalendar(identifier: .gregorian)!
+            let userCal = NSCalendar(identifier: .gregorian)!
             monthViewContr.selected = userCal.date(from: dateComp)!
             
             monthViewContr.viewDidLoad()
@@ -71,7 +72,7 @@ class YearViewController: UIViewController
         //setMonthConstrains()
     }
     
-    
+    ///Sets the constraints of a MonthViewController
     func setMonthConstrains(monthViewContr : MonthForYearViewController, count : Int, heightOfCell: Float, widthOfCell: Float) {
         monthViewContr.view.translatesAutoresizingMaskIntoConstraints = false
         //can be 0,1,2,3
@@ -87,60 +88,19 @@ class YearViewController: UIViewController
     }
     
     @IBAction func nextYear(_ sender: Any) {
-        
         yearLabel.text = String(Int(yearLabel.text!)!+1)
         
         configu()
-        
-        
     }
     
     @IBAction func prevYear(_ sender: Any) {
-        
-        
         yearLabel.text = String(Int(yearLabel.text!)!-1)
-        
         configu()
-        
     }
-    
-    /*
-    @objc func respondToPinch(gesture: UIGestureRecognizer){
-        guard let pinchGesture = gesture as? UIPinchGestureRecognizer else {return}
-        //view.backgroundColor = .green
-        //scale can be changed here
-        if (pinchGesture.scale <= CGFloat(1)) {
-            //view.backgroundColor = .black
-            
-            //get controller from StoryBoard
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let AnotherController = storyBoard.instantiateViewController(withIdentifier: "monthView") as! MonthViewController
-            self.navigationController?.pushViewController(AnotherController, animated: false)
-            return
-        }
-    }
-   */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? NavigationMenuController {
             dest.previousController = self
         }
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toMonthView" {
-//            //casting to have access on properties
-//            let destVC = segue.destination as! MonthViewController
-//            destVC.view.backgroundColor = .blue
-//        }
-//    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
