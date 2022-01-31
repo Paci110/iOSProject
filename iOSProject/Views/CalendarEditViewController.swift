@@ -36,15 +36,18 @@ class CalendarEditViewController: UIViewController {
             if(cals.contains(text)){
                 text = nameTextField.text ?? calendar!.title
                 text = "\(text)(\(i))"
-                let alert = UIAlertController(title: "Calendar Name was Taken", message: "\"\(former)\" has been changed to \"\(text)\"", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                sender!.present(alert, animated: true, completion: nil)
             } else {
                 break
             }
             i += 1
         }
         calendar?.title = text
+        
+        if text != former {
+            let alert = UIAlertController(title: "Calendar Name was Taken", message: "\"\(former)\" has been changed to \"\(text)\"", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            sender!.present(alert, animated: true, completion: nil)
+        }
         
         if let sender = sender as? CalendarViewController{
             sender.reloadData()

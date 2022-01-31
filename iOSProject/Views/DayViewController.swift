@@ -65,8 +65,14 @@ class DayViewController: UITableViewController {
     }
     
     @IBAction func addButtonClicked(_ sender: Any) {
-        //TODO: Give default calendar
-        let calendar = Calendar(title: "Sample Calendar", color: UIColor.orange)
+        let calendars = getCalendars(filterFor: nil)
+        var calendar: Calendar!
+        if calendars.count > 0 {
+            calendar = calendars[0]
+        }
+        else {
+            calendar = Calendar(title: "Sample Calendar", color: UIColor.orange)
+        }
         let event = DateEvent(title: "New Event", fullDayEvent: false, start: Date(), end: Date(), shouldRemind: false, calendar: calendar, notes: nil, series: nil, reminder: nil, url: nil, location: nil, locationHanlder: nil, notificationHanlder: nil)
         performSegue(withIdentifier: "editSegue", sender: event)
     }
