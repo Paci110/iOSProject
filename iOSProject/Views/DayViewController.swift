@@ -12,6 +12,7 @@ class DayViewController: UITableViewController {
     
     @IBOutlet weak var navigationItems: UINavigationItem!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var weekNumberLabel: UILabel!
     
     var dateEvents: [DateEvent]?
     var date: Date?
@@ -60,6 +61,12 @@ class DayViewController: UITableViewController {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
             self.dateLabel.text = getDate(FromDate: self.date!, Format: "EE, d.MM.yyyy")
+            if fetchSettings().showWeekNumbers {
+                guard let date = self.date else {
+                    return
+                }
+                self.dateLabel.text? += ", CW " + getCalendarWeek(date: date)
+            }
             self.tableView.reloadData()
         }
     }
