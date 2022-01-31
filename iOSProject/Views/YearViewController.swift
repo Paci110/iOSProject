@@ -24,8 +24,8 @@ class YearViewController: UIViewController
         yearLabel.text = dateStr
         
         // add Pinch
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
-        self.view.addGestureRecognizer(pinchGesture)
+        //let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
+        //self.view.addGestureRecognizer(pinchGesture)
         
         configu()
     }
@@ -104,6 +104,7 @@ class YearViewController: UIViewController
         
     }
     
+    /*
     @objc func respondToPinch(gesture: UIGestureRecognizer){
         guard let pinchGesture = gesture as? UIPinchGestureRecognizer else {return}
         //view.backgroundColor = .green
@@ -117,9 +118,8 @@ class YearViewController: UIViewController
             self.navigationController?.pushViewController(AnotherController, animated: false)
             return
         }
-        
-        
     }
+   */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? NavigationMenuController {

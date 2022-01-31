@@ -42,9 +42,12 @@ class DateEditViewController: UIViewController {
                 dayView.reloadData()
             }
             if let dateView = self.sender as? DateViewController {
-                dateView.reloadData()
+                //dateView.dateEvent = self.dateEvent
+                //dateView.reloadData()
+                self.dismiss(animated: true) {
+                    self.sender!.dismiss(animated: false, completion: nil)
+                }
             }
-            self.dismiss(animated: true, completion: nil)
             
         }
     }
@@ -140,7 +143,7 @@ class DateEditViewController: UIViewController {
             address = nil
         }
         
-        _ = DateEvent(title: title, fullDayEvent: fullDayEvent, start: start, end: end, shouldRemind: shouldRemind, calendar: calendar, notes: notes, series: series, reminder: reminder, url: url, address: address, locationHanlder: self.locationHandler, notificationHanlder: self.notificationHandler)
+        dateEvent = DateEvent(title: title, fullDayEvent: fullDayEvent, start: start, end: end, shouldRemind: shouldRemind, calendar: calendar, notes: notes, series: series, reminder: reminder, url: url, address: address, locationHanlder: self.locationHandler, notificationHanlder: self.notificationHandler)
         
         saveData(completionHanlder: nil)
     }

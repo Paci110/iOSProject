@@ -12,7 +12,6 @@ class DayViewController: UITableViewController {
     
     @IBOutlet weak var navigationItems: UINavigationItem!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var weekNumberLabel: UILabel!
     
     var dateEvents: [DateEvent]?
     var date: Date?
@@ -42,9 +41,9 @@ class DayViewController: UITableViewController {
         swipeLeft.direction = .left
         
         // add Pinch
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
+        //let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
         
-        self.view.addGestureRecognizer(pinchGesture)
+        //self.view.addGestureRecognizer(pinchGesture)
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeLeft)
         
@@ -128,6 +127,10 @@ class DayViewController: UITableViewController {
         if let dest = segue.destination as? NavigationMenuController {
             dest.previousController = self
         }
+        
+        if let dest = segue.destination as? WeekViewController {
+            dest.setDays(dateInWeek: date!)
+        }
     }
     
     public override func numberOfSections(in tableView: UITableView) -> Int {
@@ -191,6 +194,7 @@ class DayViewController: UITableViewController {
         }
     }
     
+    /*
     @objc func respondToPinch(gesture: UIGestureRecognizer){
         guard let pinchGesture = gesture as? UIPinchGestureRecognizer else {return}
         //view.backgroundColor = .green
@@ -199,13 +203,17 @@ class DayViewController: UITableViewController {
             //view.backgroundColor = .black
             
             //get controller from StoryBoard
+            /*
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let AnotherController = storyBoard.instantiateViewController(withIdentifier: "monthView") as! MonthViewController
             self.navigationController?.pushViewController(AnotherController, animated: false)
+             */
+            self.performSegue(withIdentifier: "ToWeekView", sender: nil)
             return
         }
     }
-   
+   */
+    
     private func jumpToToday()
     {
         self.date = Date()
