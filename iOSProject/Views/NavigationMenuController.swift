@@ -20,7 +20,7 @@ class NavigationMenuController: UIViewController {
         }
     }
     
-    func goBackAndPerformSegue(controllerClass: AnyClass) {
+    func goBackAndPerformSegue(controllerIdentifier: String) {
         self.dismiss(animated: true) {
             guard let segueIdentifier = self.segueIdentifier else {
                 return
@@ -31,7 +31,7 @@ class NavigationMenuController: UIViewController {
             
             if let nav = self.previousController?.navigationController {
                 for (index, controller) in nav.viewControllers.enumerated() {
-                    if controller.restorationIdentifier == segueIdentifier {
+                    if controller.restorationIdentifier == controllerIdentifier {
                         foundController = true
                         let count = nav.viewControllers.count
                         guard count != index + 1 else {
@@ -42,46 +42,68 @@ class NavigationMenuController: UIViewController {
                         }
                     }
                 }
+                
             }
             
             if !foundController {
+                /*
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let view = storyBoard.instantiateViewController(withIdentifier: segueIdentifier)
                 if let view = view as? SettingsViewController {
                     view.prevController = self.previousController
                 }
                 self.previousController?.navigationController?.pushViewController(view, animated: false)
+                 */
+                self.previousController?.performSegue(withIdentifier: segueIdentifier, sender: nil)
             }
         }
     }
     
     @IBAction func clickDayButton(_ sender: UIButton) {
-        segueIdentifier = "dayView"
-        goBackAndPerformSegue(controllerClass: DayViewController.self)
+        guard previousController?.restorationIdentifier != "dayView" else {
+            return
+        }
+        segueIdentifier = "ToDayView"
+        goBackAndPerformSegue(controllerIdentifier: "dayView")
     }
     
     @IBAction func clickWeekButton(_ sender: UIButton) {
-        segueIdentifier = "weekView"
-        goBackAndPerformSegue(controllerClass: WeekViewController.self)
+        guard !(previousController is WeekViewController) else {
+            return
+        }
+        segueIdentifier = "ToWeekView"
+        goBackAndPerformSegue(controllerIdentifier: "weekView")
     }
     
     @IBAction func clickMonthButton(_ sender: Any) {
-        segueIdentifier = "monthView"
-        goBackAndPerformSegue(controllerClass: MonthViewController.self)
+        guard previousController?.restorationIdentifier != "monthView" else {
+            return
+        }
+        segueIdentifier = "ToMonthView"
+        goBackAndPerformSegue(controllerIdentifier: "monthView")
     }
     
     @IBAction func clickYearButton(_ sender: Any) {
-        segueIdentifier = "yearView"
-        goBackAndPerformSegue(controllerClass: YearViewController.self)
+        guard previousController?.restorationIdentifier != "yearView" else {
+            return
+        }
+        segueIdentifier = "ToYearView"
+        goBackAndPerformSegue(controllerIdentifier: "yearView")
     }
     
     @IBAction func clickCalendersButton(_ sender: Any) {
-        segueIdentifier = "calendarsView"
-        goBackAndPerformSegue(controllerClass: CalendarViewController.self)
+        guard previousController?.restorationIdentifier != "calendarsView" else {
+            return
+        }
+        segueIdentifier = "ToCalendarsView"
+        goBackAndPerformSegue(controllerIdentifier: "calendarsView")
     }
     
     @IBAction func clickSettingsButton(_ sender: Any) {
-        segueIdentifier = "settingsView"
-        goBackAndPerformSegue(controllerClass: SettingsViewController.self)
+        guard previousController?.restorationIdentifier != "settingsView" else {
+            return
+        }
+        segueIdentifier = "ToSettingsView"
+        goBackAndPerformSegue(controllerIdentifier: "settingsView")
     }
 }

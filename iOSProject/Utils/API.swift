@@ -46,7 +46,7 @@ public func getDay(day: Int, month: Int, year: Int, filterFor: [String]? = nil) 
 
 public func getDay(from date: Date, filterFor: [String]? = nil) -> [DateEvent] {
     let dateString = getDate(FromDate: date, Format: "DD.MM.YYYY").split(separator: ".")
-    return getDay(day: Int(dateString[0])!, month: Int(dateString[1])!, year: Int(dateString[2])!)
+    return getDay(day: Int(dateString[0])!, month: Int(dateString[1])!, year: Int(dateString[2])!, filterFor: filterFor)
 }
 
 public func getWeek(date: Date, filterFor: [String]? = nil) -> [[DateEvent]] {
@@ -56,7 +56,7 @@ public func getWeek(date: Date, filterFor: [String]? = nil) -> [[DateEvent]] {
     if let interv = calendar.dateInterval(of: .weekOfYear, for: date) {
         for i in 0...6 {
             if let day = calendar.date(byAdding: .day, value: i, to: interv.start) {
-                dateEvents.append(getDay(from: day))
+                dateEvents.append(getDay(from: day, filterFor: filterFor))
             }
         }
     }
@@ -147,12 +147,66 @@ public func getCalendars(filterFor: [String]? = nil) -> [Calendar] {
     return calendars
 }
 
+public func getOriginalRepeatingEvents(filterFor: [String]? = nil) -> [DateEvent] {
+    let context = getContext()
+    let calendars = getCalendars(filterFor: filterFor)
+    let eventsFetch = NSFetchRequest<DateEvent>(entityName: "DateEvent")
+    if(filterFor != nil) {
+        eventsFetch.predicate = NSPredicate(format: "series != nil AND calendar IN %@", argumentArray: [calendars])
+    }else {
+        eventsFetch.predicate = NSPredicate(format: "series != nil")
+    }
+    
+    var events: [DateEvent] = []
+    do {
+        events = try context.fetch(eventsFetch)
+    }catch {
+        print(error)
+    }
+    
+    return events
+}
+
+private func onSameDay(one: [Int], two: [Int]) -> Bool {
+    return one[0] == two[0] && one[1] == two[1] && one[2] == two[2]
+}
+
+public func createRepeatedEvents(forDate: Date, filterFor: [String]) -> [RepeatDateEvent]{
+    var clones: [RepeatDateEvent] = []
+    for original in getOriginalRepeatingEvents(filterFor: filterFor){
+        //Calculate if the original has a repeating falling on 'for'
+        let calHelp = Foundation.Calendar.current
+        var repeatedDay = original.start
+        let timeDiff = original.start.distance(to: original.end)
+        while(repeatedDay < forDate) {
+            if(onSameDay(one: dateToDMY(date: repeatedDay), two: dateToDMY(date: forDate))) {
+                clones.append(RepeatDateEvent(original: original, newStart: repeatedDay, newEnd: repeatedDay.addingTimeInterval(timeDiff)))
+            }
+            switch(original.series!.timeInterval) {
+            case .Hour:
+                repeatedDay = calHelp.date(byAdding: .hour, value: Int(original.series!.value), to: repeatedDay)!
+            case .Day:
+                repeatedDay = calHelp.date(byAdding: .day, value: Int(original.series!.value), to: repeatedDay)!
+            case .Week:
+                repeatedDay = calHelp.date(byAdding: .day, value: Int(original.series!.value) * 7, to: repeatedDay)!
+            case .Month:
+                repeatedDay = calHelp.date(byAdding: .month, value: Int(original.series!.value), to: repeatedDay)!
+            case .Year:
+                repeatedDay = calHelp.date(byAdding: .year, value: Int(original.series!.value), to: repeatedDay)!
+            }
+            
+            
+        }
+    }
+    return clones
+}
+
 /// Returns all calenders that should events be fetched from
-public var toFetchCalendars: [Calendar] {
-    var toFetchCalendar: [Calendar] = []
+public var toFetchCalendars: [String] {
+    var toFetchCalendar: [String] = []
     for calendar in getCalendars() {
         if calendar.selected {
-            toFetchCalendar.append(calendar)
+            toFetchCalendar.append(calendar.title)
         }
     }
     return toFetchCalendar
