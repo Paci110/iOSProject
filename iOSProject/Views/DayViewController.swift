@@ -101,14 +101,15 @@ class DayViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //TODO: implement
         if let cell = sender as? DateEventCell,
            let dest = segue.destination as? DateViewController {
             dest.dateEvent = cell.dateEvent
+            dest.sender = self
         }
         if let sender = sender as? DateEvent, let dest = segue.destination as? DateEditViewController {
-            print("Creating new Event")
             dest.dateEvent = sender
+            dest.sender = self
+            dest.date = date
         }
         
         if let dest = segue.destination as? NavigationMenuController {
@@ -168,12 +169,10 @@ class DayViewController: UITableViewController {
         switch swipeGesture.direction {
         case .right:
             //Jump to the previous day
-            self.date = Foundation.Calendar.current.date(byAdding: .day, value: -1, to: self.date!)
-            reloadData()
+            prevDay(swipeGesture)
         case .left:
             //Jump to the next day
-            self.date = Foundation.Calendar.current.date(byAdding: .day, value: 1, to: self.date!)
-            reloadData()
+            nextDay(swipeGesture)
         default:
             break
         }
