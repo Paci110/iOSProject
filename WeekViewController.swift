@@ -29,9 +29,10 @@ class WeekViewController: UIViewController {
     
     func setDays(dateInWeek date: Date) {
         var calendar = NSCalendar.current
-        calendar.locale = Locale(identifier: "en")
-        calendar.firstWeekday = 2
-        if let interv = calendar.dateInterval(of: .weekOfYear, for: Date()) {
+        calendar.locale = Locale(identifier: "de")
+        //calendar.firstWeekday = 2
+        if let interv = calendar.dateInterval(of: .weekOfYear, for: date) {
+            days = []
             for i in 0...6 {
                 if let day = calendar.date(byAdding: .day, value: i, to: interv.start) {
                     days.append(day)
@@ -64,7 +65,7 @@ class WeekViewController: UIViewController {
     func fetch() {
         for (index, title) in titles.enumerated() {
             let pos = index + currentDate
-            title.setTitle(getDate(FromDate: days[pos], Format: "EE, DD.MM"), for: .normal) 
+            title.setTitle(getDate(FromDate: days[pos], Format: "EE, d.MM"), for: .normal) 
         }
         dateEvents = getWeek(date: days[0], filterFor: nil)
         for table in tables {
@@ -148,6 +149,18 @@ class WeekViewController: UIViewController {
         if let dest = segue.destination as? NavigationMenuController {
             dest.previousController = self
         }
+    }
+    
+    @IBAction func backButtonClick(_ sender: UIButton) {
+        let date = Foundation.Calendar.current.date(byAdding: .day, value: -1, to: days[0])!
+        setDays(dateInWeek: date)
+        fetch()
+    }
+    
+    @IBAction func forwardButtonClick(_ sender: UIButton) {
+        let date = Foundation.Calendar.current.date(byAdding: .day, value: 1, to: days[6])!
+        setDays(dateInWeek: date)
+        fetch()
     }
 }
 
