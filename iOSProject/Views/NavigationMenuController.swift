@@ -95,7 +95,7 @@ class NavigationMenuController: UIViewController {
         guard previousController?.restorationIdentifier != "calendarsView" else {
             return
         }
-        segueIdentifier = "ToCalendarsView"
+        segueIdentifier = "ToCalendarView"
         goBackAndPerformSegue(controllerIdentifier: "calendarsView")
     }
     
