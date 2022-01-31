@@ -106,4 +106,11 @@ class NavigationMenuController: UIViewController {
         segueIdentifier = "ToSettingsView"
         goBackAndPerformSegue(controllerIdentifier: "settingsView")
     }
+    @IBAction func clickNavigationButton(_ sender: UIButton) {
+        guard previousController?.restorationIdentifier != "searchView" else {
+            return
+        }
+        segueIdentifier = "ToSearchView"
+        goBackAndPerformSegue(controllerIdentifier: "searchView")
+    }
 }

@@ -1058,7 +1058,7 @@
                                 <rect key="frame" x="50" y="20" width="290" height="716"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbA-xV-i3U">
-                                        <rect key="frame" x="0.0" y="0.0" width="290" height="111"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="93.666666666666671"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Day">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
@@ -1068,7 +1068,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYs-IF-wFU">
-                                        <rect key="frame" x="0.0" y="121" width="290" height="111"/>
+                                        <rect key="frame" x="0.0" y="103.66666666666666" width="290" height="93.666666666666657"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Week">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
@@ -1078,7 +1078,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J07-rD-xR1">
-                                        <rect key="frame" x="0.0" y="242" width="290" height="111"/>
+                                        <rect key="frame" x="0.0" y="207.33333333333334" width="290" height="93.666666666666657"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Month">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
@@ -1088,7 +1088,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zC1-45-Kuf">
-                                        <rect key="frame" x="0.0" y="363" width="290" height="111"/>
+                                        <rect key="frame" x="0.0" y="311" width="290" height="94"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Year">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
@@ -1097,8 +1097,18 @@
                                             <action selector="clickYearButton:" destination="2v2-y3-lvk" eventType="touchUpInside" id="X9i-Bk-QOV"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdf-4p-XkV">
+                                        <rect key="frame" x="0.0" y="415" width="290" height="93.666666666666686"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Search View">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="clickNavigationButton:" destination="2v2-y3-lvk" eventType="touchUpInside" id="QCR-vM-phG"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDY-uJ-EF9">
-                                        <rect key="frame" x="0.0" y="484" width="290" height="111"/>
+                                        <rect key="frame" x="0.0" y="518.66666666666663" width="290" height="93.666666666666629"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Calendars">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
@@ -1108,7 +1118,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hut-gA-Xyg">
-                                        <rect key="frame" x="0.0" y="605" width="290" height="111"/>
+                                        <rect key="frame" x="0.0" y="622.33333333333337" width="290" height="93.666666666666629"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Settings">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
@@ -1377,7 +1387,7 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ktM-yB-fSX">
-                                <rect key="frame" x="19" y="96" width="216" height="128"/>
+                                <rect key="frame" x="20" y="96" width="216" height="128"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gy6-0n-CSF">
@@ -1432,7 +1442,7 @@
         <!--Search View Controller-->
         <scene sceneID="jBq-9y-CiT">
             <objects>
-                <viewController id="hZY-lg-z8s" customClass="SearchViewController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchView" id="hZY-lg-z8s" customClass="SearchViewController" customModule="iOSProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ru4-wK-JEd">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1695,7 +1705,7 @@
         <segue reference="G36-VF-vCg"/>
         <segue reference="hcf-pC-lYp"/>
         <segue reference="w0r-eI-fRq"/>
-        <segue reference="1fy-ro-MXs"/>
+        <segue reference="Ds1-GW-paH"/>
         <segue reference="nu0-CV-bBE"/>
         <segue reference="rOO-e5-OpA"/>
         <segue reference="JXM-MY-Gjg"/>

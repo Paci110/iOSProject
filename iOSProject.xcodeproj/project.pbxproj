@@ -161,7 +161,6 @@
 				A190A919279C12B700DA2D43 /* SearchViewController.swift */,
 				55F23CDC279B815E00E4F163 /* MonthViewController.swift */,
 				55F23CE6279B8B4D00E4F163 /* MonthForYearViewController.swift */,
-				55F23CE0279B81F900E4F163 /* CHelp.swift */,
 				A1043384279ECC6100E11B5F /* CalendarViewController.swift */,
 				A1043386279EFF8E00E11B5F /* CalendarEditViewController.swift */,
 				A104338A27A434F100E11B5F /* DateEditViewController.swift */,
@@ -178,6 +177,7 @@
 				3047C58D2795BD1F00DE5EC4 /* API.swift */,
 				A104338827A2E1CF00E11B5F /* EKUtils.swift */,
 				A116D74227A8851900022F46 /* RepeatDateEvent.swift */,
+				55F23CE0279B81F900E4F163 /* CHelp.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

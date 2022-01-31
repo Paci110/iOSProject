@@ -71,7 +71,6 @@ class MonthForYearViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     func addLabelsToStackView() {
-        let numberOfLabels = 7
         for day in ["M", "D", "M", "D", "F", "S", "S"] {
             let labelDay = UILabel()
             labelDay.text = day

@@ -21,10 +21,7 @@ class DateEventCell: UITableViewCell {
     
     var dateEvent: DateEvent!
     
-    //TODO: support events that are longer than a day and display dates in the view
-    
     func addInfo(dateEvent: DateEvent) {
-        //FIXME: should update cell if place is set in DateEvent
         self.dateEvent = dateEvent
         let startString = getDate(FromDate: dateEvent.start, Format: "HH:mm")
         self.start.text = startString
@@ -65,7 +62,6 @@ class DateEventCell: UITableViewCell {
             default:
                 continue
             }
-            //TODO: use line seperators?
             /*
              if index != data.count {
              let view = UIView()

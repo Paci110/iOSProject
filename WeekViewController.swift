@@ -27,6 +27,7 @@ class WeekViewController: UIViewController {
     var days: [Date] = []
     var currentDate: Int = 0
     
+    ///Sets the days array
     func setDays(dateInWeek date: Date) {
         var calendar = NSCalendar.current
         calendar.locale = Locale(identifier: "de")
@@ -193,6 +194,7 @@ extension WeekViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
+//MARK: Table View functions
 extension WeekViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
