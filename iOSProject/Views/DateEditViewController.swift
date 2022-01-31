@@ -32,6 +32,9 @@ class DateEditViewController: UIViewController {
     private var subscriber: AnyCancellable?
     
     @IBAction func saveButton(_ sender: UIButton) {
+        if let dateEvent = dateEvent {
+            getContext().delete(dateEvent)
+        }
         saveToDateEvent()
         self.dismiss(animated: true, completion: nil)
     }
@@ -90,49 +93,61 @@ class DateEditViewController: UIViewController {
     
     func saveToDateEvent() {
         DispatchQueue.main.async {
-            self.dateEvent!.title = self.titleTextField.text ?? self.dateEvent!.title
-            self.dateEvent!.fullDayEvent = self.fulldaySwitch.isOn
-            self.dateEvent!.start = self.startPicker.date
-            self.dateEvent!.end = self.endPicker.date
-            self.dateEvent!.notes = self.notesTextView.text == "" ? nil : self.notesTextView.text
-            self.dateEvent!.url = self.urlTextField.text != nil ? URL(string: self.urlTextField.text!) : nil
-            self.dateEvent!.shouldRemind = self.reminderSwitch.isOn
-            self.dateEvent!.reminder = self.reminderPicker.date
-            self.dateEvent!.calendar = self.calendars![self.calendarPicker.selectedRow(inComponent: 0)]
-            
+            let title = self.titleTextField.text ?? "New event"
+            let fullDayEvent = self.fulldaySwitch.isOn
+            let start = self.startPicker.date
+            let end = self.endPicker.date
+            let notes = self.notesTextView.text == "" ? nil : self.notesTextView.text
+            let url = self.urlTextField.text != nil ? URL(string: self.urlTextField.text!) : nil
+            let shouldRemind = self.reminderSwitch.isOn
+            let reminder = self.reminderPicker.date
+            let calendar = self.calendars![self.calendarPicker.selectedRow(inComponent: 0)]
+            var series: EventSeries? = nil
             if self.pickerView(self.repeatPicker, titleForRow: self.repeatPicker.selectedRow(inComponent: 1), forComponent: 1) != "Never"{
                 
                 let value = self.repeatPicker.selectedRow(inComponent: 0)+1
                 
                 let interval = self.repeatPicker.selectedRow(inComponent: 1)-1
                 
-                self.dateEvent!.series = EventSeries(value: Int64(value), timeInterval: TimeInterval(rawValue: Int16(interval))!)
-            }else {
-                self.dateEvent!.series = nil
+                series = EventSeries(value: Int64(value), timeInterval: TimeInterval(rawValue: Int16(interval))!)
             }
-            saveData(completionHanlder: nil)
             //Set the dateEvents place
-            if let address = self.addressTextField.text {
-                CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
-                    if let error = error {
-                        print(error)
-                        return
-                    }
-                    guard
-                        let placemarks = placemarks,
-                        let first = placemarks.first
-                    else {
-                        print("No such address found")
-                        return
-                    }
-                    self.dateEvent!.place = first
-                    
-                    saveData(completionHanlder: nil)
-                }
-            }
+            let address = self.addressTextField.text
+            
+            _ = DateEvent(title: title, fullDayEvent: fullDayEvent, start: start, end: end, shouldRemind: shouldRemind, calendar: calendar, notes: notes, series: series, reminder: reminder, url: url, address: address, locationHanlder: self.locationHandler, notificationHanlder: self.notificationHandler)
+            
+            saveData(completionHanlder: nil)
+            
         }
-
-        
+    }
+    
+    func locationHandler(success: Bool, error: Error?) {
+        if let error = error {
+            print(error)
+        }
+        guard success else {
+            let alert = UIAlertController(title: "Location not found", message: "Location could not be found or an error occured", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
+            return
+        }
+        reloadData()
+    }
+    
+    func notificationHandler(success: Bool, error: Error?) {
+        if let error = error {
+            print(error)
+        }
+        guard success else {
+            let alert = UIAlertController(title: "Notifications not allowed", message: "Please enable notfications in the settings. Reminder will be deactivated for this event.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
+            return
+        }
     }
     
 }
