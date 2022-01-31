@@ -10,7 +10,14 @@ import CoreData
 import CoreVideo
 
 
-func getEvents(start: Date, end: Date, filterFor: [String]? = nil) -> [DateEvent] { //TODO: should probably be filterFor: [Calendar]? with an unwrapper later
+/**
+ Fetches events in a timespan. May filter for an array of calendars
+ - Parameter start: start of timespan
+ - Parameter end: end of timespan
+ - Parameter filterFor?: calendars to filter for
+ - Returns: array of DateEvents in the selected timespan
+ */
+func getEvents(start: Date, end: Date, filterFor: [String]? = nil) -> [DateEvent] {
     let context = getContext()
     let calendars = getCalendars(filterFor: filterFor)
     
@@ -36,7 +43,14 @@ func getEvents(start: Date, end: Date, filterFor: [String]? = nil) -> [DateEvent
     return events
 }
 
-
+/**
+ Fetches events in a day. May filter for an array of calendars
+ - Parameter day: day of the selected date
+ - Parameter month: month of the selected date
+ - Parameter year: year of the selected date
+ - Parameter filterFor?: calendars to filter for
+ - Returns: array of DateEvents in the selected day
+ */
 public func getDay(day: Int, month: Int, year: Int, filterFor: [String]? = nil) -> [DateEvent] { //TODO: needs value checking
     let start = getDate(fromString: "\(day)/\(month)/\(year) 00:00")
     let end = getDate(fromString: "\(day)/\(month)/\(year) 23:59")
@@ -44,11 +58,23 @@ public func getDay(day: Int, month: Int, year: Int, filterFor: [String]? = nil) 
     return getEvents(start:start, end:end, filterFor: filterFor)
 }
 
+/**
+ Fetches events in a day. May filter for an array of calendars
+ - Parameter date: selected date
+ - Parameter filterFor?: calendars to filter for
+ - Returns: array of DateEvents in the selected day
+ */
 public func getDay(from date: Date, filterFor: [String]? = nil) -> [DateEvent] {
     let dateString = getDate(FromDate: date, Format: "DD.MM.YYYY").split(separator: ".")
     return getDay(day: Int(dateString[0])!, month: Int(dateString[1])!, year: Int(dateString[2])!, filterFor: filterFor)
 }
 
+/**
+ Fetches events in a week. May filter for an array of calendars
+ - Parameter date: date within the selected week
+ - Parameter filterFor?: calendars to filter for
+ - Returns: 2D-array of DateEvents in the selected week, array'd by day
+ */
 public func getWeek(date: Date, filterFor: [String]? = nil) -> [[DateEvent]] {
     var dateEvents: [[DateEvent]] = []
     var calendar = NSCalendar.current
@@ -63,6 +89,13 @@ public func getWeek(date: Date, filterFor: [String]? = nil) -> [[DateEvent]] {
     return dateEvents
 }
 
+/**
+ Fetches events in a week. May filter for an array of calendars
+ - Parameter cw: selected calendar week
+ - Parameter year: selected year
+ - Parameter filterFor?: calendars to filter for
+ - Returns: 2D-array of DateEvents in the selected week, array'd by day
+ */
 public func getWeek(cw: Int, year: Int, filterFor: [String]? = nil) -> [[DateEvent]] {
     var calendar = NSCalendar.current
     calendar.firstWeekday = 2
@@ -100,6 +133,13 @@ public func getWeek(cw: Int, year: Int, filterFor: [String]? = nil) -> [[DateEve
 }
  */
 
+/**
+ Fetches events in a month. May filter for an array of calendars
+ - Parameter month: selected month number
+ - Parameter year: selected year
+ - Parameter filterFor?: calendars to filter for
+ - Returns: 2D-array of DateEvents in the selected month, array'd by day
+ */
 public func getMonth(month: Int, year: Int, filterFor: [String]? = nil) -> [[DateEvent]] {
     let firstDay = getDate(fromString: "1/\(month)/\(year) 01:00")//FIXME: as above
     
@@ -115,6 +155,12 @@ public func getMonth(month: Int, year: Int, filterFor: [String]? = nil) -> [[Dat
     return events
 }
 
+/**
+ Fetches events in a year. May filter for an array of calendars
+ - Parameter year: selected year
+ - Parameter filterFor?: calendars to filter for
+ - Returns: 3D-array of DateEvents in the selected year, array'd by month, array'd by day
+ */
 public func getYear(year: Int, filterFor: [String]? = nil) -> [[[DateEvent]]] {
     let firstDay = getDate(fromString: "1/1/\(year)")
     
@@ -128,7 +174,11 @@ public func getYear(year: Int, filterFor: [String]? = nil) -> [[[DateEvent]]] {
     return events
 }
 
-
+/**
+ Fetches calendars. May filter for an array of calendars
+ - Parameter filterFor?: calendars to filter for
+ - Returns: array of fetched calendars
+ */
 public func getCalendars(filterFor: [String]? = nil) -> [Calendar] {
     let context = getContext()
     
@@ -211,5 +261,3 @@ public var toFetchCalendars: [String] {
     }
     return toFetchCalendar
 }
-
-//TODO: Upload calendar implementation files
