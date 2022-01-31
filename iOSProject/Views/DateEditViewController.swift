@@ -11,7 +11,7 @@ import Combine
 import CoreLocation
 
 class DateEditViewController: UIViewController {
-    
+    //connects variables with the view
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var fulldaySwitch: UISwitch!
     @IBOutlet weak var startPicker: UIDatePicker!
@@ -31,7 +31,7 @@ class DateEditViewController: UIViewController {
     var sender: UIViewController? // The VC that made this vc pop up
     
     private var subscriber: AnyCancellable?
-    
+    //save the actuel view with the button
     @IBAction func saveButton(_ sender: UIButton) {
         DispatchQueue.main.async {
             if let dateEvent = self.dateEvent {
@@ -48,10 +48,12 @@ class DateEditViewController: UIViewController {
             
         }
     }
+    //discard changes
     @IBAction func cancelButton(_ sender: UIButton) {
         getContext().rollback()
         self.dismiss(animated: true, completion: nil)
     }
+    //changes value of "start of the event"  and  "end of the event", so start is set at 00:00 and end at 23:59 of the actual day
     @IBAction func changeFullDaySwitch(_ sender: UISwitch) {
         guard sender.isOn else {
             return
@@ -66,6 +68,7 @@ class DateEditViewController: UIViewController {
         endPicker.date = endOfDay
     }
     
+    //refresh the pickers which are for repeating and choosin/creating a new calender
     func refresh() {
         DispatchQueue.main.async {
             self.repeatPicker.reloadAllComponents()
@@ -73,6 +76,7 @@ class DateEditViewController: UIViewController {
         }
     }
     
+    //recalls the data
     func reloadData() {
         titleTextField.text = dateEvent?.title
         fulldaySwitch.isOn = dateEvent?.fullDayEvent ?? false
@@ -114,7 +118,7 @@ class DateEditViewController: UIViewController {
             dest.sender = self
         }
     }
-    
+    //save the currently given information by the user
     func saveToDateEvent() {
         let title = self.titleTextField.text ?? "New event"
         let fullDayEvent = self.fulldaySwitch.isOn
@@ -160,6 +164,7 @@ class DateEditViewController: UIViewController {
         reloadData()
     }
     
+    //pop up message if the user wants to use the reminder but notification is deactivated
     func notificationHandler(success: Bool, error: Error?) {
         if let error = error {
             print(error)
@@ -177,10 +182,12 @@ class DateEditViewController: UIViewController {
 }
 
 extension DateEditViewController: UIPickerViewDataSource {
+    //calls the number of components
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return pickerView == self.repeatPicker ? 2 : 1
     }
     
+    //calls the number of rows
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if(pickerView == self.repeatPicker) {
             return component == 0 ? 30 : 6
@@ -190,6 +197,7 @@ extension DateEditViewController: UIPickerViewDataSource {
 }
 
 extension DateEditViewController: UIPickerViewDelegate {
+    //calls the title of a row in the given component
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if(pickerView == self.repeatPicker) {
             guard component == 1 else { return String(row+1) } //Start at 1 because 0 is dumb
@@ -202,6 +210,7 @@ extension DateEditViewController: UIPickerViewDelegate {
         return "\(component), \(row)"
     }
     
+    //call when the user chose a row in the component
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard pickerView == self.calendarPicker else { return }
         if(self.pickerView(pickerView, titleForRow: row, forComponent: component) == "Add Calendar") {
