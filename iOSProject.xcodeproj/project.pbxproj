@@ -10,11 +10,9 @@
 		301E24C327A414D700B5895B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301E24C227A414D700B5895B /* SettingsViewController.swift */; };
 		3047C58E2795BD1F00DE5EC4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3047C58D2795BD1F00DE5EC4 /* API.swift */; };
 		55F23CDD279B815E00E4F163 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CDC279B815E00E4F163 /* MonthViewController.swift */; };
-		55F23CDF279B81B600E4F163 /* CCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CDE279B81B600E4F163 /* CCell.swift */; };
 		55F23CE1279B81F900E4F163 /* CHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CE0279B81F900E4F163 /* CHelp.swift */; };
 		55F23CE5279B8A0E00E4F163 /* YearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CE4279B8A0E00E4F163 /* YearViewController.swift */; };
 		55F23CE7279B8B4D00E4F163 /* MonthForYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CE6279B8B4D00E4F163 /* MonthForYearViewController.swift */; };
-		55F23CE9279B8D7D00E4F163 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F23CE8279B8D7D00E4F163 /* DateCell.swift */; };
 		79242C4C27A6B75B00210B4D /* NavigationMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79242C4B27A6B75B00210B4D /* NavigationMenuController.swift */; };
 		792DACB127A4AFA800BDDF6E /* Settings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792DACAF27A4AFA800BDDF6E /* Settings+CoreDataClass.swift */; };
 		792DACB227A4AFA800BDDF6E /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792DACB027A4AFA800BDDF6E /* Settings+CoreDataProperties.swift */; };
@@ -48,11 +46,9 @@
 		301E24C227A414D700B5895B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = iOSProject/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
 		3047C58D2795BD1F00DE5EC4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		55F23CDC279B815E00E4F163 /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
-		55F23CDE279B81B600E4F163 /* CCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCell.swift; sourceTree = "<group>"; };
 		55F23CE0279B81F900E4F163 /* CHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHelp.swift; sourceTree = "<group>"; };
 		55F23CE4279B8A0E00E4F163 /* YearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewController.swift; sourceTree = "<group>"; };
 		55F23CE6279B8B4D00E4F163 /* MonthForYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthForYearViewController.swift; sourceTree = "<group>"; };
-		55F23CE8279B8D7D00E4F163 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		79242C4B27A6B75B00210B4D /* NavigationMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenuController.swift; sourceTree = "<group>"; };
 		792DACAF27A4AFA800BDDF6E /* Settings+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		792DACB027A4AFA800BDDF6E /* Settings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -156,9 +152,7 @@
 				A190A919279C12B700DA2D43 /* SearchViewController.swift */,
 				55F23CDC279B815E00E4F163 /* MonthViewController.swift */,
 				55F23CE6279B8B4D00E4F163 /* MonthForYearViewController.swift */,
-				55F23CE8279B8D7D00E4F163 /* DateCell.swift */,
 				55F23CE0279B81F900E4F163 /* CHelp.swift */,
-				55F23CDE279B81B600E4F163 /* CCell.swift */,
 				A1043384279ECC6100E11B5F /* CalendarViewController.swift */,
 				A1043386279EFF8E00E11B5F /* CalendarEditViewController.swift */,
 				A104338A27A434F100E11B5F /* DateEditViewController.swift */,
@@ -276,7 +270,6 @@
 				79FDEEA22795ACB3005A25F9 /* EventSeries+CoreDataProperties.swift in Sources */,
 				792DACB227A4AFA800BDDF6E /* Settings+CoreDataProperties.swift in Sources */,
 				79E83786279D73DA00258682 /* WeekViewController.swift in Sources */,
-				55F23CDF279B81B600E4F163 /* CCell.swift in Sources */,
 				79FDEE9E2795A7F0005A25F9 /* DateEvent+CoreDataProperties.swift in Sources */,
 				A1043385279ECC6100E11B5F /* CalendarViewController.swift in Sources */,
 				79AD23F02791CD2F00DC21F5 /* DateEvent+CoreDataClass.swift in Sources */,
@@ -296,7 +289,6 @@
 				A190A91A279C12B700DA2D43 /* SearchViewController.swift in Sources */,
 				3047C58E2795BD1F00DE5EC4 /* API.swift in Sources */,
 				7990F5D1276F70130066EDC6 /* DayViewController.swift in Sources */,
-				55F23CE9279B8D7D00E4F163 /* DateCell.swift in Sources */,
 				79AD23EF2791CD2F00DC21F5 /* Calendar+CoreDataProperties.swift in Sources */,
 				79C2BFD02779EFFC009A104A /* ViewClasses.swift in Sources */,
 				301E24C327A414D700B5895B /* SettingsViewController.swift in Sources */,

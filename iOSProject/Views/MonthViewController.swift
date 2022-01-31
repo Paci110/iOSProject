@@ -18,12 +18,6 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
     var selected = Date()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        // add Pinch
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
-        self.view.addGestureRecognizer(pinchGesture)
-        
-        
         return squares.count
     }
     
@@ -31,19 +25,36 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! CCell
         
         cell.dayOfMonth.text = squares[indexPath.item]
+        if squares[indexPath.item] != "" {
+            var components = Foundation.Calendar.current.dateComponents([.month, .year, .timeZone], from: selected)
+            components.day = Int(squares[indexPath.item])!
+            components.hour = 1 // Because of time difference
+            cell.date = Foundation.Calendar.current.date(from: components)
+        }
+
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CCell, cell.date != nil {
+            performSegue(withIdentifier: "dayView", sender: cell.date)
+        }
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        collView.dataSource = self
+        collView.delegate = self
+        
+        // add Pinch
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
+        self.view.addGestureRecognizer(pinchGesture)
+        
         renderCells()
-        renderMonth()      
-        
-        
-        
+        renderMonth()
     }
     
     func renderCells()
@@ -98,12 +109,6 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
         renderMonth()
     }
     
-
-    
-    
-    
-    
-    
     @objc func respondToPinch(gesture: UIGestureRecognizer){
         guard let pinchGesture = gesture as? UIPinchGestureRecognizer else {return}
         //view.backgroundColor = .green
@@ -127,18 +132,15 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
             return
             
         }
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? NavigationMenuController {
             dest.previousController = self
         }
+        if let dest = segue.destination as? DayViewController, let sender = sender as? Date {
+            dest.date = sender
+        }
     }
-    
-    
-    
-    
 }
 
