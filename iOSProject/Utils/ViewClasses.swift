@@ -135,6 +135,8 @@ class CalendarCustomCell: UITableViewCell {
 class CCell: UICollectionViewCell
 {
     @IBOutlet weak var dayOfMonth: UILabel!
+    @IBOutlet weak var cwLabel: UILabel!
+    
     var date: Date?
 }
 

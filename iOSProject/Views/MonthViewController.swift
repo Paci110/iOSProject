@@ -25,13 +25,21 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! CCell
         
         cell.dayOfMonth.text = squares[indexPath.item]
-        cell.dayOfMonth.textColor = col
+        cell.cwLabel.text = ""
+        
         if squares[indexPath.item] != "" {
             var components = Foundation.Calendar.current.dateComponents([.month, .year, .timeZone], from: selected)
             components.day = Int(squares[indexPath.item])!
             components.hour = 1 // Because of time difference
             cell.date = Foundation.Calendar.current.date(from: components)
+            print(cell.date)
+            print(getWeekDay(date: cell.date!))
+            if(getWeekDay(date: cell.date!) == .Monday) {
+                cell.cwLabel.text = getCalendarWeek(date: cell.date!)
+            }
         }
+        
+        
         
         
         return cell

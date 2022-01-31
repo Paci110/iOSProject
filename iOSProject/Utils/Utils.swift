@@ -127,10 +127,12 @@ public func getWeekDay(weekDay: WeekDay) -> String {
 }
 
 public func getWeekDay(date: Date) -> WeekDay {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "EEEE"
+    let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "en")
+    formatter.dateFormat = dateFormat
+    let string = formatter.string(from: date)
     
-    switch(dateFormatter.string(from: date)) {
+    switch(getWeekDay(date: string)) {
     case "Monday":
         return .Monday
     case "Tuesday":
