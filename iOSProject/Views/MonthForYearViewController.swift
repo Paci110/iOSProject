@@ -23,13 +23,12 @@ class MonthForYearViewController: UIViewController, UICollectionViewDelegate, UI
     var selected = Date()
     
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         squares.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! DateCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! DateCell
         
         cell.dayOfM.text = squares[indexPath.item]
         //cell.backgroundColor = UIColor.blue
@@ -44,53 +43,12 @@ class MonthForYearViewController: UIViewController, UICollectionViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = .gray
-        
-
-        
-        //configureCollView()
-        
-        //configureStackView()
     }
-    
-
-    
-
-    
-    
     
     func configureLabel(count: Int) {
         
         monthLabel.text = CHelp().calendar.shortMonthSymbols[count]
-        
-        switch count {
-        case 0:
-            monthLabel.textColor = .red
-        case 1:
-            monthLabel.textColor = .orange
-        case 2:
-            monthLabel.textColor = .black
-        case 3:
-            monthLabel.textColor = .green
-        case 4:
-            monthLabel.textColor = .blue
-        case 5:
-            monthLabel.textColor = .red
-        case 6:
-            monthLabel.textColor = .orange
-        case 7:
-            monthLabel.textColor = .black
-        case 8:
-            monthLabel.textColor = .green
-        case 9:
-            monthLabel.textColor = .blue
-        case 10:
-            monthLabel.textColor = .red
-        case 11:
-            monthLabel.textColor = .orange
-        default:
-            monthLabel.textColor = .black
-        }
+        monthLabel.textColor = col
         
         monthLabel.font = monthLabel.font.withSize(10)
         view.addSubview(monthLabel)
@@ -101,10 +59,6 @@ class MonthForYearViewController: UIViewController, UICollectionViewDelegate, UI
 
         
     }
-    
-    
-    
-    
     
     func configureStackView(width: Int, height: Int) {
         view.addSubview(stackView)
@@ -118,13 +72,14 @@ class MonthForYearViewController: UIViewController, UICollectionViewDelegate, UI
     
     func addLabelsToStackView() {
         let numberOfLabels = 7
-        for day in CHelp().calendar.veryShortWeekdaySymbols {
+        for day in ["M", "D", "M", "D", "F", "S", "S"] {
             let labelDay = UILabel()
             labelDay.text = day
             labelDay.font = labelDay.font.withSize(9)
             
             stackView.addArrangedSubview(labelDay)
         }
+        
     }
     
     func setStackViewConstraints(width: Int, height: Int) {
@@ -136,9 +91,6 @@ class MonthForYearViewController: UIViewController, UICollectionViewDelegate, UI
         stackView.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
     }
     
-    
-    
-    
     func configureCollView(width: Int, height: Int) {
         collView = UICollectionView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: width, height: height)), collectionViewLayout: UICollectionViewFlowLayout.init())
         
@@ -146,8 +98,6 @@ class MonthForYearViewController: UIViewController, UICollectionViewDelegate, UI
         collView.dataSource = self
         collView.register(DateCell.self, forCellWithReuseIdentifier: "dateCell")
         //collView.backgroundColor = .blue
-        
-        
         
         view.addSubview(collView)
         setCollectionViewConstraints(height: height)
@@ -177,7 +127,8 @@ class MonthForYearViewController: UIViewController, UICollectionViewDelegate, UI
         
         let daysInMonth = CHelp().howManyDaysInMonth(date: selected)
         let firstDayOfMonth = CHelp().selectFirst(date: selected)
-        let startingSpaces = CHelp().whichWeekday(date: firstDayOfMonth)
+        let x = CHelp().whichWeekday(date: firstDayOfMonth) - 1
+        let startingSpaces = x < 0 ? 6 : x //If Sunday (-1) use 6 free spaces
         
         var count: Int = 1
         
@@ -198,9 +149,6 @@ class MonthForYearViewController: UIViewController, UICollectionViewDelegate, UI
         collView.reloadData()
         
     }
-    
-    
-    
     
     func setCollectionViewConstraints(height: Int) {
         collView.translatesAutoresizingMaskIntoConstraints = false
