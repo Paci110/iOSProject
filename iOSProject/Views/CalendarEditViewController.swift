@@ -16,6 +16,7 @@ class CalendarEditViewController: UIViewController {
     var sender: UIViewController?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(segue.destination)
         if let dest = segue.destination as? UIColorPickerViewController{
             picker = dest
         }

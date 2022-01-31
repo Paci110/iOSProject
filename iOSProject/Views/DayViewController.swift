@@ -12,6 +12,7 @@ class DayViewController: UITableViewController {
     
     @IBOutlet weak var navigationItems: UINavigationItem!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var weekNumberLabel: UILabel!
     
     var dateEvents: [DateEvent]?
     var date: Date?
@@ -53,13 +54,19 @@ class DayViewController: UITableViewController {
     func reloadData() {
         //dateEvents = getDay(day: 19, month: 1, year: 2022)
         let dmy = dateToDMY(date: date!)
-        dateEvents = getDay(day: dmy[0], month: dmy[1], year: dmy[2], filterFor: toFetchCalendars)
+        dateEvents = getDay(day: dmy[0], month: dmy[1], year: dmy[2])
         
         //navigationItems.title = getDate(FromDate: date!, Format: "EE, DD.MM.YYYY")
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
             self.dateLabel.text = getDate(FromDate: self.date!, Format: "EE, d.MM.yyyy")
+            if fetchSettings().showWeekNumbers {
+                guard let date = self.date else {
+                    return
+                }
+                self.dateLabel.text? += ", CW " + getCalendarWeek(date: date)
+            }
             self.tableView.reloadData()
         }
     }
