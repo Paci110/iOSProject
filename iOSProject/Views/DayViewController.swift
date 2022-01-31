@@ -169,12 +169,10 @@ class DayViewController: UITableViewController {
         switch swipeGesture.direction {
         case .right:
             //Jump to the previous day
-            self.date = Foundation.Calendar.current.date(byAdding: .day, value: -1, to: self.date!)
-            reloadData()
+            prevDay(swipeGesture)
         case .left:
             //Jump to the next day
-            self.date = Foundation.Calendar.current.date(byAdding: .day, value: 1, to: self.date!)
-            reloadData()
+            nextDay(swipeGesture)
         default:
             break
         }

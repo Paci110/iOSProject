@@ -33,17 +33,20 @@ class DateEditViewController: UIViewController {
     private var subscriber: AnyCancellable?
     
     @IBAction func saveButton(_ sender: UIButton) {
-        if let dateEvent = dateEvent {
-            getContext().delete(dateEvent)
+        DispatchQueue.main.async {
+            if let dateEvent = self.dateEvent {
+                getContext().delete(dateEvent)
+            }
+            self.saveToDateEvent()
+            if let dayView = self.sender as? DayViewController {
+                dayView.reloadData()
+            }
+            if let dateView = self.sender as? DateViewController {
+                dateView.reloadData()
+            }
+            self.dismiss(animated: true, completion: nil)
+            
         }
-        saveToDateEvent()
-        if let dayView = self.sender as? DayViewController {
-            dayView.reloadData()
-        }
-        if let dateView = self.sender as? DateViewController {
-            dateView.reloadData()
-        }
-        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func cancelButton(_ sender: UIButton) {
         getContext().rollback()
@@ -112,33 +115,33 @@ class DateEditViewController: UIViewController {
     }
     
     func saveToDateEvent() {
-        DispatchQueue.main.async {
-            let title = self.titleTextField.text ?? "New event"
-            let fullDayEvent = self.fulldaySwitch.isOn
-            let start = self.startPicker.date
-            let end = self.endPicker.date
-            let notes = self.notesTextView.text == "" ? nil : self.notesTextView.text
-            let url = self.urlTextField.text != nil ? URL(string: self.urlTextField.text!) : nil
-            let shouldRemind = self.reminderSwitch.isOn
-            let reminder = self.reminderPicker.date
-            let calendar = self.calendars![self.calendarPicker.selectedRow(inComponent: 0)]
-            var series: EventSeries? = nil
-            if self.pickerView(self.repeatPicker, titleForRow: self.repeatPicker.selectedRow(inComponent: 1), forComponent: 1) != "Never"{
-                
-                let value = self.repeatPicker.selectedRow(inComponent: 0)+1
-                
-                let interval = self.repeatPicker.selectedRow(inComponent: 1)-1
-                
-                series = EventSeries(value: Int64(value), timeInterval: TimeInterval(rawValue: Int16(interval))!)
-            }
-            //Set the dateEvents place
-            let address = self.addressTextField.text
+        let title = self.titleTextField.text ?? "New event"
+        let fullDayEvent = self.fulldaySwitch.isOn
+        let start = self.startPicker.date
+        let end = self.endPicker.date
+        let notes = self.notesTextView.text == "" ? nil : self.notesTextView.text
+        let url = self.urlTextField.text != nil ? URL(string: self.urlTextField.text!) : nil
+        let shouldRemind = self.reminderSwitch.isOn
+        let reminder = self.reminderPicker.date
+        let calendar = self.calendars![self.calendarPicker.selectedRow(inComponent: 0)]
+        var series: EventSeries? = nil
+        if self.pickerView(self.repeatPicker, titleForRow: self.repeatPicker.selectedRow(inComponent: 1), forComponent: 1) != "Never"{
             
-            _ = DateEvent(title: title, fullDayEvent: fullDayEvent, start: start, end: end, shouldRemind: shouldRemind, calendar: calendar, notes: notes, series: series, reminder: reminder, url: url, address: address, locationHanlder: self.locationHandler, notificationHanlder: self.notificationHandler)
+            let value = self.repeatPicker.selectedRow(inComponent: 0)+1
             
-            saveData(completionHanlder: nil)
+            let interval = self.repeatPicker.selectedRow(inComponent: 1)-1
             
+            series = EventSeries(value: Int64(value), timeInterval: TimeInterval(rawValue: Int16(interval))!)
         }
+        //Set the dateEvents place
+        var address: String? = self.addressTextField.text
+        if address == "" {
+            address = nil
+        }
+        
+        _ = DateEvent(title: title, fullDayEvent: fullDayEvent, start: start, end: end, shouldRemind: shouldRemind, calendar: calendar, notes: notes, series: series, reminder: reminder, url: url, address: address, locationHanlder: self.locationHandler, notificationHanlder: self.notificationHandler)
+        
+        saveData(completionHanlder: nil)
     }
     
     func locationHandler(success: Bool, error: Error?) {
@@ -149,7 +152,7 @@ class DateEditViewController: UIViewController {
             let alert = UIAlertController(title: "Location not found", message: "Location could not be found or an error occured", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             DispatchQueue.main.async {
-                self.present(alert, animated: true, completion: nil)
+                self.sender?.present(alert, animated: true, completion: nil)
             }
             return
         }
@@ -164,7 +167,7 @@ class DateEditViewController: UIViewController {
             let alert = UIAlertController(title: "Notifications not allowed", message: "Please enable notfications in the settings. Reminder will be deactivated for this event.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             DispatchQueue.main.async {
-                self.present(alert, animated: true, completion: nil)
+                self.sender?.present(alert, animated: true, completion: nil)
             }
             return
         }

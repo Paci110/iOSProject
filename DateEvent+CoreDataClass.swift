@@ -76,6 +76,7 @@ public class DateEvent: NSManagedObject {
                     
                     notificationHanlder(false, nil)
                     print("Not authorized")
+                    /*
                     let alert = UIAlertController(title: "Notifications not allowed", message: "Please enable notfications in the settings. Reminder will be deactivated for this event.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                     //FIXME: display user warning in displayed view
@@ -84,6 +85,7 @@ public class DateEvent: NSManagedObject {
                      viewCon?.present(alert, animated: true, completion: nil)
                      */
                     DayViewController().present(alert, animated: true, completion: nil)
+                     */
                     return
                 }
                 let content = UNMutableNotificationContent()
