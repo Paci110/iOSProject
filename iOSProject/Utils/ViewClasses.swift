@@ -143,7 +143,7 @@ class CCell: UICollectionViewCell
 class DateCell: UICollectionViewCell
 {
     var dayOfM = UILabel()
-    
+    var date: Date?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

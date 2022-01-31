@@ -32,8 +32,6 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
             components.day = Int(squares[indexPath.item])!
             components.hour = 1 // Because of time difference
             cell.date = Foundation.Calendar.current.date(from: components)
-            print(cell.date)
-            print(getWeekDay(date: cell.date!))
             if(getWeekDay(date: cell.date!) == .Monday) {
                 cell.cwLabel.text = getCalendarWeek(date: cell.date!)
             }
