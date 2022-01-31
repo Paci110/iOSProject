@@ -25,13 +25,14 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! CCell
         
         cell.dayOfMonth.text = squares[indexPath.item]
+        cell.dayOfMonth.textColor = col
         if squares[indexPath.item] != "" {
             var components = Foundation.Calendar.current.dateComponents([.month, .year, .timeZone], from: selected)
             components.day = Int(squares[indexPath.item])!
             components.hour = 1 // Because of time difference
             cell.date = Foundation.Calendar.current.date(from: components)
         }
-
+        
         
         return cell
     }
@@ -74,7 +75,8 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         let daysInMonth = CHelp().howManyDaysInMonth(date: selected)
         let firstDayOfMonth = CHelp().selectFirst(date: selected)
-        let startingSpaces = CHelp().whichWeekday(date: firstDayOfMonth)
+        let x = CHelp().whichWeekday(date: firstDayOfMonth) - 1
+        let startingSpaces = x < 0 ? 6 : x //If Sunday (-1) use 6 free spaces
         
         var count: Int = 1
         
