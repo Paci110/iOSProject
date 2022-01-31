@@ -57,8 +57,8 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
         collView.delegate = self
         
         // add Pinch
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
-        self.view.addGestureRecognizer(pinchGesture)
+        //let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
+        //self.view.addGestureRecognizer(pinchGesture)
         
         renderCells()
         renderMonth()
@@ -117,6 +117,7 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
         renderMonth()
     }
     
+    /*
     @objc func respondToPinch(gesture: UIGestureRecognizer){
         guard let pinchGesture = gesture as? UIPinchGestureRecognizer else {return}
         //view.backgroundColor = .green
@@ -141,6 +142,7 @@ class MonthViewController: UIViewController, UICollectionViewDelegate, UICollect
             
         }
     }
+     */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? NavigationMenuController {

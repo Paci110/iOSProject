@@ -46,7 +46,7 @@ public func getDay(day: Int, month: Int, year: Int, filterFor: [String]? = nil) 
 
 public func getDay(from date: Date, filterFor: [String]? = nil) -> [DateEvent] {
     let dateString = getDate(FromDate: date, Format: "DD.MM.YYYY").split(separator: ".")
-    return getDay(day: Int(dateString[0])!, month: Int(dateString[1])!, year: Int(dateString[2])!)
+    return getDay(day: Int(dateString[0])!, month: Int(dateString[1])!, year: Int(dateString[2])!, filterFor: filterFor)
 }
 
 public func getWeek(date: Date, filterFor: [String]? = nil) -> [[DateEvent]] {
@@ -56,7 +56,7 @@ public func getWeek(date: Date, filterFor: [String]? = nil) -> [[DateEvent]] {
     if let interv = calendar.dateInterval(of: .weekOfYear, for: date) {
         for i in 0...6 {
             if let day = calendar.date(byAdding: .day, value: i, to: interv.start) {
-                dateEvents.append(getDay(from: day))
+                dateEvents.append(getDay(from: day, filterFor: filterFor))
             }
         }
     }
@@ -202,11 +202,11 @@ public func createRepeatedEvents(forDate: Date, filterFor: [String]) -> [RepeatD
 }
 
 /// Returns all calenders that should events be fetched from
-public var toFetchCalendars: [Calendar] {
-    var toFetchCalendar: [Calendar] = []
+public var toFetchCalendars: [String] {
+    var toFetchCalendar: [String] = []
     for calendar in getCalendars() {
         if calendar.selected {
-            toFetchCalendar.append(calendar)
+            toFetchCalendar.append(calendar.title)
         }
     }
     return toFetchCalendar
