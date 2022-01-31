@@ -266,8 +266,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkh-sF-gM4">
+                                <rect key="frame" x="0.0" y="56" width="50" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="BbH-5O-SAn"/>
+                                    <constraint firstAttribute="width" constant="50" id="F1M-Ef-ivc"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="backButtonClick:" destination="AYi-1U-yZW" eventType="touchUpInside" id="fHR-Aj-HSw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9O-ZK-tst">
+                                <rect key="frame" x="340" y="56" width="50" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="FPs-Yc-Hhj"/>
+                                    <constraint firstAttribute="width" constant="50" id="Zab-ha-H2B"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.forward.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="forwardButtonClick:" destination="AYi-1U-yZW" eventType="touchUpInside" id="tCw-oZ-koE"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kTc-N4-rWk">
-                                <rect key="frame" x="0.0" y="56" width="390" height="50"/>
+                                <rect key="frame" x="0.0" y="94" width="390" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GvR-SN-rnl"/>
@@ -311,10 +335,10 @@
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="duQ-ul-qwl">
-                                <rect key="frame" x="0.0" y="106" width="390" height="635"/>
+                                <rect key="frame" x="0.0" y="144" width="390" height="597"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K4E-Vq-ubM">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="635"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="597"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4f-Qz-Hph">
                                                 <rect key="frame" x="0.0" y="0.0" width="130" height="30"/>
@@ -328,7 +352,7 @@
                                                 </connections>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bHR-Ne-qgX">
-                                                <rect key="frame" x="0.0" y="30" width="130" height="605"/>
+                                                <rect key="frame" x="0.0" y="30" width="130" height="567"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Mqs-6C-VqF" detailTextLabel="pcK-ff-5hO" style="IBUITableViewCellStyleSubtitle" id="PcQ-b4-kzh">
@@ -364,7 +388,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="L0F-Do-QKA">
-                                        <rect key="frame" x="130" y="0.0" width="130" height="635"/>
+                                        <rect key="frame" x="130" y="0.0" width="130" height="597"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Etx-xf-cQC">
                                                 <rect key="frame" x="0.0" y="0.0" width="130" height="30"/>
@@ -378,7 +402,7 @@
                                                 </connections>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PP4-yc-BlM">
-                                                <rect key="frame" x="0.0" y="30" width="130" height="605"/>
+                                                <rect key="frame" x="0.0" y="30" width="130" height="567"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="8wY-G2-4Pb" detailTextLabel="be0-9l-m0K" style="IBUITableViewCellStyleSubtitle" id="xPb-ge-sE1">
@@ -414,7 +438,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EU0-bL-gBH">
-                                        <rect key="frame" x="260" y="0.0" width="130" height="635"/>
+                                        <rect key="frame" x="260" y="0.0" width="130" height="597"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y43-Lc-z3k">
                                                 <rect key="frame" x="0.0" y="0.0" width="130" height="30"/>
@@ -428,7 +452,7 @@
                                                 </connections>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oWA-bm-6sC">
-                                                <rect key="frame" x="0.0" y="30" width="130" height="605"/>
+                                                <rect key="frame" x="0.0" y="30" width="130" height="567"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="u7X-6g-2WO" detailTextLabel="swh-hp-WSB" style="IBUITableViewCellStyleSubtitle" id="xfD-wx-GEE">
@@ -469,16 +493,21 @@
                         <viewLayoutGuide key="safeArea" id="jrU-hi-01l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="dkh-sF-gM4" firstAttribute="top" secondItem="jrU-hi-01l" secondAttribute="top" id="Ey7-5h-34i"/>
                             <constraint firstAttribute="trailing" secondItem="kTc-N4-rWk" secondAttribute="trailing" id="MZI-w1-gkR"/>
                             <constraint firstItem="kTc-N4-rWk" firstAttribute="leading" secondItem="jrU-hi-01l" secondAttribute="leading" id="TeD-47-Fr2"/>
-                            <constraint firstItem="kTc-N4-rWk" firstAttribute="top" secondItem="jrU-hi-01l" secondAttribute="top" id="XqY-KY-KYA"/>
+                            <constraint firstItem="dkh-sF-gM4" firstAttribute="leading" secondItem="jrU-hi-01l" secondAttribute="leading" id="UJ4-3k-b6B"/>
+                            <constraint firstItem="kTc-N4-rWk" firstAttribute="top" secondItem="dkh-sF-gM4" secondAttribute="bottom" id="XqY-KY-KYA"/>
                             <constraint firstItem="jrU-hi-01l" firstAttribute="bottom" secondItem="duQ-ul-qwl" secondAttribute="bottom" id="flx-40-QTB"/>
+                            <constraint firstItem="c9O-ZK-tst" firstAttribute="top" secondItem="jrU-hi-01l" secondAttribute="top" id="hnj-zN-l9I"/>
                             <constraint firstItem="jrU-hi-01l" firstAttribute="trailing" secondItem="duQ-ul-qwl" secondAttribute="trailing" id="jzs-5Z-GEf"/>
                             <constraint firstItem="duQ-ul-qwl" firstAttribute="leading" secondItem="jrU-hi-01l" secondAttribute="leading" id="msS-Xi-Pv6"/>
+                            <constraint firstItem="jrU-hi-01l" firstAttribute="trailing" secondItem="c9O-ZK-tst" secondAttribute="trailing" id="osm-yW-4Za"/>
                             <constraint firstItem="duQ-ul-qwl" firstAttribute="top" secondItem="kTc-N4-rWk" secondAttribute="bottom" id="ylo-vO-OT8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="AQC-OU-A4i">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="rUW-mu-9DZ">
                             <connections>
                                 <segue destination="2v2-y3-lvk" kind="presentation" id="hcf-pC-lYp"/>
@@ -1596,13 +1625,14 @@
     <inferredMetricsTieBreakers>
         <segue reference="oux-Nr-0VY"/>
         <segue reference="ovd-2w-Flx"/>
-        <segue reference="7B3-7K-lUj"/>
+        <segue reference="hcf-pC-lYp"/>
         <segue reference="w0r-eI-fRq"/>
         <segue reference="1fy-ro-MXs"/>
-        <segue reference="f6f-Pv-11f"/>
+        <segue reference="rOO-e5-OpA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="chevron.forward.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.left.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.right.circle.fill" catalog="system" width="128" height="121"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
