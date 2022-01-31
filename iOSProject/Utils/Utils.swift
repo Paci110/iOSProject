@@ -3,6 +3,7 @@ import UIKit
 import CoreData
 
 public let dateFormat = "dd/MM/yyyy HH:mm"
+public var col = UIColor.systemBlue
 
 ///Returns the weekday from a given string that is expected in the default format
 func getWeekDay(date dateString: String) -> String {
@@ -189,11 +190,18 @@ public func fetchSettings() -> Settings {
     do {
         settings = try context.fetch(NSFetchRequest<Settings>(entityName: "Settings"))
         if(settings == []){
-            settings = [Settings(colorTheme: "Default", startWithLastView: false, defaultView: "DayView")]
+            settings = [Settings(colorTheme: "Default", startWithLastView: false, defaultView: "DayView", showWeekNumbers: true)]
         }
     } catch {
         fatalError("couldn't fetch settings!")
     }
     
     return settings.first!
+}
+
+public func getCalendarWeek(date: Date) -> String {
+    var cal = Foundation.Calendar.current
+    cal.locale = Locale(identifier: "de")
+    let comp = cal.dateComponents([.weekOfYear], from: date)
+    return comp.weekOfYear?.description ?? ""
 }

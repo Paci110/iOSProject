@@ -47,6 +47,9 @@ class NavigationMenuController: UIViewController {
             if !foundController {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let view = storyBoard.instantiateViewController(withIdentifier: segueIdentifier)
+                if let view = view as? SettingsViewController {
+                    view.prevController = self.previousController
+                }
                 self.previousController?.navigationController?.pushViewController(view, animated: false)
             }
         }

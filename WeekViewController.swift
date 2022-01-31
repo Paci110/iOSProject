@@ -56,6 +56,8 @@ class WeekViewController: UIViewController {
             setDays(dateInWeek: Date())
         }
         
+        navigationItem.title = "CW \(getCalendarWeek(date: days[0]))"
+        
         fetch()
     }
     
