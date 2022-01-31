@@ -54,7 +54,7 @@ class DayViewController: UITableViewController {
         //dateEvents = getDay(day: 19, month: 1, year: 2022)
         let dmy = dateToDMY(date: date!)
         dateEvents = getDay(day: dmy[0], month: dmy[1], year: dmy[2], filterFor: toFetchCalendars)
-        dateEvents?.append(contentsOf: createRepeatedEvents(forDate: date!, filterFor: toFetchCalendars.map{ $0.title }))
+        dateEvents?.append(contentsOf: createRepeatedEvents(forDate: date!, filterFor: toFetchCalendars))
         //navigationItems.title = getDate(FromDate: date!, Format: "EE, DD.MM.YYYY")
         
         DispatchQueue.main.async { [weak self] in

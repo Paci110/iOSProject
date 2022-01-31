@@ -47,8 +47,9 @@ class DateEditViewController: UIViewController {
                 self.dismiss(animated: true) {
                     self.sender!.dismiss(animated: false, completion: nil)
                 }
+                return
             }
-            
+            self.dismiss(animated: true, completion: nil)
         }
     }
     @IBAction func cancelButton(_ sender: UIButton) {
