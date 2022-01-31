@@ -10,7 +10,18 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var themes: UIPickerView!
+    @IBOutlet weak var useAlternateIconSwitch: UISwitch!
     @IBOutlet weak var weekNumbersSwitch: UISwitch!
+    
+    @IBAction func switchIcon(_ sender: UISwitch) {
+        if(sender.isOn) {
+            //Use alternate Icon
+            UIApplication.shared.setAlternateIconName("AppIcon-2", completionHandler: nil)
+        }else {
+            //Use standard icon
+            UIApplication.shared.setAlternateIconName(nil, completionHandler: nil)
+        }
+    }
     
     weak var prevController: UIViewController?
     
@@ -24,6 +35,7 @@ class SettingsViewController: UIViewController {
         self.themes.dataSource = self
         
         weekNumbersSwitch.isOn = fetchSettings().showWeekNumbers
+        useAlternateIconSwitch.isOn = UIApplication.shared.alternateIconName != nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
