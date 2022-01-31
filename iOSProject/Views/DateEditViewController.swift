@@ -41,7 +41,7 @@ class DateEditViewController: UIViewController {
             if let dayView = self.sender as? DayViewController {
                 dayView.reloadData()
             }
-            if let dateView = self.sender as? DateViewController {
+            if let _ = self.sender as? DateViewController {
                 //dateView.dateEvent = self.dateEvent
                 //dateView.reloadData()
                 self.dismiss(animated: true) {
