@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 class CalendarEditViewController: UIViewController {
+    /*
+     textfield to give a name for the calender
+     picker to choose a colour
+     */
     @IBOutlet weak var nameTextField: UITextField!
     var picker: UIColorPickerViewController?
     var calendar: Calendar?
@@ -26,7 +30,7 @@ class CalendarEditViewController: UIViewController {
         nameTextField.text = calendar?.title
         picker?.selectedColor = calendar!.color
     }
-    
+    //save the given data if the view disappears
     override func viewDidDisappear(_ animated: Bool) {
         calendar?.color = picker?.selectedColor ?? calendar!.color
         let cals = getCalendars().map { $0.title }
