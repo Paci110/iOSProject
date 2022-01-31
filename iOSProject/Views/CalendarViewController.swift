@@ -54,6 +54,15 @@ class CalendarViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         getContext().rollback()
+        
+        let controller = self.navigationController?.topViewController
+        
+        if let controller = controller as? DayViewController {
+            controller.reloadData()
+        }
+        if let controller = controller as? WeekViewController{
+            controller.fetch()
+        }
     }
 }
 

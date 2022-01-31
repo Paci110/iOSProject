@@ -64,7 +64,7 @@ class WeekViewController: UIViewController {
             let pos = index + currentDate
             title.setTitle(getDate(FromDate: days[pos], Format: "EE, DD.MM"), for: .normal) 
         }
-        dateEvents = getWeek(date: days[0], filterFor: nil)
+        dateEvents = getWeek(date: days[0], filterFor: toFetchCalendars)
         for table in tables {
             table.reloadData()
         }
