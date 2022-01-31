@@ -43,6 +43,7 @@
 		A116D73F27A8778100022F46 /* icon-1.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D73927A8778000022F46 /* icon-1.png */; };
 		A116D74027A8778100022F46 /* icon-2.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D73A27A8778000022F46 /* icon-2.png */; };
 		A116D74127A8778100022F46 /* icon-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A116D73B27A8778100022F46 /* icon-1@2x.png */; };
+		A116D74327A8851900022F46 /* RepeatDateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A116D74227A8851900022F46 /* RepeatDateEvent.swift */; };
 		A190A91A279C12B700DA2D43 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190A919279C12B700DA2D43 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		A116D73927A8778000022F46 /* icon-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1.png"; sourceTree = "<group>"; };
 		A116D73A27A8778000022F46 /* icon-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-2.png"; sourceTree = "<group>"; };
 		A116D73B27A8778100022F46 /* icon-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1@2x.png"; sourceTree = "<group>"; };
+		A116D74227A8851900022F46 /* RepeatDateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatDateEvent.swift; sourceTree = "<group>"; };
 		A190A919279C12B700DA2D43 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 				799C1D4527831B0600AC954F /* Utils.swift */,
 				3047C58D2795BD1F00DE5EC4 /* API.swift */,
 				A104338827A2E1CF00E11B5F /* EKUtils.swift */,
+				A116D74227A8851900022F46 /* RepeatDateEvent.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				7990F5D3276F91BD0066EDC6 /* DateViewController.swift in Sources */,
 				55F23CE1279B81F900E4F163 /* CHelp.swift in Sources */,
 				A104338927A2E1CF00E11B5F /* EKUtils.swift in Sources */,
+				A116D74327A8851900022F46 /* RepeatDateEvent.swift in Sources */,
 				7C4E175D27A42D3D00B627E7 /* SettingsViewController.swift in Sources */,
 				55F23CE7279B8B4D00E4F163 /* MonthForYearViewController.swift in Sources */,
 				55F23CE5279B8A0E00E4F163 /* YearViewController.swift in Sources */,
