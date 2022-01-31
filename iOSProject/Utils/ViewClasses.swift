@@ -135,13 +135,15 @@ class CalendarCustomCell: UITableViewCell {
 class CCell: UICollectionViewCell
 {
     @IBOutlet weak var dayOfMonth: UILabel!
+    @IBOutlet weak var cwLabel: UILabel!
+    
     var date: Date?
 }
 
 class DateCell: UICollectionViewCell
 {
     var dayOfM = UILabel()
-    
+    var date: Date?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

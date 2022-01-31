@@ -13,11 +13,6 @@ class YearViewController: UIViewController
 
     @IBOutlet weak var yearLabel: UILabel!
     
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //monthViewContr.didMove(toParent: self)
@@ -28,21 +23,11 @@ class YearViewController: UIViewController
         var dateStr = formatter.string(from: Date())
         yearLabel.text = dateStr
         
-        
-        
-        
         // add Pinch
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(respondToPinch))
         self.view.addGestureRecognizer(pinchGesture)
         
-        
-        
-
-        
         configu()
-        
-        
-
     }
     
     
@@ -53,16 +38,10 @@ class YearViewController: UIViewController
         addMonthContr(heightOfCell: heightOfCell, widthOfCell: widthOfCell)
     }
     
-    
-    
-    
     func addMonthContr(heightOfCell: Float, widthOfCell: Float) {
         var count: Int = 0
         while count < 12 {
             var monthViewContr = MonthForYearViewController()
-            
-            
-            
             var dateComp = DateComponents()
             
             dateComp.year = Int(yearLabel.text!)
@@ -72,30 +51,18 @@ class YearViewController: UIViewController
             var userCal = NSCalendar(identifier: .gregorian)!
             monthViewContr.selected = userCal.date(from: dateComp)!
             
-            
-            
-            
-            
             monthViewContr.viewDidLoad()
             addChild(monthViewContr)
             view.addSubview(monthViewContr.view)
             setMonthConstrains(monthViewContr: monthViewContr, count: count, heightOfCell: heightOfCell, widthOfCell: widthOfCell)
             
-            
-            
             monthViewContr.configureLabel(count: count)
             //need to do after constraints...
             monthViewContr.configureStackView(width: Int(widthOfCell), height: Int(heightOfCell*1/6))
-                                              
-                                              
-                                              
+                                                  
             monthViewContr.configureCollView(width: Int(widthOfCell), height: Int(heightOfCell*4/5))
 //            monthViewContr.renderCells()
 //            monthViewContr.renderMonth()
-            
-            
-            
-            
             
             count += 1
         }
@@ -119,12 +86,6 @@ class YearViewController: UIViewController
         monthViewContr.view.widthAnchor.constraint(equalToConstant: CGFloat(widthOfCell)).isActive = true
     }
     
-    
-    
-    
-    
-    
-    
     @IBAction func nextYear(_ sender: Any) {
         
         yearLabel.text = String(Int(yearLabel.text!)!+1)
@@ -134,8 +95,6 @@ class YearViewController: UIViewController
         
     }
     
-    
-    
     @IBAction func prevYear(_ sender: Any) {
         
         
@@ -144,11 +103,6 @@ class YearViewController: UIViewController
         configu()
         
     }
-    
-    
-    
-    
-    
     
     @objc func respondToPinch(gesture: UIGestureRecognizer){
         guard let pinchGesture = gesture as? UIPinchGestureRecognizer else {return}
@@ -172,11 +126,6 @@ class YearViewController: UIViewController
             dest.previousController = self
         }
     }
-    
-    
-    
-    
-    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "toMonthView" {
 //            //casting to have access on properties

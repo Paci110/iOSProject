@@ -16,9 +16,10 @@ func getEvents(start: Date, end: Date, filterFor: [String]? = nil) -> [DateEvent
     
     let eventsFetch = NSFetchRequest<DateEvent>(entityName: "DateEvent")
     if(filterFor != nil) {
-        eventsFetch.predicate = NSPredicate(format: "start >= %@ AND end <= %@ AND calendar IN %@", argumentArray: [start, end, calendars])
+        eventsFetch.predicate = NSPredicate(format: "(start >= %@ AND start <= %@) OR (end >= %@ AND end <= %@) OR (start <= %@ AND end >= %@) AND calendar IN %@", argumentArray: [start, end, start, end, start, end, calendars])
     } else {
-        eventsFetch.predicate = NSPredicate(format: "start >= %@ AND end <= %@", argumentArray: [start, end])
+        eventsFetch.predicate = NSPredicate(format: "(start >= %@ AND start <= %@) OR (end >= %@ AND end <= %@) OR (start <= %@ AND end >= %@)", argumentArray: [start, end, start, end, start, end])
+            
     }
     
     var events: [DateEvent]
