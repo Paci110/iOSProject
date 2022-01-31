@@ -27,7 +27,19 @@ class CalendarEditViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        calendar?.title = nameTextField.text ?? calendar!.title
+        let cals = getCalendars().map { $0.title }
+        var text:String = nameTextField.text ?? calendar!.title
+        var i = 0 //counter
+        while(true){
+            if(cals.contains(text)){
+                text = nameTextField.text ?? calendar!.title
+                text = "\(text)(\(i))"
+            } else {
+                break
+            }
+            i += 1
+        }
+        calendar?.title = text
         calendar?.color = picker?.selectedColor ?? calendar!.color
         calendarView?.reloadData()
     }
