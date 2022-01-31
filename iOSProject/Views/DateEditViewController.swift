@@ -72,6 +72,10 @@ class DateEditViewController: UIViewController {
         endPicker.date = endOfDay
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        getContext().rollback()
+    }
+    
     //refresh the pickers which are for repeating and choosin/creating a new calender
     func refresh() {
         DispatchQueue.main.async {
