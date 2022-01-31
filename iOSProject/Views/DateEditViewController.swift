@@ -28,6 +28,7 @@ class DateEditViewController: UIViewController {
     var dateEvent: DateEvent?
     var calendars: [Calendar]?
     var calendarCancellable: AnyCancellable?
+    var sender: UIViewController? // The VC that made this vc pop up
     
     private var subscriber: AnyCancellable?
     
@@ -36,11 +37,30 @@ class DateEditViewController: UIViewController {
             getContext().delete(dateEvent)
         }
         saveToDateEvent()
+        if let dayView = self.sender as? DayViewController {
+            dayView.reloadData()
+        }
+        if let dateView = self.sender as? DateViewController {
+            dateView.reloadData()
+        }
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func cancelButton(_ sender: UIButton) {
         getContext().rollback()
         self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func changeFullDaySwitch(_ sender: UISwitch) {
+        guard sender.isOn else {
+            return
+        }
+        let startOfDay = Foundation.Calendar.current.startOfDay(for: Date())
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        let endOfDay = Foundation.Calendar.current.date(byAdding: components, to: startOfDay)!
+        
+        startPicker.date = startOfDay
+        endPicker.date = endOfDay
     }
     
     func refresh() {
