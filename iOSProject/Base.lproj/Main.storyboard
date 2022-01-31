@@ -39,20 +39,37 @@
                                     <action selector="weekNumbersSwitchChanged:" destination="Ako-E2-4RS" eventType="valueChanged" id="aLJ-HG-hyg"/>
                                 </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use alternate App Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkE-o6-8Ga">
+                                <rect key="frame" x="20" y="427" width="283" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n2t-TT-0XA">
+                                <rect key="frame" x="311" y="422" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchIcon:" destination="Ako-E2-4RS" eventType="valueChanged" id="krZ-xt-kjF"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DQs-Bc-q4M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wcR-li-fwh" firstAttribute="top" secondItem="DnP-aw-qup" secondAttribute="top" id="2VP-hy-xdw"/>
+                            <constraint firstItem="DQs-Bc-q4M" firstAttribute="trailing" secondItem="n2t-TT-0XA" secondAttribute="trailing" constant="30" id="3Vp-fS-JEb"/>
                             <constraint firstItem="NnD-71-NSb" firstAttribute="leading" secondItem="DQs-Bc-q4M" secondAttribute="leading" id="Dhl-fn-67O"/>
                             <constraint firstItem="NnD-71-NSb" firstAttribute="trailing" secondItem="DQs-Bc-q4M" secondAttribute="trailing" id="Gvy-qv-cVg"/>
+                            <constraint firstItem="LkE-o6-8Ga" firstAttribute="leading" secondItem="DQs-Bc-q4M" secondAttribute="leading" constant="20" id="Knu-4u-kbC"/>
                             <constraint firstItem="XNl-Mg-CcQ" firstAttribute="top" secondItem="NnD-71-NSb" secondAttribute="bottom" id="N1d-oI-KfB"/>
+                            <constraint firstItem="LkE-o6-8Ga" firstAttribute="top" secondItem="wcR-li-fwh" secondAttribute="bottom" constant="50" id="N6v-0q-ctU"/>
                             <constraint firstItem="XNl-Mg-CcQ" firstAttribute="leading" secondItem="DQs-Bc-q4M" secondAttribute="leading" id="Q62-FG-9w1"/>
+                            <constraint firstItem="n2t-TT-0XA" firstAttribute="centerY" secondItem="LkE-o6-8Ga" secondAttribute="centerY" id="RbC-cH-eMW"/>
                             <constraint firstItem="wcR-li-fwh" firstAttribute="bottom" secondItem="DnP-aw-qup" secondAttribute="bottom" id="TRR-wc-fcS"/>
                             <constraint firstItem="NnD-71-NSb" firstAttribute="top" secondItem="DQs-Bc-q4M" secondAttribute="top" id="Ubb-Cu-6SB"/>
                             <constraint firstItem="wcR-li-fwh" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="DnP-aw-qup" secondAttribute="leading" constant="8" symbolic="YES" id="Zd6-Cl-QfA"/>
                             <constraint firstItem="XNl-Mg-CcQ" firstAttribute="top" secondItem="NnD-71-NSb" secondAttribute="bottom" id="aIa-gO-nhe"/>
                             <constraint firstItem="DnP-aw-qup" firstAttribute="top" secondItem="XNl-Mg-CcQ" secondAttribute="bottom" constant="50" id="bAg-cK-woQ"/>
+                            <constraint firstItem="n2t-TT-0XA" firstAttribute="leading" secondItem="LkE-o6-8Ga" secondAttribute="trailing" constant="8" symbolic="YES" id="czM-3E-wme"/>
                             <constraint firstItem="XNl-Mg-CcQ" firstAttribute="trailing" secondItem="DQs-Bc-q4M" secondAttribute="trailing" id="d1N-Iy-slH"/>
                             <constraint firstItem="DQs-Bc-q4M" firstAttribute="trailing" secondItem="DnP-aw-qup" secondAttribute="trailing" constant="30" id="eCb-T0-T5r"/>
                             <constraint firstItem="wcR-li-fwh" firstAttribute="leading" secondItem="DQs-Bc-q4M" secondAttribute="leading" constant="20" id="pjd-ZS-pOE"/>
@@ -61,6 +78,7 @@
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="PlK-0g-Oec"/>
                     <connections>
                         <outlet property="themes" destination="XNl-Mg-CcQ" id="zRy-2X-TA9"/>
+                        <outlet property="useAlternateIconSwitch" destination="n2t-TT-0XA" id="l3F-fX-j9r"/>
                         <outlet property="weekNumbersSwitch" destination="DnP-aw-qup" id="XEc-d3-kNb"/>
                     </connections>
                 </viewController>
