@@ -91,12 +91,12 @@ extension CalendarViewController: UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let sender = sender as? IndexPath, let dest = segue.destination as? CalendarEditViewController{
             dest.calendar = filteredCalendars![sender.row]
-            dest.calendarView = self
+            dest.sender = self
         }
         
         if let sender = sender as? Calendar, let dest = segue.destination as? CalendarEditViewController {
             dest.calendar = sender
-            dest.calendarView = self
+            dest.sender = self
         }
         
         if let dest = segue.destination as? NavigationMenuController {

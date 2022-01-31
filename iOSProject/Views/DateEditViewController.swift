@@ -111,6 +111,7 @@ class DateEditViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let sender = sender as? Calendar, let dest = segue.destination as? CalendarEditViewController{
             dest.calendar = sender
+            dest.sender = self
         }
     }
     
