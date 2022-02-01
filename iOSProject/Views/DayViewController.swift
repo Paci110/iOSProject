@@ -29,6 +29,7 @@ class DayViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        EKUtils().synchronize(saveHandler: nil, loadHandler: nil)
         if (date == nil) {
             print("No date provided. Using current date")
             date = Date()
